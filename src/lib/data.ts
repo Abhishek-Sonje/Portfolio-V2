@@ -112,7 +112,7 @@ export const PROJECTS: Project[] = [
     description:
       "An interactive whiteboard where Gemini 2.5 Flash understands what you draw and responds in real time — think smarter, faster, collaborative thinking.",
     stack: ["Next.js", "TypeScript", "Google Gemini AI", "tldraw"],
-    github: "https://github.com/abhishek036/chalkai",
+    github: "https://github.com/Abhishek-Sonje/ChalkAI",
     live: null,
     highlight: "Gemini 2.5 Flash · Real-time AI",
     image: "/projects/ChalkAi.webp",
@@ -125,8 +125,8 @@ export const PROJECTS: Project[] = [
     description:
       "A production-ready cloud storage app for secure file uploads, sharing, and management — clean UX backed by a solid full-stack architecture.",
     stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM"],
-    github: "https://github.com/abhishek036/droply",
-    live: "https://droply.abhishekdev.tech",
+    github: "https://github.com/Abhishek-Sonje/Droply",
+    live: "https://droply-gamma.vercel.app/",
     highlight: "Production · Live",
     image: "/projects/Droply.webp",
     category: "Web Application",
