@@ -1,10 +1,11 @@
 import { ReactNode } from "react";
 
 export type QuickDetail = {
-  icon: string;
+  icon: ReactNode;
   label: string;
   value: string;
   href?: string;
+  isCopyable: boolean;
 };
 
 export type Social = {
@@ -20,6 +21,8 @@ export type ExperienceItem = {
   type: string;
   points: string[];
   stack: string[];
+  active: boolean;
+  logo?: string;
 };
 
 export type Project = {
@@ -30,6 +33,15 @@ export type Project = {
   github: string;
   live: string | null;
   highlight: string;
+  image: string;
+  category?: string;
+  logo?: string;
+};
+
+export type StackItem = {
+  name: string;
+  icon: string;
+  url: string;
 };
 
 export type StackGroup = {

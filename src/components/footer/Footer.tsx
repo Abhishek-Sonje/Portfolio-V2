@@ -30,7 +30,9 @@ export default function Footer() {
         {/* ========================================================
           BACKGROUND / DIM STATE
           ======================================================== */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none transition-opacity duration-700">
+        <div
+          className={`absolute inset-0 flex items-center justify-center pointer-events-none transition-opacity duration-700 ${isHovered ? "opacity-0" : "opacity-20"}`}
+        >
           <svg viewBox="0 0 1200 300" className="w-full h-full">
             <text
               x="51%"
@@ -40,7 +42,7 @@ export default function Footer() {
               fill="currentColor"
               className="font-serif text-foreground-tertiary"
               style={{ fontSize: "260px", fontWeight: 500 }}
-              transform-origin="center"
+              transform="center"
             >
               ABHISHEK
             </text>
@@ -85,7 +87,7 @@ export default function Footer() {
               fill="url(#silver-gradient)"
               className="font-serif drop-shadow-lg"
               style={{ fontSize: "260px", fontWeight: 500 }}
-              transform-origin="center"
+              transform="center"
             >
               ABHISHEK
             </text>
@@ -109,13 +111,17 @@ export default function Footer() {
                 Crafting interfaces
               </span>
               <a
-                href="#github"
+                href="https://github.com/Abhishek-Sonje"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-foreground transition-colors"
               >
                 GitHub
               </a>
               <a
-                href="#linkedin"
+                href="https://www.linkedin.com/in/abhishek-sonje-83a333209"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-foreground transition-colors"
               >
                 LinkedIn
