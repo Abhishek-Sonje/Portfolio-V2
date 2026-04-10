@@ -52,7 +52,7 @@ export const SOCIALS: Social[] = [
     icon: React.createElement("img", {
       src: "/logos/x.webp",
       alt: "X",
-      className: "w-8 h-8 object-contain",
+      className: "md:w-8 md:h-8 w-6.5 h-6.5 object-contain",
     }),
   },
   {
@@ -61,7 +61,7 @@ export const SOCIALS: Social[] = [
     icon: React.createElement("img", {
       src: "/logos/github.webp",
       alt: "GitHub",
-      className: "w-8 h-8 object-contain",
+      className: "md:w-8 md:h-8 w-6.5 h-6.5 object-contain",
     }),
   },
   {
@@ -70,7 +70,7 @@ export const SOCIALS: Social[] = [
     icon: React.createElement("img", {
       src: "/logos/linkedin.webp",
       alt: "LinkedIn",
-      className: "w-8 h-8 object-contain",
+      className: "md:w-8 md:h-8 w-6.5 h-6.5 object-contain",
     }),
   },
 ];

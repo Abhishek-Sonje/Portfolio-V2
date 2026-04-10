@@ -20,8 +20,7 @@ export default function QuickDetails() {
       document.body.removeChild(textarea);
     }
   };
-  const handleCopy = async (text: string,index:number) => {
-
+  const handleCopy = async (text: string, index: number) => {
     await copyToClipboard(text);
     setCopied(index);
     setTimeout(() => setCopied(null), 2000);
@@ -67,9 +66,13 @@ export default function QuickDetails() {
                 {detail.isCopyable && (
                   <button
                     className="hidden group-hover:block hover:text-foreground p-1 rounded "
-                    onClick={() => handleCopy(detail.value,index)}
+                    onClick={() => handleCopy(detail.value, index)}
                   >
-                    {copied === index ? <FiCheck /> : <FiCopy className="w-3.5 h-3.5" />}
+                    {copied === index ? (
+                      <FiCheck />
+                    ) : (
+                      <FiCopy className="w-3.5 h-3.5" />
+                    )}
                   </button>
                 )}
               </div>
@@ -79,9 +82,13 @@ export default function QuickDetails() {
                 {detail.isCopyable && (
                   <button
                     className="hidden group-hover:block hover:text-foreground p-1 rounded "
-                    onClick={() => handleCopy(detail.value,index)}
+                    onClick={() => handleCopy(detail.value, index)}
                   >
-                    {copied === index ? <FiCheck /> : <FiCopy className="w-3.5 h-3.5" />}
+                    {copied === index ? (
+                      <FiCheck />
+                    ) : (
+                      <FiCopy className="w-3.5 h-3.5" />
+                    )}
                   </button>
                 )}
               </div>

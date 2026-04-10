@@ -6,7 +6,7 @@ import { ChevronDown, Terminal, Cpu } from "lucide-react";
 import Image from "next/image";
 
 export default function Experience() {
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   return (
     <section

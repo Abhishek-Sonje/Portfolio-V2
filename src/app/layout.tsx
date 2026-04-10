@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { Tiny5 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 
 const tiny = Tiny5({
   subsets: ["latin"],
@@ -77,6 +78,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={tiny.variable}>
       <body className="min-h-screen flex flex-col antialiased">
         <ThemeProvider>
+          <Analytics/>
           <Navbar />
           <main className="flex-grow flex flex-col pt-14">{children}</main>
           <Footer />
