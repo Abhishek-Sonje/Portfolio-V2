@@ -13,15 +13,10 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="flex flex-col w-full bg-background relative border-y border-border-subtle scroll-mt-20"
+      className="flex flex-col w-full bg-background relative scroll-mt-[calc(var(--nav-height)+var(--space-5))]"
     >
-      {/* Header Section */}
-      <div className="flex border-b border-border-subtle ">
-        <div className="w-full pl-4 py-2 flex ">
-          <h2 className="text-3xl font-semibold text-foreground tracking-tight leading-tight">
-            Projects
-          </h2>
-        </div>
+      <div className="pb-2">
+        <h2 className="type-section-heading">Projects</h2>
       </div>
 
       <div className="flex flex-col w-full">

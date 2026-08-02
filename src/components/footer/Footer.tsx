@@ -18,14 +18,14 @@ export default function Footer() {
   };
 
   return (
-    <div className="w-full px-4 pb-4 mt-12">
+    <div className="w-full px-4 pb-4 mt-8">
       <footer
         id="contact"
         ref={containerRef}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="relative w-full h-[50vh]  bg-background flex flex-col justify-between overflow-hidden cursor-crosshair group"
+        className="relative w-full h-[30vh] bg-background flex flex-col justify-between overflow-hidden cursor-crosshair group"
       >
         {/* ========================================================
           BACKGROUND / DIM STATE

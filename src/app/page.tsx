@@ -1,5 +1,4 @@
-import Banner from "@/components/hero/Banner";
-import Avatar from "@/components/hero/Avatar";
+import Hero from "@/components/hero/Hero";
 import Bio from "@/components/hero/Bio";
 import Stack from "@/components/stack/Stack";
 import Projects from "@/components/projects/Projects";
@@ -11,11 +10,7 @@ import SectionDivider from "@/components/layout/SectionDivider";
 export default function Home() {
   return (
     <ContentColumn as="article">
-      {/* Hero — Phase 3 will refine banner/avatar anatomy */}
-      <header className="hero-block">
-        <Banner />
-        <Avatar />
-      </header>
+      <Hero />
 
       <div className="page-sections">
         <Section>
