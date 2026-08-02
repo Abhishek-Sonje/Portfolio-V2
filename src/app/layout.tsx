@@ -3,13 +3,21 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import { Lora } from "next/font/google";
+import PageLoader from "@/components/layout/PageLoader";
+import { Lora, Caveat } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 const lora = Lora({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
   variable: "--font-lora",
+  display: "swap",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-caveat",
   display: "swap",
 });
 
@@ -76,9 +84,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={lora.variable}>
+    <html lang="en" suppressHydrationWarning className={`${lora.variable} ${caveat.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
         <ThemeProvider>
+          <PageLoader />
           <Analytics/>
           <Navbar />
           <main className="flex-grow flex flex-col pt-[var(--nav-height)]">

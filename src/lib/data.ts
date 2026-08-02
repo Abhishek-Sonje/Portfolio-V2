@@ -19,6 +19,8 @@ export const HERO = {
   bannerSrc: null as string | null,
 };
 
+export const RESUME_URL = "/resume.pdf";
+
 export const QUICK_DETAILS: QuickDetail[] = [
   {
     icon: React.createElement(FiMapPin, { className: "w-4 h-4" }),

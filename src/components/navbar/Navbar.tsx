@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "@/components/logo";
 import { motion, AnimatePresence } from "framer-motion";
+import { RESUME_URL } from "@/lib/data";
+import { IoDocument, IoDocumentTextOutline } from "react-icons/io5";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -73,16 +75,26 @@ export default function Navbar() {
           {/* Divider */}
           <div className="w-px h-4 bg-border mx-2 shrink-0" />
 
-          {/* Icons */}
-          <a
-            href="https://github.com/Abhishek-Sonje"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub Profile"
-            className="flex items-center justify-center w-8 h-8 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-all duration-150"
-          >
-            <FiGithub className="w-4.5 h-4.5" />
-          </a>
+          {/* Resume and Icons */}
+          <div className="flex items-center gap-2">
+            <a
+              href={RESUME_URL}
+              download
+              className="flex items-center justify-center w-8 h-8 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-all duration-150"
+            >
+              <IoDocumentTextOutline className="w-4.5 h-4.5" />
+            </a>
+
+            <a
+              href="https://github.com/Abhishek-Sonje"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub Profile"
+              className="flex items-center justify-center w-8 h-8 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-all duration-150"
+            >
+              <FiGithub className="w-4.5 h-4.5" />
+            </a>
+          </div>
         </div>
       </div>
     </nav>

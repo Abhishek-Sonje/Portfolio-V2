@@ -6,33 +6,50 @@ import Experience from "@/components/experience/Experience";
 import ContentColumn from "@/components/layout/ContentColumn";
 import Section from "@/components/layout/Section";
 import SectionDivider from "@/components/layout/SectionDivider";
+import ScrollReveal from "@/components/layout/ScrollReveal";
 
 export default function Home() {
   return (
     <ContentColumn as="article">
-      <Hero />
+      <ScrollReveal delay={0}>
+        <Hero />
+      </ScrollReveal>
 
       <div className="page-sections">
         <Section>
-          <Bio />
+          <ScrollReveal delay={0}>
+            <Bio />
+          </ScrollReveal>
         </Section>
 
-        <SectionDivider />
+        <ScrollReveal delay={0}>
+          <SectionDivider />
+        </ScrollReveal>
 
         <Section anchored>
-          <Stack />
+          <ScrollReveal delay={0}>
+            <Stack />
+          </ScrollReveal>
         </Section>
 
-        <SectionDivider />
+        <ScrollReveal delay={0}>
+          <SectionDivider />
+        </ScrollReveal>
 
         <Section anchored>
-          <Projects />
+          <ScrollReveal delay={0}>
+            <Projects />
+          </ScrollReveal>
         </Section>
 
-        <SectionDivider />
+        <ScrollReveal delay={0}>
+          <SectionDivider />
+        </ScrollReveal>
 
         <Section anchored>
-          <Experience />
+          <ScrollReveal delay={0}>
+            <Experience />
+          </ScrollReveal>
         </Section>
       </div>
     </ContentColumn>

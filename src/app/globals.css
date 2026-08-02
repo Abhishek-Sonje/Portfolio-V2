@@ -42,6 +42,7 @@
   /* ── Typography — families ── */
   --font-serif: var(--font-lora), "Lora", serif;
   --font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-cursive: var(--font-caveat), cursive;
 
   /* ── Typography — post-title (hero name) ── */
   --text-post-title-size: 24px;
@@ -59,7 +60,7 @@
   --text-subtitle-deck-leading: 28.8px;
 
   /* ── Typography — article-body ── */
-  --text-article-body-size: 20px;
+  --text-article-body-size: 18px;
   --text-article-body-weight: 400;
   --text-article-body-leading: 32px;
 
@@ -164,6 +165,7 @@
   /* Fonts */
   --font-serif: var(--font-serif);
   --font-ui: var(--font-ui);
+  --font-cursive: var(--font-cursive);
 
   /* Spacing */
   --spacing-1: var(--space-1);
@@ -343,11 +345,27 @@
     padding-block: var(--space-2);
   }
 
-  .section-divider {
-    height: 1px;
-    background-color: var(--color-hairline);
-    margin-block: var(--space-7);
-  }
+    .section-divider {
+      height: 2px;
+      /* The thickness of your divider line */
+      margin-block: var(--space-8);
+  
+      /* 1. Remove the old border */
+      border: none;
+  
+      /* 2. Set the color using your variable */
+      background-image: linear-gradient(to right, var(--color-hairline) 70%, rgba(255, 255, 255, 0) 0%);
+  
+      /* 3. Position the line */
+      background-position: bottom;
+  
+      /* 4. Set your custom dash sizes (Width, Height) */
+      /* Change '24px' to make dashes longer or shorter */
+      background-size: 24px 2px;
+  
+      /* 5. Repeat the pattern across the page */
+      background-repeat: repeat-x;
+    }
 
   .primary-cta {
     display: inline-flex;
@@ -423,6 +441,24 @@
       grid-template-columns: repeat(2, 1fr);
       gap: var(--space-6);
     }
+  }
+
+  .section-title-container {
+    border-left: 3.5px solid var(--color-burgundy);
+    padding-left: var(--space-4);
+  }
+
+  .footer-link {
+    color: var(--color-ink) !important;
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .footer-link:hover {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: var(--color-burgundy);
+    text-underline-offset: 4px;
   }
 }
 
