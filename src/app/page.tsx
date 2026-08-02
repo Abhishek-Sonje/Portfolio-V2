@@ -1,33 +1,61 @@
-import Banner from "@/components/hero/Banner";
-import Avatar from "@/components/hero/Avatar";
-import QuickDetails from "@/components/hero/QuickDetails";
-import Socials from "@/components/hero/Socials";
-import Experience from "@/components/experience/Experience";
-import Projects from "@/components/projects/Projects";
+import Hero from "@/components/hero/Hero";
+import Bio from "@/components/hero/Bio";
 import Stack from "@/components/stack/Stack";
-import GitHubGraph from "@/components/github/GitHubGraph";
-import Divider from "@/components/divider";
+import Projects from "@/components/projects/Projects";
+import Experience from "@/components/experience/Experience";
+import ContentColumn from "@/components/layout/ContentColumn";
+import Section from "@/components/layout/Section";
+import SectionDivider from "@/components/layout/SectionDivider";
+import ScrollReveal from "@/components/layout/ScrollReveal";
 
 export default function Home() {
   return (
-    <>
-      <div className="w-full max-w-3xl mx-auto border-x-0 md:border-x border-border-subtle bg-background sm:mt-0">
-        <Banner />
+    <ContentColumn as="article">
+      <ScrollReveal delay={0}>
+        <Hero />
+      </ScrollReveal>
 
-        <Avatar />
-        <Divider />
-        <QuickDetails />
-        <Socials />
-        <Divider />
+      <div className="page-sections">
+        <Section>
+          <ScrollReveal delay={0}>
+            <Bio />
+          </ScrollReveal>
+        </Section>
 
-        <Experience />
-        <Divider />
-        <Projects />
-        <Divider />
-        <Stack />
-        <Divider />
-        <GitHubGraph />
+        <ScrollReveal delay={0}>
+          <SectionDivider />
+        </ScrollReveal>
+
+        <Section anchored>
+          <ScrollReveal delay={0}>
+            <Stack />
+          </ScrollReveal>
+        </Section>
+
+        <ScrollReveal delay={0}>
+          <SectionDivider />
+        </ScrollReveal>
+
+        <Section anchored>
+          <ScrollReveal delay={0}>
+            <Projects />
+          </ScrollReveal>
+        </Section>
+
+        <ScrollReveal delay={0}>
+          <SectionDivider />
+        </ScrollReveal>
+
+        <Section anchored>
+          <ScrollReveal delay={0}>
+            <Experience />
+          </ScrollReveal>
+        </Section>
+
+        <ScrollReveal delay={0}>
+          <SectionDivider />
+        </ScrollReveal>
       </div>
-    </>
+    </ContentColumn>
   );
 }

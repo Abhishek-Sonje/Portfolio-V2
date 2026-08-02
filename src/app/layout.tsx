@@ -3,13 +3,22 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import { Tiny5 } from "next/font/google";
+import PageLoader from "@/components/layout/PageLoader";
+import { Lora, Caveat } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
-const tiny = Tiny5({
+const lora = Lora({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-lora",
+  display: "swap",
+});
+
+const caveat = Caveat({
   subsets: ["latin"],
   weight: ["400"],
-  variable: "--font-serif", // pick any name
+  variable: "--font-caveat",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -75,12 +84,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={tiny.variable}>
+    <html lang="en" suppressHydrationWarning className={`${lora.variable} ${caveat.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
         <ThemeProvider>
+          <PageLoader />
           <Analytics/>
           <Navbar />
-          <main className="flex-grow flex flex-col pt-14">{children}</main>
+          <main className="flex-grow flex flex-col pt-[var(--nav-height)]">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

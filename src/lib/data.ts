@@ -1,79 +1,21 @@
-import React from "react";
-import { FiMapPin, FiBriefcase, FiMail, FiPhone, FiLink } from "react-icons/fi";
 import {
-  QuickDetail,
-  Social,
   ExperienceItem,
   Project,
   StackGroup,
   StackItem,
 } from "../types";
 
-export const QUICK_DETAILS: QuickDetail[] = [
-  {
-    icon: React.createElement(FiMapPin, { className: "w-4 h-4" }),
-    label: "Location",
-    value: "Nashik, Maharashtra, India",
-    isCopyable: false,
-  },
-  {
-    icon: React.createElement(FiBriefcase, { className: "w-4 h-4" }),
-    label: "Status",
-    value: "Available for internships",
-    isCopyable: false,
-  },
-  {
-    icon: React.createElement(FiLink, { className: "w-4 h-4" }),
-    label: "Website",
-    value: "abhishekdev.tech",
-    href: "https://abhishekdev.tech",
-    isCopyable: true,
-  },
-  {
-    icon: React.createElement(FiMail, { className: "w-4 h-4" }),
-    label: "Email",
-    value: "work.abhishek036@gmail.com",
-    href: "mailto:work.abhishek036@gmail.com",
-    isCopyable: true,
-  },
-  {
-    icon: React.createElement(FiPhone, { className: "w-4 h-4" }),
-    label: "Phone",
-    value: "+91 96656 43242",
-    href: "tel:+919665643242",
-    isCopyable: true,
-  },
-];
+export const BIO =
+  "Full-stack developer working mainly in Next.js, TypeScript, and Node.js. I like taking things from a rough idea to something people can actually use — AI tooling, e-commerce flows, backend observability, whatever the problem calls for.";
 
-export const SOCIALS: Social[] = [
-  {
-    label: "X",
-    href: "https://x.com/Abhi_SDev",
-    icon: React.createElement("img", {
-      src: "/logos/x.webp",
-      alt: "X",
-      className: "md:w-8 md:h-8 w-6.5 h-6.5 object-contain",
-    }),
-  },
-  {
-    label: "GitHub",
-    href: "https://github.com/Abhishek-Sonje",
-    icon: React.createElement("img", {
-      src: "/logos/github.webp",
-      alt: "GitHub",
-      className: "md:w-8 md:h-8 w-6.5 h-6.5 object-contain",
-    }),
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/abhishek-sonje-83a333209",
-    icon: React.createElement("img", {
-      src: "/logos/linkedin.webp",
-      alt: "LinkedIn",
-      className: "md:w-8 md:h-8 w-6.5 h-6.5 object-contain",
-    }),
-  },
-];
+export const HERO = {
+  name: "Abhishek Sonje",
+  tagline: "Full-Stack Developer & Builder",
+  avatarSrc: "/avatar.png",
+  bannerSrc: "/banner1.webp",
+};
+
+export const RESUME_URL = "https://drive.google.com/file/d/1givCRD9PDB1sjnno85lKSPRYDkx2lCk3/view?usp=drive_link";
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
@@ -82,11 +24,12 @@ export const EXPERIENCE: ExperienceItem[] = [
     period: "Feb 2026 – Apr 2026",
     type: "Remote",
     points: [
-      "Integrated Sanity CMS to power dynamic content across client-facing pages",
-      "Built reusable Next.js/React components consumed across multiple product surfaces",
+      "Built pixel-perfect Figma-to-code for Studio Mirae, an interior design client — horizontal scroll sections, scroll-jacked transitions, a stepper UI, and a watermark SVG component",
+      "Set up custom Tailwind breakpoints (ipad-pro, desktop) and Framer Motion animations across the site",
       "Implemented auth flows with role-based protected routing",
+      "Handled Sanity CMS schema changes and wrote the PR docs for handoff",
     ],
-    stack: ["Next.js", "React", "Sanity CMS", "TypeScript"],
+    stack: ["Next.js", "React", "Sanity CMS", "TypeScript", "Tailwind CSS", "Framer Motion"],
     active: false,
     logo: "/logos/DodoxLogo.webp",
   },
@@ -107,10 +50,46 @@ export const EXPERIENCE: ExperienceItem[] = [
 
 export const PROJECTS: Project[] = [
   {
+    title: "Archie CLI",
+    subtitle: "AI-Powered Architecture Docs",
+    description:
+      "A CLI that keeps a codebase's ARCHITECTURE.md in sync automatically — a two-prompt Gemini 1.5 Pro strategy paired with a static import dependency graph so it only touches what actually changed. Published to npm, past 250 downloads.",
+    stack: ["TypeScript", "Node.js", "Gemini 1.5 Pro", "npm"],
+    github: "https://github.com/Abhishek-Sonje/archie",
+    live: "https://archie.abhishekdev.tech",
+    highlight: "250+ npm downloads · Flagship project",
+    image: "/projects/Archie.webp",
+    category: "Developer Tool",
+  },
+  {
+    title: "ObserveKit",
+    subtitle: "Backend Observability Platform",
+    description:
+      "Self-hosted observability for backend services, built on Fastify with ClickHouse handling the event pipeline, Redis for the hot path, and Postgres via Drizzle for everything else. Containerized with Docker Compose.",
+    stack: ["Fastify", "ClickHouse", "Redis", "PostgreSQL", "Drizzle ORM", "Docker"],
+    github: "https://github.com/Abhishek-Sonje/observe-kit",
+    highlight: "Full observability stack, self-hosted",
+    live: null,
+    image: "/projects/ObserveKit.webp",
+    category: "Infrastructure",
+  },
+  {
+    title: "Octo",
+    subtitle: "Browser-Based Terminal Sharing",
+    description:
+      "A Go tool for sharing a live terminal session through the browser — PTY under the hood, WebSocket for the connection, a tunnel relay so it works outside your local network. Started life as a project called Shelve before the rename.",
+    stack: ["Go", "WebSocket", "PTY"],
+    github: "https://github.com/Abhishek-Sonje/octo",
+    live: null,
+    highlight: "Built from scratch in WSL2",
+    image: "/projects/octoImg.webp",
+    category: "CLI Tool",
+  },
+  {
     title: "ChalkAI",
     subtitle: "AI-Powered Whiteboard",
     description:
-      "An interactive whiteboard where Gemini 2.5 Flash understands what you draw and responds in real time — think smarter, faster, collaborative thinking.",
+      "An interactive whiteboard where Gemini 2.5 Flash looks at what you draw and responds in real time.",
     stack: ["Next.js", "TypeScript", "Google Gemini AI", "tldraw"],
     github: "https://github.com/Abhishek-Sonje/ChalkAI",
     live: null,
@@ -118,18 +97,6 @@ export const PROJECTS: Project[] = [
     image: "/projects/ChalkAi.webp",
     category: "AI-powered EdTech Tool",
     logo: "/projects/ChalkAiLogo.webp",
-  },
-  {
-    title: "Droply",
-    subtitle: "Cloud File Management",
-    description:
-      "A production-ready cloud storage app for secure file uploads, sharing, and management — clean UX backed by a solid full-stack architecture.",
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "Drizzle ORM"],
-    github: "https://github.com/Abhishek-Sonje/Droply",
-    live: "https://droply-gamma.vercel.app/",
-    highlight: "Production · Live",
-    image: "/projects/Droply.webp",
-    category: "Web Application",
   },
 ];
 
@@ -153,6 +120,11 @@ export const STACK_ITEMS: StackItem[] = [
     name: "Java",
     icon: "https://skillicons.dev/icons?i=java",
     url: "https://www.java.com/",
+  },
+  {
+    name: "Go",
+    icon: "https://skillicons.dev/icons?i=go",
+    url: "https://go.dev/",
   },
   {
     name: "Node.js",
@@ -180,11 +152,6 @@ export const STACK_ITEMS: StackItem[] = [
     url: "https://tailwindcss.com/",
   },
   {
-    name: "Prisma",
-    icon: "https://skillicons.dev/icons?i=prisma",
-    url: "https://www.prisma.io/",
-  },
-  {
     name: "Express.js",
     icon: "https://skillicons.dev/icons?i=express",
     url: "https://expressjs.com/",
@@ -195,14 +162,14 @@ export const STACK_ITEMS: StackItem[] = [
     url: "https://www.postgresql.org/",
   },
   {
+    name: "Redis",
+    icon: "https://skillicons.dev/icons?i=redis",
+    url: "https://redis.io/",
+  },
+  {
     name: "MongoDB",
     icon: "https://skillicons.dev/icons?i=mongodb",
     url: "https://www.mongodb.com/",
-  },
-  {
-    name: "Redux",
-    icon: "https://skillicons.dev/icons?i=redux",
-    url: "https://redux.js.org/",
   },
   {
     name: "Git",
@@ -224,11 +191,6 @@ export const STACK_ITEMS: StackItem[] = [
     icon: "https://skillicons.dev/icons?i=vercel",
     url: "https://vercel.com/",
   },
-  {
-    name: "Supabase",
-    icon: "https://skillicons.dev/icons?i=supabase",
-    url: "https://supabase.com/",
-  },
 ];
 
 export const STACK_GROUPS: StackGroup[] = [
@@ -240,28 +202,29 @@ export const STACK_GROUPS: StackGroup[] = [
       "TypeScript",
       "Tailwind CSS",
       "Framer Motion",
+      "Zustand",
     ],
   },
   {
     label: "Backend",
-    items: ["Node.js", "Express.js", "Socket.IO", "RESTful APIs"],
+    items: ["Node.js", "Bun", "Express.js", "Fastify", "RESTful APIs"],
   },
   {
     label: "Databases & CMS",
-    items: ["MongoDB", "PostgreSQL", "Drizzle ORM", "Sanity CMS"],
+    items: ["PostgreSQL", "Drizzle ORM", "ClickHouse", "Redis", "MongoDB", "Sanity CMS"],
   },
   {
     label: "AI & Cloud",
     items: [
       "Google Gemini API",
+      "Anthropic Claude API",
       "Vercel AI SDK",
       "Vercel",
-      "Clerk Auth",
-      "ImageKit CDN",
+      "Docker",
     ],
   },
   {
     label: "Tools",
-    items: ["Git / GitHub", "Postman", "Python", "Java", "C"],
+    items: ["Git / GitHub", "Postman", "Go", "Python", "Java", "C"],
   },
 ];
