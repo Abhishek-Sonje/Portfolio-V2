@@ -369,6 +369,20 @@
   .primary-cta:hover {
     background-color: color-mix(in srgb, var(--color-burgundy) 85%, black);
   }
+
+  .tech-pill {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--color-linen);
+    color: var(--color-ink);
+    font-family: var(--font-ui);
+    font-size: var(--text-caption-tag-size);
+    font-weight: var(--text-caption-tag-weight);
+    line-height: var(--text-caption-tag-leading);
+    padding: var(--space-1) var(--space-4);
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
 }
 
 /* =============================================
