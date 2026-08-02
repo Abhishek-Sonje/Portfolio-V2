@@ -6,7 +6,7 @@ import ScrollReveal from "@/components/layout/ScrollReveal";
 export default function Footer() {
   return (
     <ScrollReveal>
-      <footer className="w-full max-w-[var(--content-max-width)] mx-auto pt-[80px] pb-[var(--space-7)] flex flex-col items-center justify-center text-center">
+      <footer className="w-full max-w-[var(--content-max-width)] mx-auto pb-[80px] flex flex-col items-center justify-center text-center">
         {/* Signature */}
         <span className="font-cursive text-[#363737] text-[48px] md:text-[56px] select-none leading-none">
           Abhishek

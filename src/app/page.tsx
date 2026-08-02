@@ -51,6 +51,10 @@ export default function Home() {
             <Experience />
           </ScrollReveal>
         </Section>
+
+        <ScrollReveal delay={0}>
+          <SectionDivider />
+        </ScrollReveal>
       </div>
     </ContentColumn>
   );

@@ -2,12 +2,29 @@
 
 import { PROJECTS } from "@/lib/data";
 import { Project } from "@/types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isPortalMounted, setIsPortalMounted] = useState(false);
+
+  useEffect(() => {
+    setIsPortalMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
 
   return (
     <section
@@ -94,101 +111,104 @@ export default function Projects() {
         ))}
       </div>
 
-      {/* Modal Dialog */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm"
-            onClick={() => setSelectedProject(null)}
-          >
+      {/* Modal Dialog using Portal */}
+      {isPortalMounted && typeof window !== "undefined" && createPortal(
+        <AnimatePresence>
+          {selectedProject && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 15 }}
-              transition={{ type: "spring", damping: 28, stiffness: 350 }}
-              className="relative w-full max-w-2xl bg-background rounded-[20px] border border-border-subtle shadow-2xl overflow-hidden max-h-[85vh] flex flex-col cursor-default"
-              onClick={(e) => e.stopPropagation()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md"
+              onClick={() => setSelectedProject(null)}
             >
-              {/* Close Button */}
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-surface-overlay border border-border-subtle flex items-center justify-center text-foreground hover:bg-border transition-colors cursor-pointer text-xl font-bold"
-                aria-label="Close dialog"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                transition={{ type: "spring", damping: 28, stiffness: 350 }}
+                className="relative w-full max-w-2xl bg-surface-raised rounded-[24px] border border-border-strong shadow-2xl overflow-hidden max-h-[85vh] flex flex-col cursor-default"
+                onClick={(e) => e.stopPropagation()}
               >
-                &times;
-              </button>
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-surface-overlay border border-border-subtle flex items-center justify-center text-foreground hover:bg-border transition-colors cursor-pointer text-xl font-bold"
+                  aria-label="Close dialog"
+                >
+                  &times;
+                </button>
 
-              <div className="overflow-y-auto p-6 md:p-8 flex flex-col gap-5">
-                {/* Visual Image */}
-                {selectedProject.image && (
-                  <div className="relative aspect-[16/10] md:aspect-[16/9] w-full bg-surface-overlay overflow-hidden rounded-md border border-border-subtle shrink-0">
-                    <Image
-                      src={selectedProject.image}
-                      alt={selectedProject.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 600px"
-                    />
+                <div className="overflow-y-auto p-6 md:p-8 flex flex-col gap-5">
+                  {/* Visual Image */}
+                  {selectedProject.image && (
+                    <div className="relative aspect-[16/10] md:aspect-[16/9] w-full bg-surface-overlay overflow-hidden rounded-lg border border-border-subtle shrink-0">
+                      <Image
+                        src={selectedProject.image}
+                        alt={selectedProject.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 600px"
+                      />
+                    </div>
+                  )}
+
+                  {/* Header Info */}
+                  <div className="flex flex-col gap-1">
+                    <h3 className="type-post-title text-foreground-heading leading-tight">
+                      {selectedProject.title}
+                    </h3>
+                    {selectedProject.subtitle && (
+                      <p className="type-subtitle-deck text-foreground-secondary">
+                        {selectedProject.subtitle}
+                      </p>
+                    )}
                   </div>
-                )}
 
-                {/* Header Info */}
-                <div className="flex flex-col gap-1">
-                  <h3 className="type-post-title text-foreground-heading leading-tight">
-                    {selectedProject.title}
-                  </h3>
-                  {selectedProject.subtitle && (
-                    <p className="type-subtitle-deck text-foreground-secondary">
-                      {selectedProject.subtitle}
-                    </p>
-                  )}
+                  {/* Full Description */}
+                  <p className="type-article-body text-foreground">
+                    {selectedProject.description}
+                  </p>
+
+                  {/* Tech stack */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {selectedProject.stack.map((tech) => (
+                      <span key={tech} className="tech-pill">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex gap-6 pt-2 border-t border-border-subtle">
+                    {selectedProject.github && (
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="type-ui-label text-foreground-secondary hover:text-accent hover:underline flex items-center gap-1"
+                      >
+                        GitHub Source
+                      </a>
+                    )}
+                    {selectedProject.live && (
+                      <a
+                        href={selectedProject.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="type-ui-label text-foreground-secondary hover:text-accent hover:underline flex items-center gap-1"
+                      >
+                        Live Website
+                      </a>
+                    )}
+                  </div>
                 </div>
-
-                {/* Full Description */}
-                <p className="type-article-body text-foreground">
-                  {selectedProject.description}
-                </p>
-
-                {/* Tech stack */}
-                <div className="flex flex-wrap gap-1.5">
-                  {selectedProject.stack.map((tech) => (
-                    <span key={tech} className="tech-pill">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Links */}
-                <div className="flex gap-6 pt-2 border-t border-border-subtle">
-                  {selectedProject.github && (
-                    <a
-                      href={selectedProject.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="type-ui-label text-foreground-secondary hover:text-accent hover:underline flex items-center gap-1"
-                    >
-                      GitHub Source
-                    </a>
-                  )}
-                  {selectedProject.live && (
-                    <a
-                      href={selectedProject.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="type-ui-label text-foreground-secondary hover:text-accent hover:underline flex items-center gap-1"
-                    >
-                      Live Website
-                    </a>
-                  )}
-                </div>
-              </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </section>
   );
 }
