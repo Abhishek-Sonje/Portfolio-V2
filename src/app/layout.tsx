@@ -81,7 +81,9 @@ export default function RootLayout({
         <ThemeProvider>
           <Analytics/>
           <Navbar />
-          <main className="flex-grow flex flex-col pt-14">{children}</main>
+          <main className="flex-grow flex flex-col pt-[var(--nav-height)]">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

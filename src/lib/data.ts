@@ -9,6 +9,9 @@ import {
   StackItem,
 } from "../types";
 
+export const BIO =
+  "Full-stack developer specializing in Next.js, React, and TypeScript. I build scalable, production-ready web applications with a focus on clean architecture and thoughtful interfaces.";
+
 export const QUICK_DETAILS: QuickDetail[] = [
   {
     icon: React.createElement(FiMapPin, { className: "w-4 h-4" }),

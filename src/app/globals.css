@@ -107,6 +107,7 @@
 
   /* ── Layout ── */
   --content-max-width: 680px;
+  --nav-height: 3.5rem;
 
   /* ── Focus & selection (derived from palette) ── */
   --focus-ring: var(--color-burgundy);
@@ -237,6 +238,36 @@
     font-size: var(--text-caption-tag-size);
     font-weight: var(--text-caption-tag-weight);
     line-height: var(--text-caption-tag-leading);
+  }
+
+  /* ── Layout utilities ── */
+  .content-column {
+    width: 100%;
+    max-width: var(--content-max-width);
+    margin-inline: auto;
+    padding-inline: var(--space-5);
+  }
+
+  .page-sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-9);
+    padding-block: var(--space-8) var(--space-10);
+  }
+
+  .hero-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bio-block {
+    padding-block: var(--space-2);
+  }
+
+  .section-divider {
+    height: 1px;
+    background-color: var(--color-hairline);
+    margin-block: var(--space-8);
   }
 }
 

@@ -1,33 +1,45 @@
 import Banner from "@/components/hero/Banner";
 import Avatar from "@/components/hero/Avatar";
-import QuickDetails from "@/components/hero/QuickDetails";
-import Socials from "@/components/hero/Socials";
-import Experience from "@/components/experience/Experience";
-import Projects from "@/components/projects/Projects";
+import Bio from "@/components/hero/Bio";
 import Stack from "@/components/stack/Stack";
-import GitHubGraph from "@/components/github/GitHubGraph";
-import Divider from "@/components/divider";
+import Projects from "@/components/projects/Projects";
+import Experience from "@/components/experience/Experience";
+import ContentColumn from "@/components/layout/ContentColumn";
+import Section from "@/components/layout/Section";
+import SectionDivider from "@/components/layout/SectionDivider";
 
 export default function Home() {
   return (
-    <>
-      <div className="w-full max-w-3xl mx-auto border-x-0 md:border-x border-border-subtle bg-background sm:mt-0">
+    <ContentColumn as="article">
+      {/* Hero — Phase 3 will refine banner/avatar anatomy */}
+      <header className="hero-block">
         <Banner />
-
         <Avatar />
-        <Divider />
-        <QuickDetails />
-        <Socials />
-        <Divider />
+      </header>
 
-        <Experience />
-        <Divider />
-        <Projects />
-        <Divider />
-        <Stack />
-        <Divider />
-        <GitHubGraph />
+      <div className="page-sections">
+        <Section>
+          <Bio />
+        </Section>
+
+        <SectionDivider />
+
+        <Section anchored>
+          <Stack />
+        </Section>
+
+        <SectionDivider />
+
+        <Section anchored>
+          <Projects />
+        </Section>
+
+        <SectionDivider />
+
+        <Section anchored>
+          <Experience />
+        </Section>
       </div>
-    </>
+    </ContentColumn>
   );
 }

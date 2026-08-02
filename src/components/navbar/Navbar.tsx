@@ -21,8 +21,8 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/80 ">
-      <div className="flex items-center justify-between h-14 max-w-3xl border border-border-subtle mx-auto px-5">
+    <nav className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/80 border-b border-hairline">
+      <div className="content-column flex items-center justify-between h-14 px-5">
         {/* Logo */}
         <Link
           href="/"
@@ -51,16 +51,22 @@ export default function Navbar() {
           {/* Nav links */}
           <div className="flex items-center mr-1 sm:mr-2 gap-1 sm:gap-0">
             <Link
-              href="#work"
-              className="text-xs sm:text-sm tracking-tight font-medium text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-all duration-150 px-2 py-1 rounded-md"
+              href="#stack"
+              className="type-ui-label text-foreground-secondary hover:text-accent transition-colors duration-150 px-2 py-1 rounded-md"
             >
-              Work
+              Stack
             </Link>
             <Link
               href="#projects"
-              className="text-xs sm:text-sm tracking-tight font-medium text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-all duration-150 px-2 py-1 rounded-md"
+              className="type-ui-label text-foreground-secondary hover:text-accent transition-colors duration-150 px-2 py-1 rounded-md"
             >
               Projects
+            </Link>
+            <Link
+              href="#work"
+              className="type-ui-label text-foreground-secondary hover:text-accent transition-colors duration-150 px-2 py-1 rounded-md"
+            >
+              Work
             </Link>
           </div>
 

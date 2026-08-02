@@ -3,15 +3,14 @@ import Image from "next/image";
 
 export default function Stack() {
   return (
-    <section className="flex flex-col w-full bg-background relative border-y border-border-subtle">
-      <div className="flex border-b border-border-subtle ">
-        <div className="w-full pl-4 flex py-2">
-          <h2 className="text-3xl font-semibold text-foreground tracking-tight leading-tight">
-            Stack
-          </h2>
-        </div>
+    <section
+      id="stack"
+      className="flex flex-col w-full bg-background relative scroll-mt-[calc(var(--nav-height)+var(--space-5))]"
+    >
+      <div className="pb-2">
+        <h2 className="type-section-heading">Tech Stack</h2>
       </div>
-      <div className="p-6 md:p-8">
+      <div className="pt-2">
         <div className="flex flex-wrap gap-4 md:gap-6 justify-start items-center">
           {STACK_ITEMS.map((item, idx) => (
             <a
