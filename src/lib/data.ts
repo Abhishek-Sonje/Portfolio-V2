@@ -15,7 +15,7 @@ export const HERO = {
   bannerSrc: "/banner1.webp",
 };
 
-export const RESUME_URL = "/resume.pdf";
+export const RESUME_URL = "https://drive.google.com/file/d/1givCRD9PDB1sjnno85lKSPRYDkx2lCk3/view?usp=drive_link";
 
 export const EXPERIENCE: ExperienceItem[] = [
   {

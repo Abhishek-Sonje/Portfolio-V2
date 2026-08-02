@@ -55,7 +55,7 @@
   --text-section-heading-leading: 31.9px;
 
   /* ── Typography — subtitle-deck (tagline) ── */
-  --text-subtitle-deck-size: 18px;
+  --text-subtitle-deck-size: 16px;
   --text-subtitle-deck-weight: 400;
   --text-subtitle-deck-leading: 28.8px;
 
@@ -287,6 +287,7 @@
     max-height: 12.5rem;
     background-color: var(--color-linen);
     overflow: hidden;
+    border-bottom: 2px dashed var(--border-subtle);
   }
 
   .hero-banner-image {
