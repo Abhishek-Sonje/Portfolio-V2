@@ -29,7 +29,7 @@ export default function Hero() {
           />
         </div>
 
-        <div className="hero-name-block">
+        <div className="hero-name-block ">
           <h1 className="type-post-title">{HERO.name}</h1>
           <p className="type-subtitle-deck">{HERO.tagline}</p>
         </div>

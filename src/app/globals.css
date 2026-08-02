@@ -273,7 +273,7 @@
   .hero-block {
     display: flex;
     flex-direction: column;
-    padding-bottom: var(--space-9);
+    padding-bottom: var(--space-7);
   }
 
   .hero-banner {
@@ -294,7 +294,7 @@
   .hero-identity {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items:end;
     gap: var(--space-5);
     padding-inline: var(--space-1);
   }
@@ -331,7 +331,7 @@
     .hero-avatar {
       width: var(--hero-avatar-size);
       height: var(--hero-avatar-size);
-      margin-top: calc(-1 * var(--hero-avatar-overlap));
+      /* margin-top: calc(-1 * var(--hero-avatar-overlap)); */
     }
   }
 

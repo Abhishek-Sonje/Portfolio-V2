@@ -14,7 +14,7 @@ export default function Projects() {
       id="projects"
       className="flex flex-col w-full bg-background relative scroll-mt-[calc(var(--nav-height)+var(--space-5))]"
     >
-      <div className="pb-4">
+      <div className="pb-6">
         <h2 className="type-section-heading">Projects</h2>
       </div>
 

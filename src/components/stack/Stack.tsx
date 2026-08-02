@@ -6,7 +6,7 @@ export default function Stack() {
       id="stack"
       className="flex flex-col w-full bg-background relative scroll-mt-[calc(var(--nav-height)+var(--space-5))]"
     >
-      <div className="pb-4">
+      <div className="pb-6">
         <h2 className="type-section-heading">Tech Stack</h2>
       </div>
       <div className="flex flex-col gap-6">
