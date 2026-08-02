@@ -71,12 +71,12 @@ export default function Footer() {
                 x2="100%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor="#ffffff" />
-                <stop offset="30%" stopColor="#e5e5e5" />
-                <stop offset="50%" stopColor="#a3a3a3" />{" "}
+                <stop offset="0%" stopColor="var(--color-white)" />
+                <stop offset="30%" stopColor="var(--color-linen)" />
+                <stop offset="50%" stopColor="var(--color-ash)" />
                 {/* Darker silver center */}
-                <stop offset="70%" stopColor="#e5e5e5" />
-                <stop offset="100%" stopColor="#ffffff" />
+                <stop offset="70%" stopColor="var(--color-linen)" />
+                <stop offset="100%" stopColor="var(--color-white)" />
               </linearGradient>
             </defs>
             <text
