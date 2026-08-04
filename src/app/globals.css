@@ -60,12 +60,12 @@
   --text-subtitle-deck-leading: 28.8px;
 
   /* ── Typography — article-body ── */
-  --text-article-body-size: 18px;
+  --text-article-body-size: 16px;
   --text-article-body-weight: 400;
-  --text-article-body-leading: 32px;
+  --text-article-body-leading: 28px;
 
   /* ── Typography — bold-body ── */
-  --text-bold-body-size: 20px;
+  --text-bold-body-size: 18px;
   --text-bold-body-weight: 700;
   --text-bold-body-leading: 32px;
 
@@ -287,7 +287,7 @@
     max-height: 12.5rem;
     background-color: var(--color-linen);
     overflow: hidden;
-    border-bottom: 2px dashed var(--border-subtle);
+    /* border-bottom: 2px dashed var(--border-subtle); */
   }
 
   .hero-banner-image {
