@@ -24,12 +24,12 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/80 border-b border-hairline">
-      <div className="content-column flex items-center justify-between h-14 px-5">
+      <div className="content-column flex items-center justify-between h-14 px-3 sm:px-5">
         {/* Logo */}
         <Link
           href="/"
           aria-label="Home"
-          className="flex items-center shrink-0 w-24 overflow-hidden"
+          className="flex items-center shrink-0 w-20 sm:w-24 overflow-hidden"
         >
           <AnimatePresence>
             {isScrolled && (
@@ -51,32 +51,32 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-1">
           {/* Nav links */}
-          <div className="flex items-center mr-1 sm:mr-2 gap-1 sm:gap-0">
+          <div className="flex items-center mr-0.5 sm:mr-2 gap-0.5 sm:gap-0">
             <Link
               href="#stack"
-              className="type-ui-label text-foreground-secondary hover:text-accent transition-colors duration-150 px-2 py-1 rounded-md"
+              className="font-ui font-semibold text-[13px] sm:text-[15px] leading-[20px] text-foreground-secondary hover:text-accent transition-colors duration-150 px-1.5 sm:px-2 py-1 rounded-md"
             >
               Stack
             </Link>
             <Link
               href="#projects"
-              className="type-ui-label text-foreground-secondary hover:text-accent transition-colors duration-150 px-2 py-1 rounded-md"
+              className="font-ui font-semibold text-[13px] sm:text-[15px] leading-[20px] text-foreground-secondary hover:text-accent transition-colors duration-150 px-1.5 sm:px-2 py-1 rounded-md"
             >
               Projects
             </Link>
             <Link
               href="#work"
-              className="type-ui-label text-foreground-secondary hover:text-accent transition-colors duration-150 px-2 py-1 rounded-md"
+              className="font-ui font-semibold text-[13px] sm:text-[15px] leading-[20px] text-foreground-secondary hover:text-accent transition-colors duration-150 px-1.5 sm:px-2 py-1 rounded-md"
             >
               Work
             </Link>
           </div>
 
           {/* Divider */}
-          <div className="w-px h-4 bg-border mx-2 shrink-0" />
+          <div className="w-px h-4 bg-border mx-1 sm:mx-2 shrink-0" />
 
           {/* Resume and Icons */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <a
               href={RESUME_URL}
               download

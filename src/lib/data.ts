@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/Abhishek-Sonje/archie",
     live: "https://archie.abhishekdev.tech",
     highlight: "250+ npm downloads · Flagship project",
-    image: "/projects/Archie.webp",
+    image: "/projects/archie.webp",
     category: "Developer Tool",
   },
   {
@@ -70,7 +70,7 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/Abhishek-Sonje/observe-kit",
     highlight: "Full observability stack, self-hosted",
     live: null,
-    image: "/projects/ObserveKit.webp",
+    image: "/projects/observeKit.webp",
     category: "Infrastructure",
   },
   {
