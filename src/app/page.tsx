@@ -28,7 +28,7 @@ export default function Home() {
 
         <Section anchored>
           <ScrollReveal delay={0}>
-            <Stack />
+            <Experience />
           </ScrollReveal>
         </Section>
 
@@ -48,7 +48,7 @@ export default function Home() {
 
         <Section anchored>
           <ScrollReveal delay={0}>
-            <Experience />
+            <Stack />
           </ScrollReveal>
         </Section>
 

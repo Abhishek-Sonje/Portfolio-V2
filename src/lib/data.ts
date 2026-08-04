@@ -6,7 +6,7 @@ import {
 } from "../types";
 
 export const BIO =
-  "Full-stack developer working mainly in Next.js, TypeScript, and Node.js. I like taking things from a rough idea to something people can actually use — AI tooling, e-commerce flows, backend observability, whatever the problem calls for.";
+  "A developer who likes to build. I work mainly with Next.js, TypeScript, and Node.js, but I’m always curious to explore new tools and techniques.";
 
 export const HERO = {
   name: "Abhishek Sonje",
@@ -24,10 +24,13 @@ export const EXPERIENCE: ExperienceItem[] = [
     period: "Feb 2026 – Apr 2026",
     type: "Remote",
     points: [
-      "Built pixel-perfect Figma-to-code for Studio Mirae, an interior design client — horizontal scroll sections, scroll-jacked transitions, a stepper UI, and a watermark SVG component",
-      "Set up custom Tailwind breakpoints (ipad-pro, desktop) and Framer Motion animations across the site",
-      "Implemented auth flows with role-based protected routing",
-      "Handled Sanity CMS schema changes and wrote the PR docs for handoff",
+      "Built pixel-perfect Figma-to-code for Studio Mirae, an interior design client",
+      "Built horizontal scroll sections and scroll-jacked transitions",
+      "Built a stepper UI and a watermark SVG component",
+      "Set up custom Tailwind breakpoints for ipad-pro and desktop",
+      "Added Framer Motion animations across the site",
+      "Built auth flows with role-based protected routing",
+      "Handled Sanity CMS schema changes",
     ],
     stack: ["Next.js", "React", "Sanity CMS", "TypeScript", "Tailwind CSS", "Framer Motion"],
     active: false,
@@ -53,7 +56,7 @@ export const PROJECTS: Project[] = [
     title: "Archie CLI",
     subtitle: "AI-Powered Architecture Docs",
     description:
-      "A CLI that keeps a codebase's ARCHITECTURE.md in sync automatically — a two-prompt Gemini 1.5 Pro strategy paired with a static import dependency graph so it only touches what actually changed. Published to npm, past 250 downloads.",
+      "A CLI that keeps a codebase's ARCHITECTURE.md up to date on its own. Uses a two-prompt Gemini 1.5 Pro setup along with a static import dependency graph, so it only touches what actually changed. Published to npm, past 250 downloads.",
     stack: ["TypeScript", "Node.js", "Gemini 1.5 Pro", "npm"],
     github: "https://github.com/Abhishek-Sonje/archie",
     live: "https://archie.abhishekdev.tech",
@@ -65,7 +68,7 @@ export const PROJECTS: Project[] = [
     title: "ObserveKit",
     subtitle: "Backend Observability Platform",
     description:
-      "Self-hosted observability for backend services, built on Fastify with ClickHouse handling the event pipeline, Redis for the hot path, and Postgres via Drizzle for everything else. Containerized with Docker Compose.",
+      "Self-hosted observability for backend services. Built on Fastify, with ClickHouse handling the event pipeline, Redis for the hot path, and Postgres (via Drizzle) for everything else. Runs in Docker Compose.",
     stack: ["Fastify", "ClickHouse", "Redis", "PostgreSQL", "Drizzle ORM", "Docker"],
     github: "https://github.com/Abhishek-Sonje/observe-kit",
     highlight: "Full observability stack, self-hosted",
@@ -77,7 +80,7 @@ export const PROJECTS: Project[] = [
     title: "Octo",
     subtitle: "Browser-Based Terminal Sharing",
     description:
-      "A Go tool for sharing a live terminal session through the browser — PTY under the hood, WebSocket for the connection, a tunnel relay so it works outside your local network. Started life as a project called Shelve before the rename.",
+      "A Go tool that lets you share a live terminal session through the browser. Runs on PTY under the hood, WebSocket for the connection, and a tunnel relay so it still works outside your local network. Started out as a project called Shelve before I renamed it.",
     stack: ["Go", "WebSocket", "PTY"],
     github: "https://github.com/Abhishek-Sonje/octo",
     live: null,
