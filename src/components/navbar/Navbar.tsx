@@ -23,7 +23,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/80 border-b border-hairline">
+    <nav className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-background/80 ">
       <div className="content-column flex items-center justify-between h-14 px-3 sm:px-5">
         {/* Logo */}
         <Link
