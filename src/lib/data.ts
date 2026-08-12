@@ -1,5 +1,6 @@
 import {
   ExperienceItem,
+  OpenSourceContribution,
   Project,
   StackGroup,
   StackItem,
@@ -229,5 +230,20 @@ export const STACK_GROUPS: StackGroup[] = [
   {
     label: "Tools",
     items: ["Git / GitHub", "Postman", "Go", "Python", "Java", "C"],
+  },
+];
+
+export const OPEN_SOURCE: OpenSourceContribution[] = [
+  {
+    org: "Sugar Labs",
+    project: "Music Blocks",
+    repo: "sugarlabs/musicblocks",
+    repoUrl: "https://github.com/sugarlabs/musicblocks",
+    role: "Open Source Contributor",
+    author: "Abhishek-Sonje",
+    mergedPRs: "5 Merged PRs",
+    prUrl: "https://github.com/sugarlabs/musicblocks/pulls?q=is%3Apr+author%3AAbhishek-Sonje+is%3Amerged",
+    stack: ["JavaScript", "HTML5 Canvas", "Web Audio API"],
+    logo: "/logos/sugarLabs.svg",
   },
 ];

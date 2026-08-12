@@ -53,10 +53,10 @@ export default function Navbar() {
           {/* Nav links */}
           <div className="flex items-center mr-0.5 sm:mr-2 gap-0.5 sm:gap-0">
             <Link
-              href="#stack"
+              href="#work"
               className="font-ui font-semibold text-[13px] sm:text-[15px] leading-[20px] text-foreground-secondary hover:text-accent transition-colors duration-150 px-1.5 sm:px-2 py-1 rounded-md"
             >
-              Stack
+              Work
             </Link>
             <Link
               href="#projects"
@@ -65,10 +65,10 @@ export default function Navbar() {
               Projects
             </Link>
             <Link
-              href="#work"
+              href="#stack"
               className="font-ui font-semibold text-[13px] sm:text-[15px] leading-[20px] text-foreground-secondary hover:text-accent transition-colors duration-150 px-1.5 sm:px-2 py-1 rounded-md"
             >
-              Work
+              Stack
             </Link>
           </div>
 

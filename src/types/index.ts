@@ -48,3 +48,19 @@ export type StackGroup = {
   label: string;
   items: string[];
 };
+
+export type OpenSourceContribution = {
+  org: string;
+  project: string;
+  repo: string;
+  repoUrl: string;
+  role?: string;
+  period?: string;
+  author?: string;
+  mergedPRs?: number | string;
+  prUrl?: string;
+  stack?: string[];
+  logo?: string;
+  active?: boolean;
+};
+
