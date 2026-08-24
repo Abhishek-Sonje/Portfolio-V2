@@ -6,6 +6,7 @@ import { EXPERIENCE } from "@/lib/data";
 import { FaBuilding } from "react-icons/fa6";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { ExperienceItem } from "@/types";
+import Image from "next/image";
 
 function ExperienceCard({ exp, idx }: { exp: ExperienceItem; idx: number }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -19,9 +20,11 @@ function ExperienceCard({ exp, idx }: { exp: ExperienceItem; idx: number }) {
         {/* Logo Frame */}
         <div className="w-12 h-12 rounded-lg border border-border-subtle bg-white flex-shrink-0 flex items-center justify-center overflow-hidden p-1 shadow-sm">
           {exp.logo ? (
-            <img
+            <Image
               src={exp.logo}
               alt={`${exp.company} logo`}
+              width={48}
+              height={48}
               className="w-full h-full object-contain"
             />
           ) : (

@@ -3,7 +3,6 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import PageLoader from "@/components/layout/PageLoader";
 import { Lora, Caveat } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -87,7 +86,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${lora.variable} ${caveat.variable}`}>
       <body className="min-h-screen flex flex-col antialiased">
         <ThemeProvider>
-          <PageLoader />
           <Analytics/>
           <Navbar />
           <main className="flex-grow flex flex-col pt-[var(--nav-height)]">

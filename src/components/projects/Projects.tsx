@@ -2,18 +2,18 @@
 
 import { PROJECTS } from "@/lib/data";
 import { Project } from "@/types";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [isPortalMounted, setIsPortalMounted] = useState(false);
-
-  useEffect(() => {
-    setIsPortalMounted(true);
-  }, []);
+  const isClient = useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
 
   useEffect(() => {
     if (selectedProject) {
@@ -112,7 +112,7 @@ export default function Projects() {
       </div>
 
       {/* Modal Dialog using Portal */}
-      {isPortalMounted && typeof window !== "undefined" && createPortal(
+      {isClient && createPortal(
         <AnimatePresence>
           {selectedProject && (
             <motion.div

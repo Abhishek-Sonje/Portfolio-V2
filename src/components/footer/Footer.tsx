@@ -1,6 +1,5 @@
 "use client";
 
-import { RESUME_URL } from "@/lib/data";
 import ScrollReveal from "@/components/layout/ScrollReveal";
 
 export default function Footer() {

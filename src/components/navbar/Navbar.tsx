@@ -6,7 +6,7 @@ import Link from "next/link";
 import Logo from "@/components/logo";
 import { motion, AnimatePresence } from "framer-motion";
 import { RESUME_URL } from "@/lib/data";
-import { IoDocument, IoDocumentTextOutline } from "react-icons/io5";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -79,7 +79,9 @@ export default function Navbar() {
           <div className="flex items-center gap-1 sm:gap-2">
             <a
               href={RESUME_URL}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open resume"
               className="flex items-center justify-center w-8 h-8 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-all duration-150"
             >
               <IoDocumentTextOutline className="w-4.5 h-4.5" />
