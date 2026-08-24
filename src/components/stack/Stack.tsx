@@ -6,14 +6,14 @@ export default function Stack() {
       id="stack"
       className="flex flex-col w-full bg-background relative scroll-mt-[calc(var(--nav-height)+var(--space-5))]"
     >
-      <div className="mb-8 section-title-container">
+      <div className="section-title-container">
         <h2 className="type-section-heading">Tech Stack</h2>
       </div>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-5 sm:gap-6">
         {STACK_GROUPS.map((group, idx) => (
           <div
             key={idx}
-            className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-6"
+            className="flex flex-col md:flex-row md:items-baseline gap-2.5 md:gap-6"
           >
             <span className="type-meta-byline text-foreground-secondary min-w-[120px] shrink-0 font-medium">
               {group.label}

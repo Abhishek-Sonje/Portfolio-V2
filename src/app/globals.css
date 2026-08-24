@@ -47,27 +47,27 @@
   /* ── Typography — post-title (hero name) ── */
   --text-post-title-size: 24px;
   --text-post-title-weight: 600;
-  --text-post-title-leading: 28px;
+  --text-post-title-leading: 30px;
 
   /* ── Typography — section-heading ── */
-  --text-section-heading-size: 27.5px;
+  --text-section-heading-size: 26px;
   --text-section-heading-weight: 600;
-  --text-section-heading-leading: 31.9px;
+  --text-section-heading-leading: 32px;
 
   /* ── Typography — subtitle-deck (tagline) ── */
   --text-subtitle-deck-size: 16px;
   --text-subtitle-deck-weight: 400;
-  --text-subtitle-deck-leading: 28.8px;
+  --text-subtitle-deck-leading: 25px;
 
   /* ── Typography — article-body ── */
   --text-article-body-size: 16px;
   --text-article-body-weight: 400;
-  --text-article-body-leading: 28px;
+  --text-article-body-leading: 26px;
 
   /* ── Typography — bold-body ── */
   --text-bold-body-size: 18px;
   --text-bold-body-weight: 700;
-  --text-bold-body-leading: 32px;
+  --text-bold-body-leading: 28px;
 
   /* ── Typography — ui-label (nav, buttons) ── */
   --text-ui-label-size: 15px;
@@ -77,12 +77,12 @@
   /* ── Typography — meta-byline (dates, company) ── */
   --text-meta-byline-size: 13px;
   --text-meta-byline-weight: 400;
-  --text-meta-byline-leading: 20px;
+  --text-meta-byline-leading: 19px;
 
   /* ── Typography — caption-tag (tech pills) ── */
   --text-caption-tag-size: 12px;
   --text-caption-tag-weight: 400;
-  --text-caption-tag-leading: 20px;
+  --text-caption-tag-leading: 18px;
 
   /* ── Spacing (4px base grid) ── */
   --space-1: 4px;
@@ -95,6 +95,11 @@
   --space-8: 32px;
   --space-9: 48px;
   --space-10: 50px;
+
+  /* Responsive page rhythm */
+  --content-gutter: 18px;
+  --section-divider-space: 28px;
+  --section-heading-space: 24px;
 
   /* ── Border radius ── */
   --radius-sm: 4px;
@@ -126,7 +131,14 @@
 @media (min-width: 640px) {
   :root {
     --text-post-title-size: 28px;
-    --text-post-title-leading: 32px;
+    --text-post-title-leading: 34px;
+    --text-subtitle-deck-size: 17px;
+    --text-subtitle-deck-leading: 27px;
+    --text-article-body-size: 17px;
+    --text-article-body-leading: 29px;
+    --content-gutter: 24px;
+    --section-divider-space: 44px;
+    --section-heading-space: 28px;
   }
 }
 
@@ -262,7 +274,7 @@
     width: 100%;
     max-width: var(--content-max-width);
     margin-inline: auto;
-    padding-inline: var(--space-5);
+    padding-inline: var(--content-gutter);
   }
 
   .page-sections {
@@ -275,13 +287,13 @@
   .hero-block {
     display: flex;
     flex-direction: column;
-    padding-bottom: var(--space-7);
+    padding-bottom: var(--space-8);
   }
 
   .hero-banner {
     position: relative;
-    width: calc(100% + 2 * var(--space-5));
-    margin-inline: calc(-1 * var(--space-5));
+    width: calc(100% + 2 * var(--content-gutter));
+    margin-inline: calc(-1 * var(--content-gutter));
     aspect-ratio: var(--hero-banner-ratio);
     min-height: 7.5rem;
     max-height: 12.5rem;
@@ -342,14 +354,14 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-5);
-    padding-block: var(--space-2);
+    gap: var(--space-6);
+    padding-block: var(--space-3);
   }
 
     .section-divider {
       height: 2px;
       /* The thickness of your divider line */
-      margin-block: var(--space-8);
+      margin-block: var(--section-divider-space);
   
       /* 1. Remove the old border */
       border: none;
@@ -445,8 +457,9 @@
   }
 
   .section-title-container {
-    border-left: 3.5px solid var(--color-burgundy);
+    border-left: 1px solid var(--color-burgundy);
     padding-left: var(--space-4);
+    margin-bottom: var(--section-heading-space);
   }
 
   .footer-link {

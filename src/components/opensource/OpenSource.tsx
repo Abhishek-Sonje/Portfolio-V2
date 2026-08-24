@@ -124,11 +124,11 @@ export default function OpenSource() {
       id="opensource"
       className="flex flex-col w-full bg-background relative scroll-mt-[calc(var(--nav-height)+var(--space-5))]"
     >
-      <div className="mb-8 section-title-container">
+      <div className="section-title-container">
         <h2 className="type-section-heading">Open Source</h2>
       </div>
 
-      <div className="flex flex-col gap-6 mt-2">
+      <div className="flex flex-col gap-6">
         {OPEN_SOURCE.map((item, idx) => (
           <OpenSourceCard key={idx} item={item} idx={idx} />
         ))}
