@@ -1,11 +1,6 @@
-"use client";
-
-import ScrollReveal from "@/components/layout/ScrollReveal";
-
 export default function Footer() {
   return (
-    <ScrollReveal>
-      <footer className="site-footer w-full max-w-[var(--content-max-width)] mx-auto flex flex-col items-center justify-center text-center">
+    <footer className="site-footer w-full max-w-[var(--content-max-width)] mx-auto flex flex-col items-center justify-center text-center">
         {/* Signature */}
         <span className="font-cursive text-[#363737] text-[48px] md:text-[56px] select-none leading-none">
           Abhishek
@@ -56,7 +51,6 @@ export default function Footer() {
             .
           </p>
         </div>
-      </footer>
-    </ScrollReveal>
+    </footer>
   );
 }

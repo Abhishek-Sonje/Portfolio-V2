@@ -34,10 +34,10 @@ export default function Navbar() {
           <AnimatePresence>
             {isScrolled && (
               <motion.div
-                initial={{ opacity: 0, y: -8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
+                initial={{ opacity: 0, transform: "translateY(-4px)" }}
+                animate={{ opacity: 1, transform: "translateY(0)" }}
+                exit={{ opacity: 0, transform: "translateY(-4px)" }}
+                transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
               >
                 <Logo
                   draw={false}
@@ -82,7 +82,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Open resume"
-              className="flex items-center justify-center w-8 h-8 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-all duration-150"
+              className="interactive-icon flex items-center justify-center w-8 h-8 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised"
             >
               <IoDocumentTextOutline className="w-4.5 h-4.5" />
             </a>
@@ -92,7 +92,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
-              className="flex items-center justify-center w-8 h-8 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-all duration-150"
+              className="interactive-icon flex items-center justify-center w-8 h-8 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised"
             >
               <FiGithub className="w-4.5 h-4.5" />
             </a>

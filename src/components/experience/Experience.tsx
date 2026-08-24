@@ -71,7 +71,7 @@ function ExperienceCard({ exp, idx }: { exp: ExperienceItem; idx: number }) {
                 height: isExpanded ? "auto" : 0,
                 opacity: isExpanded ? 1 : 0,
               }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
+              transition={{ duration: 0.22, ease: [0.77, 0, 0.175, 1] }}
               className="overflow-hidden"
             >
               <ul className="list-disc pl-5 flex flex-col gap-2 mt-2 pb-1">
@@ -90,7 +90,8 @@ function ExperienceCard({ exp, idx }: { exp: ExperienceItem; idx: number }) {
           {hasMore && (
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="mt-3 inline-flex items-center gap-1.5 text-accent hover:text-accent/80 font-ui font-semibold text-[14px] leading-none transition-colors duration-150 cursor-pointer self-start"
+              className="pressable mt-3 inline-flex items-center gap-1.5 text-accent hover:text-accent/80 font-ui font-semibold text-[14px] leading-none transition-colors duration-150 cursor-pointer self-start"
+              aria-expanded={isExpanded}
             >
               <span>{isExpanded ? "Show less" : "Show more"}</span>
               {isExpanded ? (

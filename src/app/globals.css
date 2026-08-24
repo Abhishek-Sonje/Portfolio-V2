@@ -110,6 +110,10 @@
   --shadow-subtle: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
   --shadow-inset-button: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2);
 
+  /* Motion */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
   /* ── Layout ── */
   --content-max-width: 720px;
   --nav-height: 3.5rem;
@@ -375,7 +379,7 @@
     padding: var(--space-4) var(--space-7);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-inset-button);
-    transition: background-color 150ms ease, transform 150ms ease;
+    transition: background-color 150ms ease, transform 130ms var(--ease-out);
     cursor: pointer;
   }
 
@@ -406,12 +410,26 @@
     flex-direction: column;
     gap: var(--space-4);
     cursor: pointer;
-    transition: transform 150ms ease, box-shadow 150ms ease;
+    transition: transform 170ms var(--ease-out), box-shadow 170ms ease;
   }
 
-  .project-card:hover {
-    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
-    transform: translateY(-2px);
+  .pressable,
+  .interactive-icon {
+    transition: color 150ms ease, background-color 150ms ease, transform 130ms var(--ease-out);
+  }
+
+  .pressable:active,
+  .interactive-icon:active,
+  .primary-cta:active,
+  .project-card:active {
+    transform: scale(0.97);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .project-card:hover {
+      box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+      transform: translateY(-2px);
+    }
   }
 
   .project-description-truncated {
@@ -482,7 +500,6 @@
   }
 
   html {
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
 

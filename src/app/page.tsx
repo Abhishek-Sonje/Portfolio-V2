@@ -17,33 +17,23 @@ export default function Home() {
 
       <div className="page-sections">
         <Section>
-          <ScrollReveal delay={0}>
-            <Bio />
-          </ScrollReveal>
+          <Bio />
         </Section>
 
         <Section anchored>
-          <ScrollReveal delay={0}>
-            <Experience />
-          </ScrollReveal>
+          <Experience />
         </Section>
 
         <Section anchored>
-          <ScrollReveal delay={0}>
-            <Projects />
-          </ScrollReveal>
+          <Projects />
         </Section>
 
         <Section anchored>
-          <ScrollReveal delay={0}>
-            <OpenSource />
-          </ScrollReveal>
+          <OpenSource />
         </Section>
 
         <Section anchored>
-          <ScrollReveal delay={0}>
-            <Stack />
-          </ScrollReveal>
+          <Stack />
         </Section>
       </div>
     </ContentColumn>

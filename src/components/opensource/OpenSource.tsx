@@ -83,7 +83,7 @@ function OpenSourceCard({
                   href={item.prUrl || item.repoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[12px] font-ui font-medium bg-surface-raised border border-border-subtle text-foreground hover:border-accent/40 hover:text-accent transition-all duration-150 shadow-2xs"
+                  className="pressable inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[12px] font-ui font-medium bg-surface-raised border border-border-subtle text-foreground hover:border-accent/40 hover:text-accent transition-[color,border-color,transform] duration-150"
                   title="View Merged Pull Requests on GitHub"
                 >
                   <FiGitPullRequest className="w-3.5 h-3.5 text-accent" />

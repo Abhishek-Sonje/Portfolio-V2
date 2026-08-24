@@ -5,10 +5,11 @@ import { Project } from "@/types";
 import { useState, useEffect, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const shouldReduceMotion = useReducedMotion();
   const isClient = useSyncExternalStore(
     () => () => {},
     () => true,
@@ -26,6 +27,17 @@ export default function Projects() {
     };
   }, [selectedProject]);
 
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setSelectedProject(null);
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [selectedProject]);
+
   return (
     <section
       id="projects"
@@ -41,6 +53,15 @@ export default function Projects() {
             key={idx}
             className="project-card"
             onClick={() => setSelectedProject(project)}
+            role="button"
+            tabIndex={0}
+            aria-label={`View details for ${project.title}`}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setSelectedProject(project);
+              }
+            }}
           >
             {project.image ? (
               <div className="relative aspect-[16/10] md:aspect-[16/9] w-full bg-surface-overlay overflow-hidden rounded-md border border-border-subtle">
@@ -123,12 +144,24 @@ export default function Projects() {
               onClick={() => setSelectedProject(null)}
             >
               <motion.div
-                initial={{ opacity: 0, scale: 0.95, y: 15 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95, y: 15 }}
-                transition={{ type: "spring", damping: 28, stiffness: 350 }}
+                initial={{
+                  opacity: 0,
+                  transform: shouldReduceMotion ? "none" : "scale(0.97)",
+                }}
+                animate={{ opacity: 1, transform: "scale(1)" }}
+                exit={{
+                  opacity: 0,
+                  transform: shouldReduceMotion ? "none" : "scale(0.97)",
+                }}
+                transition={{
+                  duration: shouldReduceMotion ? 0.1 : 0.22,
+                  ease: [0.23, 1, 0.32, 1],
+                }}
                 className="relative w-full max-w-2xl bg-surface-raised rounded-[24px] border border-border-strong shadow-2xl overflow-hidden max-h-[85vh] flex flex-col cursor-default"
                 onClick={(e) => e.stopPropagation()}
+                role="dialog"
+                aria-modal="true"
+                aria-label={`${selectedProject.title} project details`}
               >
                 {/* Close Button */}
                 <button
