@@ -3,7 +3,6 @@ import {
   OpenSourceContribution,
   Project,
   StackGroup,
-  StackItem,
 } from "../types";
 
 export const BIO =
@@ -104,132 +103,59 @@ export const PROJECTS: Project[] = [
   },
 ];
 
-export const STACK_ITEMS: StackItem[] = [
-  {
-    name: "TypeScript",
-    icon: "https://skillicons.dev/icons?i=ts",
-    url: "https://www.typescriptlang.org/",
-  },
-  {
-    name: "JavaScript",
-    icon: "https://skillicons.dev/icons?i=js",
-    url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
-  },
-  {
-    name: "Python",
-    icon: "https://skillicons.dev/icons?i=python",
-    url: "https://www.python.org/",
-  },
-  {
-    name: "Java",
-    icon: "https://skillicons.dev/icons?i=java",
-    url: "https://www.java.com/",
-  },
-  {
-    name: "Go",
-    icon: "https://skillicons.dev/icons?i=go",
-    url: "https://go.dev/",
-  },
-  {
-    name: "Node.js",
-    icon: "https://skillicons.dev/icons?i=nodejs",
-    url: "https://nodejs.org/",
-  },
-  {
-    name: "Bun",
-    icon: "https://skillicons.dev/icons?i=bun",
-    url: "https://bun.sh/",
-  },
-  {
-    name: "React.js",
-    icon: "https://skillicons.dev/icons?i=react",
-    url: "https://react.dev/",
-  },
-  {
-    name: "Next.js",
-    icon: "https://skillicons.dev/icons?i=nextjs",
-    url: "https://nextjs.org/",
-  },
-  {
-    name: "Tailwind CSS",
-    icon: "https://skillicons.dev/icons?i=tailwind",
-    url: "https://tailwindcss.com/",
-  },
-  {
-    name: "Express.js",
-    icon: "https://skillicons.dev/icons?i=express",
-    url: "https://expressjs.com/",
-  },
-  {
-    name: "PostgreSQL",
-    icon: "https://skillicons.dev/icons?i=postgres",
-    url: "https://www.postgresql.org/",
-  },
-  {
-    name: "Redis",
-    icon: "https://skillicons.dev/icons?i=redis",
-    url: "https://redis.io/",
-  },
-  {
-    name: "MongoDB",
-    icon: "https://skillicons.dev/icons?i=mongodb",
-    url: "https://www.mongodb.com/",
-  },
-  {
-    name: "Git",
-    icon: "https://skillicons.dev/icons?i=git",
-    url: "https://git-scm.com/",
-  },
-  {
-    name: "Docker",
-    icon: "https://skillicons.dev/icons?i=docker",
-    url: "https://www.docker.com/",
-  },
-  {
-    name: "Postman",
-    icon: "https://skillicons.dev/icons?i=postman",
-    url: "https://www.postman.com/",
-  },
-  {
-    name: "Vercel",
-    icon: "https://skillicons.dev/icons?i=vercel",
-    url: "https://vercel.com/",
-  },
-];
-
 export const STACK_GROUPS: StackGroup[] = [
   {
     label: "Frontend",
     items: [
-      "React.js",
-      "Next.js 15+",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "Zustand",
+      { name: "React", url: "https://react.dev/", iconKey: "react" },
+      { name: "Next.js", url: "https://nextjs.org/", iconKey: "nextjs" },
+      { name: "TypeScript", url: "https://www.typescriptlang.org/", iconKey: "typescript" },
+      { name: "Tailwind CSS", url: "https://tailwindcss.com/", iconKey: "tailwind" },
+      { name: "Motion", url: "https://motion.dev/", iconKey: "framer" },
+      { name: "Zustand", url: "https://zustand.docs.pmnd.rs/" },
     ],
   },
   {
     label: "Backend",
-    items: ["Node.js", "Bun", "Express.js", "Fastify", "RESTful APIs"],
+    items: [
+      { name: "Node.js", url: "https://nodejs.org/", iconKey: "nodejs" },
+      { name: "Bun", url: "https://bun.sh/", iconKey: "bun" },
+      { name: "Express", url: "https://expressjs.com/", iconKey: "express" },
+      { name: "Fastify", url: "https://fastify.dev/", iconKey: "fastify" },
+      { name: "RESTful APIs", url: "https://developer.mozilla.org/en-US/docs/Glossary/REST" },
+    ],
   },
   {
     label: "Databases & CMS",
-    items: ["PostgreSQL", "Drizzle ORM", "ClickHouse", "Redis", "MongoDB", "Sanity CMS"],
+    items: [
+      { name: "PostgreSQL", url: "https://www.postgresql.org/", iconKey: "postgresql" },
+      { name: "Drizzle ORM", url: "https://orm.drizzle.team/", iconKey: "drizzle" },
+      { name: "ClickHouse", url: "https://clickhouse.com/", iconKey: "clickhouse" },
+      { name: "Redis", url: "https://redis.io/", iconKey: "redis" },
+      { name: "MongoDB", url: "https://www.mongodb.com/", iconKey: "mongodb" },
+      { name: "Sanity", url: "https://www.sanity.io/", iconKey: "sanity" },
+    ],
   },
   {
     label: "AI & Cloud",
     items: [
-      "Google Gemini API",
-      "Anthropic Claude API",
-      "Vercel AI SDK",
-      "Vercel",
-      "Docker",
+      { name: "Google Gemini", url: "https://ai.google.dev/", iconKey: "gemini" },
+      { name: "Anthropic Claude", url: "https://www.anthropic.com/claude", iconKey: "anthropic" },
+      { name: "Vercel AI SDK", url: "https://ai-sdk.dev/", iconKey: "vercel" },
+      { name: "Vercel", url: "https://vercel.com/", iconKey: "vercel" },
+      { name: "Docker", url: "https://www.docker.com/", iconKey: "docker" },
     ],
   },
   {
     label: "Tools",
-    items: ["Git / GitHub", "Postman", "Go", "Python", "Java", "C"],
+    items: [
+      { name: "GitHub", url: "https://github.com/", iconKey: "github" },
+      { name: "Postman", url: "https://www.postman.com/", iconKey: "postman" },
+      { name: "Go", url: "https://go.dev/", iconKey: "go" },
+      { name: "Python", url: "https://www.python.org/", iconKey: "python" },
+      { name: "Java", url: "https://www.java.com/", iconKey: "java" },
+      { name: "C", url: "https://www.iso.org/standard/82075.html", iconKey: "c" },
+    ],
   },
 ];
 

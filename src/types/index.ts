@@ -38,15 +38,42 @@ export type Project = {
   logo?: string;
 };
 
-export type StackItem = {
+export type TechIconKey =
+  | "react"
+  | "nextjs"
+  | "typescript"
+  | "tailwind"
+  | "framer"
+  | "nodejs"
+  | "bun"
+  | "express"
+  | "fastify"
+  | "postgresql"
+  | "drizzle"
+  | "clickhouse"
+  | "redis"
+  | "mongodb"
+  | "sanity"
+  | "gemini"
+  | "anthropic"
+  | "vercel"
+  | "docker"
+  | "github"
+  | "postman"
+  | "go"
+  | "python"
+  | "java"
+  | "c";
+
+export type StackTechnology = {
   name: string;
-  icon: string;
   url: string;
+  iconKey?: TechIconKey;
 };
 
 export type StackGroup = {
   label: string;
-  items: string[];
+  items: StackTechnology[];
 };
 
 export type OpenSourceContribution = {
@@ -63,4 +90,3 @@ export type OpenSourceContribution = {
   logo?: string;
   active?: boolean;
 };
-
