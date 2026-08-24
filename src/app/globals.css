@@ -601,6 +601,18 @@
     border-top: 1px solid var(--border-subtle);
   }
 
+  .visitor-counter {
+    margin-top: var(--space-6);
+    color: var(--foreground-secondary);
+    font-variant-numeric: tabular-nums;
+    animation: visitor-count-in 150ms var(--ease-out) both;
+  }
+
+  @keyframes visitor-count-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
   .footer-link {
     color: var(--color-ink) !important;
     text-decoration: none;

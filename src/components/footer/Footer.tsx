@@ -1,3 +1,5 @@
+import VisitorCounter from "@/components/footer/VisitorCounter";
+
 export default function Footer() {
   return (
     <footer className="site-footer w-full max-w-[var(--content-max-width)] mx-auto flex flex-col items-center justify-center text-center">
@@ -51,6 +53,7 @@ export default function Footer() {
             .
           </p>
         </div>
+        <VisitorCounter />
     </footer>
   );
 }

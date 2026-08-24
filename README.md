@@ -24,6 +24,7 @@ A personal portfolio crafted with a **Warm Serif / Editorial Minimalist** design
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
 - **Icons**: [React Icons](https://react-icons.github.io/react-icons/) & [Lucide React](https://lucide.dev/)
 - **Analytics**: [@vercel/analytics](https://vercel.com/analytics)
+- **Visitor Counter**: [Upstash Redis](https://upstash.com/docs/redis/quickstarts/nextjs-app-router)
 
 ---
 
@@ -77,6 +78,11 @@ src/
    ```bash
    npm run dev
    ```
+
+   To enable the anonymous footer visitor counter, copy `.env.example` to
+   `.env.local` and add the REST URL and token from an Upstash Redis database.
+   Without these variables the portfolio still runs normally and hides the
+   optional counter.
 
 4. **Open in browser**:
    Navigate to [http://localhost:3000](http://localhost:3000).
