@@ -120,11 +120,11 @@ export default function Experience() {
       id="work"
       className="flex flex-col w-full bg-background relative scroll-mt-[calc(var(--nav-height)+var(--space-5))]"
     >
-      <div className="mb-8 section-title-container">
+      <div className="section-title-container">
         <h2 className="type-section-heading">Work Experience</h2>
       </div>
 
-      <div className="flex flex-col gap-8 mt-2">
+      <div className="flex flex-col gap-7">
         {EXPERIENCE.map((exp, idx) => (
           <ExperienceCard key={idx} exp={exp} idx={idx} />
         ))}

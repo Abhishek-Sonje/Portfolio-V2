@@ -18,10 +18,10 @@ export default function Section({
   anchored = false,
 }: SectionProps) {
   return (
-    <section
+    <div
       id={id}
       className={[
-        "w-full",
+        "page-section w-full",
         anchored ? "scroll-mt-[calc(var(--space-10)+3.5rem)]" : "",
         className,
       ]
@@ -29,6 +29,6 @@ export default function Section({
         .join(" ")}
     >
       {children}
-    </section>
+    </div>
   );
 }

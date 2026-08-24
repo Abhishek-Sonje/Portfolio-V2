@@ -6,7 +6,6 @@ import Experience from "@/components/experience/Experience";
 import OpenSource from "@/components/opensource/OpenSource";
 import ContentColumn from "@/components/layout/ContentColumn";
 import Section from "@/components/layout/Section";
-import SectionDivider from "@/components/layout/SectionDivider";
 import ScrollReveal from "@/components/layout/ScrollReveal";
 
 export default function Home() {
@@ -23,29 +22,11 @@ export default function Home() {
           </ScrollReveal>
         </Section>
 
-        <ScrollReveal delay={0}>
-          <SectionDivider />
-        </ScrollReveal>
-
         <Section anchored>
           <ScrollReveal delay={0}>
             <Experience />
           </ScrollReveal>
         </Section>
-
-        <ScrollReveal delay={0}>
-          <SectionDivider />
-        </ScrollReveal>
-
-        <Section anchored>
-          <ScrollReveal delay={0}>
-            <OpenSource />
-          </ScrollReveal>
-        </Section>
-
-        <ScrollReveal delay={0}>
-          <SectionDivider />
-        </ScrollReveal>
 
         <Section anchored>
           <ScrollReveal delay={0}>
@@ -53,19 +34,17 @@ export default function Home() {
           </ScrollReveal>
         </Section>
 
-        <ScrollReveal delay={0}>
-          <SectionDivider />
-        </ScrollReveal>
+        <Section anchored>
+          <ScrollReveal delay={0}>
+            <OpenSource />
+          </ScrollReveal>
+        </Section>
 
         <Section anchored>
           <ScrollReveal delay={0}>
             <Stack />
           </ScrollReveal>
         </Section>
-
-        <ScrollReveal delay={0}>
-          <SectionDivider />
-        </ScrollReveal>
       </div>
     </ContentColumn>
   );
