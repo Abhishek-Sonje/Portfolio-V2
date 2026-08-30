@@ -80,6 +80,7 @@ export default function Navbar() {
             <a
               href={RESUME_URL}
               download
+              aria-label="Download resume"
               className="flex items-center justify-center w-8 h-8 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-all duration-150"
             >
               <IoDocumentTextOutline className="w-4.5 h-4.5" />
