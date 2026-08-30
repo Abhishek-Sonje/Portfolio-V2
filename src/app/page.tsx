@@ -29,43 +29,29 @@ export default function Home() {
 
         <Section anchored>
           <ScrollReveal delay={0}>
-            <Experience />
-          </ScrollReveal>
-        </Section>
-
-        <ScrollReveal delay={0}>
-          <SectionDivider />
-        </ScrollReveal>
-
-        <Section anchored>
-          <ScrollReveal delay={0}>
-            <OpenSource />
-          </ScrollReveal>
-        </Section>
-
-        <ScrollReveal delay={0}>
-          <SectionDivider />
-        </ScrollReveal>
-
-        <Section anchored>
-          <ScrollReveal delay={0}>
             <Projects />
           </ScrollReveal>
         </Section>
 
-        <ScrollReveal delay={0}>
-          <SectionDivider />
-        </ScrollReveal>
+        <SectionDivider />
 
         <Section anchored>
-          <ScrollReveal delay={0}>
-            <Stack />
-          </ScrollReveal>
+          <OpenSource />
         </Section>
 
-        <ScrollReveal delay={0}>
-          <SectionDivider />
-        </ScrollReveal>
+        <SectionDivider />
+
+        <Section anchored>
+          <Experience />
+        </Section>
+
+        <SectionDivider />
+
+        <Section anchored>
+          <Stack />
+        </Section>
+
+        <SectionDivider />
       </div>
     </ContentColumn>
   );

@@ -6,7 +6,7 @@ import Link from "next/link";
 import Logo from "@/components/logo";
 import { motion, AnimatePresence } from "framer-motion";
 import { RESUME_URL } from "@/lib/data";
-import { IoDocument, IoDocumentTextOutline } from "react-icons/io5";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -53,16 +53,16 @@ export default function Navbar() {
           {/* Nav links */}
           <div className="flex items-center mr-0.5 sm:mr-2 gap-0.5 sm:gap-0">
             <Link
-              href="#work"
-              className="font-ui font-semibold text-[13px] sm:text-[15px] leading-[20px] text-foreground-secondary hover:text-accent transition-colors duration-150 px-1.5 sm:px-2 py-1 rounded-md"
-            >
-              Work
-            </Link>
-            <Link
               href="#projects"
               className="font-ui font-semibold text-[13px] sm:text-[15px] leading-[20px] text-foreground-secondary hover:text-accent transition-colors duration-150 px-1.5 sm:px-2 py-1 rounded-md"
             >
               Projects
+            </Link>
+            <Link
+              href="#work"
+              className="font-ui font-semibold text-[13px] sm:text-[15px] leading-[20px] text-foreground-secondary hover:text-accent transition-colors duration-150 px-1.5 sm:px-2 py-1 rounded-md"
+            >
+              Work
             </Link>
             <Link
               href="#stack"
@@ -81,9 +81,10 @@ export default function Navbar() {
               href={RESUME_URL}
               download
               aria-label="Download resume"
-              className="flex items-center justify-center w-8 h-8 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-all duration-150"
+              className="flex items-center justify-center min-w-11 min-h-11 sm:px-2.5 sm:min-w-0 sm:min-h-10 gap-1.5 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-colors duration-150"
             >
-              <IoDocumentTextOutline className="w-4.5 h-4.5" />
+              <IoDocumentTextOutline className="w-4.5 h-4.5 sm:hidden" />
+              <span className="hidden sm:inline type-ui-label">Resume</span>
             </a>
 
             <a
@@ -91,7 +92,7 @@ export default function Navbar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
-              className="flex items-center justify-center w-8 h-8 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-all duration-150"
+              className="flex items-center justify-center w-11 h-11 sm:w-10 sm:h-10 rounded-md text-foreground-secondary hover:text-foreground hover:bg-surface-raised transition-all duration-150"
             >
               <FiGithub className="w-4.5 h-4.5" />
             </a>

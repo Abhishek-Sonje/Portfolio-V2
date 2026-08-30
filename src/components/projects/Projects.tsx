@@ -2,22 +2,20 @@
 
 import { PROJECTS } from "@/lib/data";
 import { Project } from "@/types";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, type KeyboardEvent } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [isPortalMounted, setIsPortalMounted] = useState(false);
-
-  useEffect(() => {
-    setIsPortalMounted(true);
-  }, []);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const lastTriggerRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     if (selectedProject) {
       document.body.style.overflow = "hidden";
+      window.requestAnimationFrame(() => closeButtonRef.current?.focus());
     } else {
       document.body.style.overflow = "";
     }
@@ -25,6 +23,47 @@ export default function Projects() {
       document.body.style.overflow = "";
     };
   }, [selectedProject]);
+
+  const openProject = (
+    project: Project,
+    trigger: HTMLButtonElement,
+  ) => {
+    lastTriggerRef.current = trigger;
+    setSelectedProject(project);
+  };
+
+  const closeProject = () => {
+    setSelectedProject(null);
+    window.requestAnimationFrame(() => lastTriggerRef.current?.focus());
+  };
+
+  const handleDialogKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeProject();
+      return;
+    }
+
+    if (event.key !== "Tab") return;
+
+    const focusable = Array.from(
+      event.currentTarget.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      ),
+    );
+    const first = focusable[0];
+    const last = focusable.at(-1);
+
+    if (!first || !last) return;
+
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
 
   return (
     <section
@@ -37,10 +76,9 @@ export default function Projects() {
 
       <div className="projects-list">
         {PROJECTS.map((project, idx) => (
-          <div
+          <article
             key={idx}
             className="project-card"
-            onClick={() => setSelectedProject(project)}
           >
             {project.image ? (
               <div className="relative aspect-[16/10] md:aspect-[16/9] w-full bg-surface-overlay overflow-hidden rounded-md border border-border-subtle">
@@ -48,7 +86,6 @@ export default function Projects() {
                   src={project.image}
                   alt={project.title}
                   fill
-                  priority={idx === 0}
                   className="object-cover"
                   sizes="(max-width: 640px) 100vw, 340px"
                 />
@@ -56,6 +93,11 @@ export default function Projects() {
             ) : null}
 
             <div className="flex flex-col gap-1">
+              {project.category && (
+                <p className="type-caption-tag font-semibold uppercase tracking-[0.08em] text-accent">
+                  {project.category}
+                </p>
+              )}
               <h3 className="type-bold-body text-foreground-heading">
                 {project.title}
               </h3>
@@ -70,27 +112,38 @@ export default function Projects() {
               {project.description}
             </p>
 
+            <p className="type-meta-byline font-semibold text-foreground">
+              {project.highlight}
+            </p>
+
             <div className="flex flex-wrap gap-1.5 mt-2">
               {project.stack.slice(0, 2).map((tech) => (
                 <span key={tech} className="tech-pill">
                   {tech}
                 </span>
               ))}
-              {project.stack.length > 3 && (
+              {project.stack.length > 2 && (
                 <span className="tech-pill opacity-70">
-                  +{project.stack.length - 3}
+                  +{project.stack.length - 2}
                 </span>
               )}
             </div>
 
-            <div className="flex gap-4 pt-2 mt-auto">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 pt-2 mt-auto">
+              <button
+                type="button"
+                aria-haspopup="dialog"
+                onClick={(event) => openProject(project, event.currentTarget)}
+                className="type-ui-label inline-flex min-h-11 items-center text-accent underline decoration-dotted underline-offset-4 hover:text-foreground cursor-pointer"
+              >
+                View details
+              </button>
               {project.github && (
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="type-ui-label text-foreground-secondary hover:text-accent hover:underline hover:underline-offset-4"
-                  onClick={(e) => e.stopPropagation()}
                 >
                   GitHub
                 </a>
@@ -101,18 +154,17 @@ export default function Projects() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="type-ui-label text-foreground-secondary hover:text-accent hover:underline hover:underline-offset-4"
-                  onClick={(e) => e.stopPropagation()}
                 >
                   Live Site
                 </a>
               )}
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
       {/* Modal Dialog using Portal */}
-      {isPortalMounted && typeof window !== "undefined" && createPortal(
+      {typeof document !== "undefined" && createPortal(
         <AnimatePresence>
           {selectedProject && (
             <motion.div
@@ -120,9 +172,13 @@ export default function Projects() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md"
-              onClick={() => setSelectedProject(null)}
+              onClick={closeProject}
             >
               <motion.div
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="project-dialog-title"
+                onKeyDown={handleDialogKeyDown}
                 initial={{ opacity: 0, scale: 0.95, y: 15 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -132,8 +188,9 @@ export default function Projects() {
               >
                 {/* Close Button */}
                 <button
-                  onClick={() => setSelectedProject(null)}
-                  className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-surface-overlay border border-border-subtle flex items-center justify-center text-foreground hover:bg-border transition-colors cursor-pointer text-xl font-bold"
+                  ref={closeButtonRef}
+                  onClick={closeProject}
+                  className="absolute top-3 right-3 z-10 w-11 h-11 rounded-full bg-surface-overlay border border-border-subtle flex items-center justify-center text-foreground hover:bg-border transition-colors cursor-pointer text-xl font-bold"
                   aria-label="Close dialog"
                 >
                   &times;
@@ -155,7 +212,7 @@ export default function Projects() {
 
                   {/* Header Info */}
                   <div className="flex flex-col gap-1">
-                    <h3 className="type-post-title text-foreground-heading leading-tight">
+                    <h3 id="project-dialog-title" className="type-post-title text-foreground-heading leading-tight">
                       {selectedProject.title}
                     </h3>
                     {selectedProject.subtitle && (

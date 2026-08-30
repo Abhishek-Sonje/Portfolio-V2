@@ -14,7 +14,7 @@ export default function Bio() {
             href="https://github.com/Abhishek-Sonje"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-accent transition-all hover:scale-115 duration-200 p-1 flex items-center justify-center"
+            className="min-w-11 min-h-11 hover:text-accent transition-colors duration-150 flex items-center justify-center"
             aria-label="GitHub"
           >
             <FaGithub className="w-5.5 h-5.5" />
@@ -23,7 +23,7 @@ export default function Bio() {
             href="https://www.linkedin.com/in/abhishek-sonje-83a333209"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-accent transition-all hover:scale-115 duration-200 p-1 flex items-center justify-center"
+            className="min-w-11 min-h-11 hover:text-accent transition-colors duration-150 flex items-center justify-center"
             aria-label="LinkedIn"
           >
             <FaLinkedin className="w-5.5 h-5.5" />
@@ -32,7 +32,7 @@ export default function Bio() {
             href="https://x.com/Abhi_SDev"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-accent transition-all hover:scale-115 duration-200 p-1 flex items-center justify-center"
+            className="min-w-11 min-h-11 hover:text-accent transition-colors duration-150 flex items-center justify-center"
             aria-label="X"
           >
             <FaXTwitter className="w-5.5 h-5.5" />
