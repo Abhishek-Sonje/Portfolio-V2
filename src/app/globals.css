@@ -9,14 +9,14 @@
 
 :root {
   /* ── Color palette ── */
-  --color-linen: #e3dfd8;
-  --color-parchment: #f1ede6;
-  --color-ash: #81807d;
-  --color-ink: #4e4a43;
-  --color-near-black: #363737;
+  --color-linen: #24211e;
+  --color-parchment: #181614;
+  --color-ash: #aaa29a;
+  --color-ink: #d8d1c8;
+  --color-near-black: #f3ede4;
   --color-white: #ffffff;
-  --color-burgundy: #5d0e0f;
-  --color-hairline: #d9d5cf;
+  --color-burgundy: #d27a7e;
+  --color-hairline: #3b3631;
 
   /* ── Semantic color roles ── */
   --background: var(--color-parchment);
@@ -24,8 +24,8 @@
   --background-tertiary: var(--color-linen);
 
   --surface: var(--color-linen);
-  --surface-raised: var(--color-white);
-  --surface-overlay: var(--color-linen);
+  --surface-raised: #2b2723;
+  --surface-overlay: #201d1a;
 
   --border: var(--color-hairline);
   --border-subtle: var(--color-hairline);
@@ -37,7 +37,7 @@
   --foreground-tertiary: var(--color-ash);
 
   --accent: var(--color-burgundy);
-  --accent-foreground: var(--color-white);
+  --accent-foreground: #211816;
 
   /* ── Typography — families ── */
   --font-serif: var(--font-lora), "Lora", serif;
@@ -108,8 +108,8 @@
   --radius-pill: 9999px;
 
   /* ── Shadows ── */
-  --shadow-subtle: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
-  --shadow-inset-button: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2);
+  --shadow-subtle: 0px 2px 8px 0px rgba(0, 0, 0, 0.28);
+  --shadow-inset-button: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.16);
 
   /* ── Layout ── */
   --content-max-width: 680px;
@@ -125,7 +125,7 @@
 
   /* ── Focus & selection (derived from palette) ── */
   --focus-ring: var(--color-burgundy);
-  --selection-bg: color-mix(in srgb, var(--color-burgundy) 18%, transparent);
+  --selection-bg: color-mix(in srgb, var(--color-burgundy) 32%, transparent);
 }
 
 @media (min-width: 640px) {
@@ -385,7 +385,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--color-burgundy);
-    color: var(--color-white) !important;
+    color: var(--accent-foreground) !important;
     font-family: var(--font-ui);
     font-size: var(--text-ui-label-size);
     font-weight: var(--text-ui-label-weight);
@@ -398,7 +398,7 @@
   }
 
   .primary-cta:hover {
-    background-color: color-mix(in srgb, var(--color-burgundy) 85%, black);
+    background-color: color-mix(in srgb, var(--color-burgundy) 86%, white);
   }
 
   .tech-pill {
@@ -416,7 +416,7 @@
   }
 
   .project-card {
-    background-color: var(--color-white);
+    background-color: var(--surface-raised);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-subtle);
     padding: var(--space-5);
@@ -428,7 +428,7 @@
   }
 
   .project-card:hover {
-    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.34);
     transform: translateY(-2px);
   }
 
@@ -487,6 +487,7 @@
   }
 
   html {
+    color-scheme: dark;
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
@@ -501,6 +502,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    caret-color: var(--accent);
   }
 
   h1,
