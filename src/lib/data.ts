@@ -12,7 +12,7 @@ export const BIO =
 export const HERO = {
   name: "Abhishek Sonje",
   tagline: "Full-Stack Developer & Builder",
-  avatarSrc: "/avatar.png",
+  avatarSrc: "/avatar1.png",
   bannerSrc: "/banner1.webp",
 };
 
