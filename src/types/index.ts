@@ -27,7 +27,6 @@ export type ExperienceItem = {
 
 export type Project = {
   title: string;
-  summary: string;
   subtitle: string;
   description: string;
   stack: string[];
@@ -64,3 +63,4 @@ export type OpenSourceContribution = {
   logo?: string;
   active?: boolean;
 };
+

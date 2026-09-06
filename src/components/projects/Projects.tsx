@@ -1,110 +1,214 @@
-﻿import Image from "next/image";
-import { ArrowUpRight, ChevronDown } from "lucide-react";
-import { FaGithub } from "react-icons/fa6";
-import { PROJECTS, PROFILE } from "@/lib/data";
-import Section from "@/components/layout/Section";
-import { Button } from "@/components/ui/button";
-import type { Project } from "@/types";
-import { TechnologyList } from "@/components/stack/technology-list";
+"use client";
 
-function ProjectCard({ project }: { project: Project }) {
+import { PROJECTS } from "@/lib/data";
+import { Project } from "@/types";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
+import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+
+export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isPortalMounted, setIsPortalMounted] = useState(false);
+
+  useEffect(() => {
+    setIsPortalMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
+
   return (
-    <article className="group flex min-w-0 flex-col overflow-hidden rounded-xl border bg-card">
-      <a
-        href={project.live ?? project.github}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Explore ${project.title}`}
-        className="relative block aspect-video overflow-hidden border-b bg-muted"
-      >
-        <Image
-          src={project.image}
-          alt={`${project.title} preview`}
-          fill
-          sizes="(min-width: 768px) 340px, (min-width: 640px) 45vw, 90vw"
-          className="object-cover transition-transform duration-300 motion-safe:group-hover:scale-105"
-        />
-      </a>
-      <div className="flex flex-1 flex-col p-4">
-        <h3 className="font-semibold tracking-tight">{project.title}</h3>
-        <p className="mt-2 text-sm leading-6 text-muted-foreground">
-          {project.summary}
-        </p>
-        <details className="group/details mt-1">
-          <summary className="flex w-fit cursor-pointer list-none items-center gap-1 rounded-sm py-2 text-xs text-muted-foreground hover:text-foreground [&::-webkit-details-marker]:hidden">
-            Details
-            <ChevronDown className="size-3 transition-transform group-open/details:rotate-180" />
-          </summary>
-          <p className="pb-3 text-sm leading-6 text-muted-foreground">
-            {project.description}
-          </p>
-        </details>
-        <div className="mb-3 mt-2">
-          <TechnologyList
-            items={project.stack}
-            label={`${project.title} technologies`}
-            compact
-          />
-        </div>
-        <div className="mt-auto border-t pt-3">
-          <p className="mb-2 text-xs leading-5 text-link">
-            {project.highlight}
-          </p>
-          <div className="flex gap-2">
-            <Button asChild variant="outline" size="sm">
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`${project.title} source code`}
-              >
-                <FaGithub />
-                Source
-              </a>
-            </Button>
-            {project.live && (
-              <Button asChild variant="ghost" size="sm">
+    <section
+      id="projects"
+      className="flex flex-col w-full bg-background relative scroll-mt-[calc(var(--nav-height)+var(--space-5))]"
+    >
+      <div className="section-title-container">
+        <h2 className="type-section-heading">Projects</h2>
+      </div>
+
+      <div className="projects-list">
+        {PROJECTS.map((project, idx) => (
+          <div
+            key={idx}
+            className="project-card"
+            onClick={() => setSelectedProject(project)}
+          >
+            {project.image ? (
+              <div className="relative aspect-[16/10] md:aspect-[16/9] w-full bg-surface-overlay overflow-hidden rounded-md border border-border-subtle">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  priority={idx === 0}
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, 340px"
+                />
+              </div>
+            ) : null}
+
+            <div className="flex flex-col gap-1">
+              <h3 className="type-bold-body text-foreground-heading">
+                {project.title}
+              </h3>
+              {project.subtitle && (
+                <p className="type-meta-byline text-foreground-secondary">
+                  {project.subtitle}
+                </p>
+              )}
+            </div>
+
+            <p className="project-description-truncated mt-1">
+              {project.description}
+            </p>
+
+            <div className="flex flex-wrap gap-1.5 mt-2">
+              {project.stack.slice(0, 2).map((tech) => (
+                <span key={tech} className="tech-pill">
+                  {tech}
+                </span>
+              ))}
+              {project.stack.length > 3 && (
+                <span className="tech-pill opacity-70">
+                  +{project.stack.length - 3}
+                </span>
+              )}
+            </div>
+
+            <div className="flex gap-4 pt-2 mt-auto">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="type-ui-label text-foreground-secondary hover:text-accent hover:underline hover:underline-offset-4"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  GitHub
+                </a>
+              )}
+              {project.live && (
                 <a
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Visit ${project.title}`}
+                  className="type-ui-label text-foreground-secondary hover:text-accent hover:underline hover:underline-offset-4"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  Visit
-                  <ArrowUpRight />
+                  Live Site
                 </a>
-              </Button>
-            )}
+              )}
+            </div>
           </div>
-        </div>
-      </div>
-    </article>
-  );
-}
-
-export default function Projects() {
-  return (
-    <Section
-      id="projects"
-      title="Selected projects"
-      description="Tools and products I've built, from interface to infrastructure."
-      action={
-        <a
-          href={`${PROFILE.github}?tab=repositories`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 py-1 text-xs text-muted-foreground hover:text-foreground"
-        >
-          All repositories
-          <ArrowUpRight className="size-3.5" />
-        </a>
-      }
-    >
-      <div className="grid gap-5 sm:grid-cols-2">
-        {PROJECTS.map((project) => (
-          <ProjectCard key={project.title} project={project} />
         ))}
       </div>
-    </Section>
+
+      {/* Modal Dialog using Portal */}
+      {isPortalMounted && typeof window !== "undefined" && createPortal(
+        <AnimatePresence>
+          {selectedProject && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md"
+              onClick={() => setSelectedProject(null)}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 15 }}
+                transition={{ type: "spring", damping: 28, stiffness: 350 }}
+                className="relative w-full max-w-2xl bg-surface-raised rounded-[24px] border border-border-strong shadow-2xl overflow-hidden max-h-[85vh] flex flex-col cursor-default"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full bg-surface-overlay border border-border-subtle flex items-center justify-center text-foreground hover:bg-border transition-colors cursor-pointer text-xl font-bold"
+                  aria-label="Close dialog"
+                >
+                  &times;
+                </button>
+
+                <div className="overflow-y-auto p-6 md:p-8 flex flex-col gap-5">
+                  {/* Visual Image */}
+                  {selectedProject.image && (
+                    <div className="relative aspect-[16/10] md:aspect-[16/9] w-full bg-surface-overlay overflow-hidden rounded-lg border border-border-subtle shrink-0">
+                      <Image
+                        src={selectedProject.image}
+                        alt={selectedProject.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 600px"
+                      />
+                    </div>
+                  )}
+
+                  {/* Header Info */}
+                  <div className="flex flex-col gap-1">
+                    <h3 className="type-post-title text-foreground-heading leading-tight">
+                      {selectedProject.title}
+                    </h3>
+                    {selectedProject.subtitle && (
+                      <p className="type-subtitle-deck text-foreground-secondary">
+                        {selectedProject.subtitle}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Full Description */}
+                  <p className="type-article-body text-foreground">
+                    {selectedProject.description}
+                  </p>
+
+                  {/* Tech stack */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {selectedProject.stack.map((tech) => (
+                      <span key={tech} className="tech-pill">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex gap-6 pt-2 border-t border-border-subtle">
+                    {selectedProject.github && (
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="type-ui-label text-foreground-secondary hover:text-accent hover:underline flex items-center gap-1"
+                      >
+                        GitHub Source
+                      </a>
+                    )}
+                    {selectedProject.live && (
+                      <a
+                        href={selectedProject.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="type-ui-label text-foreground-secondary hover:text-accent hover:underline flex items-center gap-1"
+                      >
+                        Live Website
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+    </section>
   );
 }
