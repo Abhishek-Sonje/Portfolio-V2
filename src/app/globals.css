@@ -1,5 +1,6 @@
 ﻿@import "tailwindcss";
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   color-scheme: light;
   --background: oklch(0.99 0.002 90);
@@ -16,6 +17,7 @@
   --link: oklch(0.4 0.07 165);
   --radius: 0.75rem;
 }
+
 .dark {
   color-scheme: dark;
   --background: oklch(0.165 0.004 260);
@@ -31,6 +33,7 @@
   --ring: oklch(0.75 0.08 165);
   --link: oklch(0.77 0.08 165);
 }
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -51,78 +54,96 @@
   --radius-sm: calc(var(--radius) - 0.5rem);
   --animate-accordion-down: accordion-down 200ms ease-out;
   --animate-accordion-up: accordion-up 200ms ease-out;
+
   @keyframes accordion-down {
     from {
       height: 0;
     }
+
     to {
       height: var(--radix-accordion-content-height);
     }
   }
+
   @keyframes accordion-up {
     from {
       height: var(--radix-accordion-content-height);
     }
+
     to {
       height: 0;
     }
   }
 }
+
 @layer base {
   * {
     @apply border-border;
   }
+
   html {
     scroll-behavior: smooth;
     scrollbar-gutter: stable;
     scrollbar-color: var(--border) var(--background);
   }
+
   body {
     @apply bg-background font-sans text-foreground antialiased;
   }
+
   ::selection {
     background: var(--foreground);
     color: var(--background);
   }
+
   a,
   button {
     -webkit-tap-highlight-color: transparent;
   }
+
   button:not(:disabled),
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+
   a {
     text-underline-offset: 4px;
   }
+
   a:focus-visible,
   button:focus-visible,
   summary:focus-visible {
     outline: 2px solid var(--ring);
     outline-offset: 4px;
   }
+
   h1,
   h2,
   h3 {
     text-wrap: balance;
   }
 }
+
 /* The incoming theme is revealed from the theme control. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
 }
+
 ::view-transition-old(root) {
   z-index: 1;
 }
+
 ::view-transition-new(root) {
   z-index: 2;
 }
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {
