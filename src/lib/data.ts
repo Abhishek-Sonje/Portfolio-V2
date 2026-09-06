@@ -41,8 +41,8 @@ export const SOCIAL_LINKS = [
 ] as const;
 
 export const NAVIGATION = [
+  { id: "experience", label: "Work" },
   { id: "projects", label: "Projects" },
-  { id: "experience", label: "Experience" },
   { id: "contact", label: "Contact" },
 ] as const;
 
@@ -97,6 +97,8 @@ export const EXPERIENCE: ExperienceItem[] = [
 export const PROJECTS: Project[] = [
   {
     title: "Archie CLI",
+    summary:
+      "Architecture docs that stay in sync with your codebase, powered by an import graph and AI.",
     subtitle: "AI-Powered Architecture Docs",
     description:
       "A CLI that keeps a codebase's ARCHITECTURE.md up to date on its own. Uses a two-prompt Gemini 1.5 Pro setup along with a static import dependency graph, so it only touches what actually changed. Published to npm, past 250 downloads.",
@@ -109,6 +111,8 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "ObserveKit",
+    summary:
+      "Self-hosted backend observability with an event pipeline built on ClickHouse and Redis.",
     subtitle: "Backend Observability Platform",
     description:
       "Self-hosted observability for backend services. Built on Fastify, with ClickHouse handling the event pipeline, Redis for the hot path, and Postgres (via Drizzle) for everything else. Runs in Docker Compose.",
@@ -128,6 +132,8 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Octo",
+    summary:
+      "Share a live terminal in the browser, with Go, WebSockets, and a tunnel relay.",
     subtitle: "Browser-Based Terminal Sharing",
     description:
       "A Go tool that lets you share a live terminal session through the browser. Runs on PTY under the hood, WebSocket for the connection, and a tunnel relay so it still works outside your local network. Started out as a project called Shelve before I renamed it.",
@@ -140,6 +146,8 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "ChalkAI",
+    summary:
+      "An interactive whiteboard where Gemini responds to what you draw in real time.",
     subtitle: "AI-Powered Whiteboard",
     description:
       "An interactive whiteboard where Gemini 2.5 Flash looks at what you draw and responds in real time.",

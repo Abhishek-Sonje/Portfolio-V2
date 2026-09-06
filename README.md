@@ -32,6 +32,10 @@ The theme follows the system initially and persists explicit changes through nex
 
 The original banner asset remains in `public`, but the new introduction does not render it. Replace the quote and its attribution together in `FOOTER_QUOTE`. No invented articles, testimonials, or extra metrics are added.
 
+Work experience precedes the compact project cards. Full descriptions remain inside each card's Details disclosure. Technology icons are centralized in `src/lib/technologies.ts`; see [the logo inventory](docs/technology-logos.md) for three optional local assets. Continuous page borders define the centered column on desktop.
+
+The theme switch plays a quiet synthesized droplet through Web Audio after a click. The footer sound control persists mute preference. No audio plays on initial load and no sound file needs downloading. Sound parameters live in `src/lib/theme-sound.ts`.
+
 ## Verification scope
 
 Vitest covers theme direction, unavailable/rejected View Transitions, reduced motion, overlapping clicks, keyboard accordion operation, and clipboard success/failure. Production build checks server rendering and TypeScript. A real-browser visual review at desktop/mobile widths in both themes is still required when a browser connection is available; DOM tests do not establish pixel accuracy.

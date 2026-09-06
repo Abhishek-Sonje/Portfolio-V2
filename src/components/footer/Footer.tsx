@@ -1,10 +1,11 @@
 ﻿import { ArrowUp } from "lucide-react";
 import { FOOTER_QUOTE, HERO, PROFILE } from "@/lib/data";
+import { SoundToggle } from "@/components/ui/sound-toggle";
 
 export default function Footer() {
   return (
     <footer className="mx-auto w-full max-w-3xl px-5 pb-8 sm:px-8">
-      <figure className="border-y py-12 text-center sm:py-16">
+      <figure className="-mx-5 border-y px-5 py-10 text-center sm:-mx-8 sm:px-8 sm:py-12">
         <blockquote
           cite={FOOTER_QUOTE.source}
           className="mx-auto max-w-lg font-serif text-xl leading-9 tracking-tight sm:text-2xl sm:leading-10"
@@ -30,7 +31,8 @@ export default function Footer() {
         <p>
           © {new Date().getFullYear()} {HERO.name}
         </p>
-        <div className="flex items-center gap-5">
+        <div className="flex flex-wrap items-center gap-3">
+          <SoundToggle />
           <a
             href={PROFILE.source}
             target="_blank"

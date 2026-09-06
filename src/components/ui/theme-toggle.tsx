@@ -4,6 +4,8 @@ import { useRef, type MouseEvent } from "react";
 import { flushSync } from "react-dom";
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
+import { useSoundPreference } from "@/hooks/use-sound-preference";
+import { playThemeDrop } from "@/lib/theme-sound";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -15,10 +17,12 @@ const THEME_REVEAL_DURATION = 420;
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
+  const { enabled: soundEnabled } = useSoundPreference();
   const transitioning = useRef(false);
 
   async function toggleTheme(event: MouseEvent<HTMLButtonElement>) {
     if (transitioning.current) return;
+    if (soundEnabled) void playThemeDrop();
     const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
     const change = () => setTheme(nextTheme);
     if (

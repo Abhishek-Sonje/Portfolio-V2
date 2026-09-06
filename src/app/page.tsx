@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <ContentColumn as="article">
       <Hero />
-      <Projects />
       <Experience />
+      <Projects />
       <OpenSource />
       <Stack />
       <Contact />

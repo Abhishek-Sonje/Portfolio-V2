@@ -6,7 +6,7 @@ import { SocialLinks } from "@/components/hero/social-links";
 
 export default function Hero() {
   return (
-    <header id="intro" className="scroll-mt-24 pb-12 pt-12 sm:pb-16 sm:pt-16">
+    <header id="intro" className="scroll-mt-24 pb-10 pt-12 sm:pt-14">
       <div className="flex items-center gap-5">
         <Image
           src={HERO.avatarSrc}

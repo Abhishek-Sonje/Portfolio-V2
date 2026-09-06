@@ -2,9 +2,12 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { ThemeToggle } from "./theme-toggle";
 import { TooltipProvider } from "./tooltip";
+import { SoundToggle } from "./sound-toggle";
+import { playThemeDrop } from "@/lib/theme-sound";
 
 const theme = vi.hoisted(() => ({ resolvedTheme: "light", setTheme: vi.fn() }));
 vi.mock("next-themes", () => ({ useTheme: () => theme }));
+vi.mock("@/lib/theme-sound", () => ({ playThemeDrop: vi.fn() }));
 
 function renderToggle() {
   render(
@@ -17,6 +20,8 @@ function renderToggle() {
 
 describe("theme switching", () => {
   beforeEach(() => {
+    localStorage.clear();
+    vi.mocked(playThemeDrop).mockClear();
     theme.resolvedTheme = "light";
     theme.setTheme.mockReset();
     Object.defineProperty(document, "startViewTransition", {
@@ -27,6 +32,34 @@ describe("theme switching", () => {
       configurable: true,
       value: vi.fn(() => ({ matches: false })),
     });
+  });
+
+  it("plays a droplet only on interaction and remembers mute", () => {
+    render(
+      <TooltipProvider>
+        <ThemeToggle />
+        <SoundToggle />
+      </TooltipProvider>,
+    );
+    const toggle = screen.getByRole("button", {
+      name: "Toggle light and dark theme",
+    });
+    const sound = screen.getByRole("button", { name: "Theme sounds" });
+    expect(playThemeDrop).not.toHaveBeenCalled();
+    fireEvent.click(toggle);
+    expect(playThemeDrop).toHaveBeenCalledTimes(1);
+    fireEvent.click(sound);
+    expect(sound).toHaveAttribute("aria-pressed", "false");
+    expect(localStorage.getItem("portfolio-theme-sound")).toBe("off");
+    fireEvent.click(toggle);
+    expect(playThemeDrop).toHaveBeenCalledTimes(1);
+  });
+
+  it("honors a saved mute preference on load", () => {
+    localStorage.setItem("portfolio-theme-sound", "off");
+    fireEvent.click(renderToggle());
+    expect(playThemeDrop).not.toHaveBeenCalled();
+    expect(theme.setTheme).toHaveBeenCalledWith("dark");
   });
 
   it.each([

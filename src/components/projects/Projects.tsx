@@ -1,10 +1,11 @@
 ﻿import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import { PROJECTS, PROFILE } from "@/lib/data";
 import Section from "@/components/layout/Section";
 import { Button } from "@/components/ui/button";
 import type { Project } from "@/types";
+import { TechnologyList } from "@/components/stack/technology-list";
 
 function ProjectCard({ project }: { project: Project }) {
   return (
@@ -24,32 +25,29 @@ function ProjectCard({ project }: { project: Project }) {
           className="object-cover transition-transform duration-300 motion-safe:group-hover:scale-105"
         />
       </a>
-      <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="font-semibold tracking-tight">{project.title}</h3>
-          <span className="text-xs leading-6 text-muted-foreground">
-            {project.category}
-          </span>
-        </div>
-        <p className="mt-1 text-sm text-muted-foreground">{project.subtitle}</p>
-        <p className="mt-4 text-sm leading-6 text-muted-foreground">
-          {project.description}
+      <div className="flex flex-1 flex-col p-4">
+        <h3 className="font-semibold tracking-tight">{project.title}</h3>
+        <p className="mt-2 text-sm leading-6 text-muted-foreground">
+          {project.summary}
         </p>
-        <ul
-          aria-label={`${project.title} technologies`}
-          className="mb-5 mt-4 flex flex-wrap gap-1.5"
-        >
-          {project.stack.map((item) => (
-            <li
-              key={item}
-              className="rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground"
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
-        <div className="mt-auto border-t pt-4">
-          <p className="mb-3 text-xs leading-5 text-link">
+        <details className="group/details mt-1">
+          <summary className="flex w-fit cursor-pointer list-none items-center gap-1 rounded-sm py-2 text-xs text-muted-foreground hover:text-foreground [&::-webkit-details-marker]:hidden">
+            Details
+            <ChevronDown className="size-3 transition-transform group-open/details:rotate-180" />
+          </summary>
+          <p className="pb-3 text-sm leading-6 text-muted-foreground">
+            {project.description}
+          </p>
+        </details>
+        <div className="mb-3 mt-2">
+          <TechnologyList
+            items={project.stack}
+            label={`${project.title} technologies`}
+            compact
+          />
+        </div>
+        <div className="mt-auto border-t pt-3">
+          <p className="mb-2 text-xs leading-5 text-link">
             {project.highlight}
           </p>
           <div className="flex gap-2">

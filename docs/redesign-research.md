@@ -21,3 +21,9 @@ Use shadcn-style owned primitives backed by Radix for buttons, tooltips, and exp
 ## Optional future content
 
 The most useful addition is a short Archie case study: problem, dependency-graph decisions, an actual terminal demonstration, and measured results. A second article on ObserveKit's event pipeline could demonstrate backend reasoning. Add only after real content is supplied; no placeholder blog.
+
+## Follow-up: page frame and density
+
+The user's follow-up prioritizes work experience before projects. The reference [Chanh Dai stylesheet](https://raw.githubusercontent.com/ncdai/chanhdai.com/main/src/styles/globals.css) includes dedicated horizontal screen-line utilities and a quieter semantic line token. This supports treating borders as structure. Here, continuous vertical rails frame the 48rem column and section rules meet them; the lines do not extend beyond the frame. This retains a clear page edge on desktop without introducing full-viewport overflow.
+
+Source inspection showed 64px desktop padding between each section rule and its content. Reduced to 40px (32px mobile) to match the requested compact rhythm. Project cards now use concise summaries and optional expanded descriptions rather than full paragraphs and repeated text tags by default. The technology logo coverage and local-asset instructions are in [technology-logos.md](technology-logos.md).

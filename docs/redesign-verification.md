@@ -5,8 +5,8 @@
 - Production Next.js build: compiled and prerendered `/`; TypeScript passed.
 - ESLint: passed after removing the retired loader and presentation wrappers.
 - Prettier: passed across source and component/test configuration.
-- Vitest: eight tests passed. Covers both theme directions without View Transitions, reduced motion, overlapping theme clicks, rejected transition fallback, keyboard accordion expansion/collapse, and clipboard success/denial.
-- Production HTTP smoke: passed for the homepage, six section targets, four project cards, internal anchor destinations, theme control, quote attribution, Open Graph image metadata, eight rendered image/CSS resources, and the missing-route 404 response.
+- Vitest: ten tests passed. Covers both theme directions without View Transitions, reduced motion, overlapping theme clicks, rejected transition fallback, keyboard accordion expansion/collapse, clipboard success/denial, interaction-only sound, and saved mute preference.
+- Production HTTP smoke checks the homepage, six section targets, work-before-projects ordering, four collapsed project detail disclosures, accessible technology marks, internal anchor destinations, theme and sound controls, quote attribution, Open Graph image metadata, rendered image/CSS resources, and the missing-route 404 response.
 - Impeccable mechanical detector: no findings on the redesigned surface.
 
 ## Visual verification limitation

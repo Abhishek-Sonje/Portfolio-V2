@@ -96,15 +96,17 @@ export default function RootLayout({
             Skip to content
           </a>
           <Analytics />
-          <Navbar />
-          <main
-            id="main-content"
-            tabIndex={-1}
-            className="flex-grow outline-none"
-          >
-            {children}
-          </main>
-          <Footer />
+          <div className="mx-auto flex min-h-screen w-full max-w-3xl flex-col border-x border-border/70">
+            <Navbar />
+            <main
+              id="main-content"
+              tabIndex={-1}
+              className="flex-grow outline-none"
+            >
+              {children}
+            </main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
