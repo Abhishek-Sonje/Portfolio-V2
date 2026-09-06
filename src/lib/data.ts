@@ -16,42 +16,7 @@ export const HERO = {
   bannerSrc: "/banner1.webp",
 };
 
-export const RESUME_URL =
-  "https://drive.google.com/file/d/1givCRD9PDB1sjnno85lKSPRYDkx2lCk3/view?usp=drive_link";
-
-export const PROFILE = {
-  email: "work.abhishek036@gmail.com",
-  github: "https://github.com/Abhishek-Sonje",
-  source: "https://github.com/Abhishek-Sonje/Portfolio-V2",
-  introduction:
-    "I build web products, developer tools, and the systems behind them.",
-  contactHeading: "Have something in mind?",
-  contactDescription:
-    "For a role, a collaboration, or a conversation about something you're building — my inbox is open.",
-};
-
-export const SOCIAL_LINKS = [
-  { label: "GitHub", href: PROFILE.github, icon: "github" },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/abhishek-sonje-83a333209",
-    icon: "linkedin",
-  },
-  { label: "X", href: "https://x.com/Abhi_SDev", icon: "x" },
-] as const;
-
-export const NAVIGATION = [
-  { id: "experience", label: "Work" },
-  { id: "projects", label: "Projects" },
-  { id: "contact", label: "Contact" },
-] as const;
-
-export const FOOTER_QUOTE = {
-  text: "Nothing great was ever achieved without enthusiasm.",
-  author: "Ralph Waldo Emerson",
-  work: "Circles",
-  source: "https://www.gutenberg.org/files/16643/16643-h/16643-h.htm",
-};
+export const RESUME_URL = "https://drive.google.com/file/d/1givCRD9PDB1sjnno85lKSPRYDkx2lCk3/view?usp=drive_link";
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
@@ -68,14 +33,7 @@ export const EXPERIENCE: ExperienceItem[] = [
       "Built auth flows with role-based protected routing",
       "Handled Sanity CMS schema changes",
     ],
-    stack: [
-      "Next.js",
-      "React",
-      "Sanity CMS",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-    ],
+    stack: ["Next.js", "React", "Sanity CMS", "TypeScript", "Tailwind CSS", "Framer Motion"],
     active: false,
     logo: "/logos/DodoxLogo.webp",
   },
@@ -97,8 +55,6 @@ export const EXPERIENCE: ExperienceItem[] = [
 export const PROJECTS: Project[] = [
   {
     title: "Archie CLI",
-    summary:
-      "Architecture docs that stay in sync with your codebase, powered by an import graph and AI.",
     subtitle: "AI-Powered Architecture Docs",
     description:
       "A CLI that keeps a codebase's ARCHITECTURE.md up to date on its own. Uses a two-prompt Gemini 1.5 Pro setup along with a static import dependency graph, so it only touches what actually changed. Published to npm, past 250 downloads.",
@@ -111,19 +67,10 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "ObserveKit",
-    summary:
-      "Self-hosted backend observability with an event pipeline built on ClickHouse and Redis.",
     subtitle: "Backend Observability Platform",
     description:
       "Self-hosted observability for backend services. Built on Fastify, with ClickHouse handling the event pipeline, Redis for the hot path, and Postgres (via Drizzle) for everything else. Runs in Docker Compose.",
-    stack: [
-      "Fastify",
-      "ClickHouse",
-      "Redis",
-      "PostgreSQL",
-      "Drizzle ORM",
-      "Docker",
-    ],
+    stack: ["Fastify", "ClickHouse", "Redis", "PostgreSQL", "Drizzle ORM", "Docker"],
     github: "https://github.com/Abhishek-Sonje/observe-kit",
     highlight: "Full observability stack, self-hosted",
     live: null,
@@ -132,8 +79,6 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "Octo",
-    summary:
-      "Share a live terminal in the browser, with Go, WebSockets, and a tunnel relay.",
     subtitle: "Browser-Based Terminal Sharing",
     description:
       "A Go tool that lets you share a live terminal session through the browser. Runs on PTY under the hood, WebSocket for the connection, and a tunnel relay so it still works outside your local network. Started out as a project called Shelve before I renamed it.",
@@ -146,8 +91,6 @@ export const PROJECTS: Project[] = [
   },
   {
     title: "ChalkAI",
-    summary:
-      "An interactive whiteboard where Gemini responds to what you draw in real time.",
     subtitle: "AI-Powered Whiteboard",
     description:
       "An interactive whiteboard where Gemini 2.5 Flash looks at what you draw and responds in real time.",
@@ -272,14 +215,7 @@ export const STACK_GROUPS: StackGroup[] = [
   },
   {
     label: "Databases & CMS",
-    items: [
-      "PostgreSQL",
-      "Drizzle ORM",
-      "ClickHouse",
-      "Redis",
-      "MongoDB",
-      "Sanity CMS",
-    ],
+    items: ["PostgreSQL", "Drizzle ORM", "ClickHouse", "Redis", "MongoDB", "Sanity CMS"],
   },
   {
     label: "AI & Cloud",
@@ -306,8 +242,7 @@ export const OPEN_SOURCE: OpenSourceContribution[] = [
     role: "Open Source Contributor",
     author: "Abhishek-Sonje",
     mergedPRs: "5 Merged PRs",
-    prUrl:
-      "https://github.com/sugarlabs/musicblocks/pulls?q=is%3Apr+author%3AAbhishek-Sonje+is%3Amerged",
+    prUrl: "https://github.com/sugarlabs/musicblocks/pulls?q=is%3Apr+author%3AAbhishek-Sonje+is%3Amerged",
     stack: ["JavaScript", "HTML5 Canvas", "Web Audio API"],
     logo: "/logos/sugarLabs.svg",
   },
