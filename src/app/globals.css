@@ -1,570 +1,133 @@
-@import "tailwindcss";
-
-/* =============================================
-   WARM SERIF PORTFOLIO — DESIGN TOKENS
-   Source: design (1).md
-   All colors, fonts, spacing, radius, and shadows
-   live here. Components must reference tokens only.
-   ============================================= */
-
+﻿@import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
 :root {
-  /* ── Color palette ── */
-  --color-linen: #e3dfd8;
-  --color-parchment: #f1ede6;
-  --color-ash: #81807d;
-  --color-ink: #4e4a43;
-  --color-near-black: #363737;
-  --color-white: #ffffff;
-  --color-burgundy: #5d0e0f;
-  --color-hairline: #d9d5cf;
-
-  /* ── Semantic color roles ── */
-  --background: var(--color-parchment);
-  --background-secondary: var(--color-linen);
-  --background-tertiary: var(--color-linen);
-
-  --surface: var(--color-linen);
-  --surface-raised: var(--color-white);
-  --surface-overlay: var(--color-linen);
-
-  --border: var(--color-hairline);
-  --border-subtle: var(--color-hairline);
-  --border-strong: var(--color-hairline);
-
-  --foreground: var(--color-ink);
-  --foreground-heading: var(--color-near-black);
-  --foreground-secondary: var(--color-ash);
-  --foreground-tertiary: var(--color-ash);
-
-  --accent: var(--color-burgundy);
-  --accent-foreground: var(--color-white);
-
-  /* ── Typography — families ── */
-  --font-serif: var(--font-lora), "Lora", serif;
-  --font-ui: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-cursive: var(--font-caveat), cursive;
-
-  /* ── Typography — post-title (hero name) ── */
-  --text-post-title-size: 24px;
-  --text-post-title-weight: 600;
-  --text-post-title-leading: 30px;
-
-  /* ── Typography — section-heading ── */
-  --text-section-heading-size: 26px;
-  --text-section-heading-weight: 600;
-  --text-section-heading-leading: 32px;
-
-  /* ── Typography — subtitle-deck (tagline) ── */
-  --text-subtitle-deck-size: 16px;
-  --text-subtitle-deck-weight: 400;
-  --text-subtitle-deck-leading: 25px;
-
-  /* ── Typography — article-body ── */
-  --text-article-body-size: 16px;
-  --text-article-body-weight: 400;
-  --text-article-body-leading: 26px;
-
-  /* ── Typography — bold-body ── */
-  --text-bold-body-size: 18px;
-  --text-bold-body-weight: 700;
-  --text-bold-body-leading: 28px;
-
-  /* ── Typography — ui-label (nav, buttons) ── */
-  --text-ui-label-size: 15px;
-  --text-ui-label-weight: 600;
-  --text-ui-label-leading: 20px;
-
-  /* ── Typography — meta-byline (dates, company) ── */
-  --text-meta-byline-size: 13px;
-  --text-meta-byline-weight: 400;
-  --text-meta-byline-leading: 19px;
-
-  /* ── Typography — caption-tag (tech pills) ── */
-  --text-caption-tag-size: 12px;
-  --text-caption-tag-weight: 400;
-  --text-caption-tag-leading: 18px;
-
-  /* ── Spacing (4px base grid) ── */
-  --space-1: 4px;
-  --space-2: 6px;
-  --space-3: 8px;
-  --space-4: 12px;
-  --space-5: 16px;
-  --space-6: 20px;
-  --space-7: 24px;
-  --space-8: 32px;
-  --space-9: 48px;
-  --space-10: 50px;
-
-  /* Responsive page rhythm */
-  --content-gutter: 18px;
-  --section-divider-space: 28px;
-  --section-heading-space: 24px;
-
-  /* ── Border radius ── */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 20px;
-  --radius-pill: 9999px;
-
-  /* ── Shadows ── */
-  --shadow-subtle: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
-  --shadow-inset-button: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.2);
-
-  /* ── Layout ── */
-  --content-max-width: 680px;
-  --nav-height: 3.5rem;
-
-  /* ── Hero ── */
-  --hero-avatar-size: 128px;
-  --hero-avatar-size-sm: 96px;
-  --hero-avatar-ring: 3px;
-  --hero-avatar-overlap: calc(var(--hero-avatar-size) / 2);
-  --hero-avatar-overlap-sm: calc(var(--hero-avatar-size-sm) / 2);
-  --hero-banner-ratio: 3 / 1;
-
-  /* ── Focus & selection (derived from palette) ── */
-  --focus-ring: var(--color-burgundy);
-  --selection-bg: color-mix(in srgb, var(--color-burgundy) 18%, transparent);
+  color-scheme: light;
+  --background: oklch(0.99 0.002 90);
+  --foreground: oklch(0.23 0.005 260);
+  --card: oklch(1 0 0);
+  --muted: oklch(0.963 0.003 90);
+  --muted-foreground: oklch(0.49 0.008 260);
+  --primary: oklch(0.26 0.006 260);
+  --primary-foreground: oklch(0.99 0 0);
+  --accent: oklch(0.945 0.004 90);
+  --accent-foreground: oklch(0.23 0.005 260);
+  --border: oklch(0.9 0.004 90);
+  --ring: oklch(0.49 0.07 165);
+  --link: oklch(0.4 0.07 165);
+  --radius: 0.75rem;
 }
-
-@media (min-width: 640px) {
-  :root {
-    --text-post-title-size: 28px;
-    --text-post-title-leading: 34px;
-    --text-subtitle-deck-size: 17px;
-    --text-subtitle-deck-leading: 27px;
-    --text-article-body-size: 17px;
-    --text-article-body-leading: 29px;
-    --content-gutter: 24px;
-    --section-divider-space: 44px;
-    --section-heading-space: 28px;
-  }
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.165 0.004 260);
+  --foreground: oklch(0.94 0.003 90);
+  --card: oklch(0.2 0.004 260);
+  --muted: oklch(0.225 0.004 260);
+  --muted-foreground: oklch(0.7 0.007 260);
+  --primary: oklch(0.93 0.003 90);
+  --primary-foreground: oklch(0.19 0.004 260);
+  --accent: oklch(0.265 0.006 260);
+  --accent-foreground: oklch(0.94 0.003 90);
+  --border: oklch(0.3 0.005 260);
+  --ring: oklch(0.75 0.08 165);
+  --link: oklch(0.77 0.08 165);
 }
-
-/* =============================================
-   TAILWIND THEME BRIDGE
-   Exposes tokens as Tailwind utilities
-   ============================================= */
 @theme inline {
-  /* Colors — palette */
-  --color-linen: var(--color-linen);
-  --color-parchment: var(--color-parchment);
-  --color-ash: var(--color-ash);
-  --color-ink: var(--color-ink);
-  --color-near-black: var(--color-near-black);
-  --color-white: var(--color-white);
-  --color-burgundy: var(--color-burgundy);
-  --color-hairline: var(--color-hairline);
-
-  /* Colors — semantic (backward-compatible aliases) */
   --color-background: var(--background);
-  --color-background-secondary: var(--background-secondary);
-  --color-background-tertiary: var(--background-tertiary);
-  --color-surface: var(--surface);
-  --color-surface-raised: var(--surface-raised);
-  --color-surface-overlay: var(--surface-overlay);
-  --color-border: var(--border);
-  --color-border-subtle: var(--border-subtle);
-  --color-border-strong: var(--border-strong);
   --color-foreground: var(--foreground);
-  --color-foreground-heading: var(--foreground-heading);
-  --color-foreground-secondary: var(--foreground-secondary);
-  --color-foreground-tertiary: var(--foreground-tertiary);
+  --color-card: var(--card);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-
-  /* Fonts */
-  --font-serif: var(--font-serif);
-  --font-ui: var(--font-ui);
-  --font-cursive: var(--font-cursive);
-
-  /* Spacing */
-  --spacing-1: var(--space-1);
-  --spacing-2: var(--space-2);
-  --spacing-3: var(--space-3);
-  --spacing-4: var(--space-4);
-  --spacing-5: var(--space-5);
-  --spacing-6: var(--space-6);
-  --spacing-7: var(--space-7);
-  --spacing-8: var(--space-8);
-  --spacing-9: var(--space-9);
-  --spacing-10: var(--space-10);
-
-  /* Radius */
-  --radius-sm: var(--radius-sm);
-  --radius-md: var(--radius-md);
-  --radius-lg: var(--radius-lg);
-  --radius-pill: var(--radius-pill);
-
-  /* Shadows */
-  --shadow-subtle: var(--shadow-subtle);
-  --shadow-inset-button: var(--shadow-inset-button);
-}
-
-/* =============================================
-   TYPOGRAPHY UTILITY CLASSES
-   Use these in components instead of ad-hoc sizes
-   ============================================= */
-@layer utilities {
-  .type-post-title {
-    font-family: var(--font-serif);
-    font-size: var(--text-post-title-size);
-    font-weight: var(--text-post-title-weight);
-    line-height: var(--text-post-title-leading);
-    color: var(--foreground-heading);
-  }
-
-  .type-section-heading {
-    font-family: var(--font-serif);
-    font-size: var(--text-section-heading-size);
-    font-weight: var(--text-section-heading-weight);
-    line-height: var(--text-section-heading-leading);
-    color: var(--foreground-heading);
-  }
-
-  .type-subtitle-deck {
-    font-family: var(--font-serif);
-    font-size: var(--text-subtitle-deck-size);
-    font-weight: var(--text-subtitle-deck-weight);
-    line-height: var(--text-subtitle-deck-leading);
-    color: var(--foreground-secondary);
-  }
-
-  .type-article-body {
-    font-family: var(--font-serif);
-    font-size: var(--text-article-body-size);
-    font-weight: var(--text-article-body-weight);
-    line-height: var(--text-article-body-leading);
-    color: var(--foreground);
-  }
-
-  .type-bold-body {
-    font-family: var(--font-serif);
-    font-size: var(--text-bold-body-size);
-    font-weight: var(--text-bold-body-weight);
-    line-height: var(--text-bold-body-leading);
-    color: var(--foreground);
-  }
-
-  .type-ui-label {
-    font-family: var(--font-ui);
-    font-size: var(--text-ui-label-size);
-    font-weight: var(--text-ui-label-weight);
-    line-height: var(--text-ui-label-leading);
-  }
-
-  .type-meta-byline {
-    font-family: var(--font-ui);
-    font-size: var(--text-meta-byline-size);
-    font-weight: var(--text-meta-byline-weight);
-    line-height: var(--text-meta-byline-leading);
-    color: var(--foreground-secondary);
-  }
-
-  .type-caption-tag {
-    font-family: var(--font-ui);
-    font-size: var(--text-caption-tag-size);
-    font-weight: var(--text-caption-tag-weight);
-    line-height: var(--text-caption-tag-leading);
-  }
-
-  /* ── Layout utilities ── */
-  .content-column {
-    width: 100%;
-    max-width: var(--content-max-width);
-    margin-inline: auto;
-    padding-inline: var(--content-gutter);
-  }
-
-  .page-sections {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    padding-block: 0;
-  }
-
-  .hero-block {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: var(--space-8);
-  }
-
-  .hero-banner {
-    position: relative;
-    width: calc(100% + 2 * var(--content-gutter));
-    margin-inline: calc(-1 * var(--content-gutter));
-    aspect-ratio: var(--hero-banner-ratio);
-    min-height: 7.5rem;
-    max-height: 12.5rem;
-    background-color: var(--color-linen);
-    overflow: hidden;
-    /* border-bottom: 2px dashed var(--border-subtle); */
-  }
-
-  .hero-banner-image {
-    object-fit: cover;
-  }
-
-  .hero-identity {
-    display: flex;
-    flex-direction: row;
-    align-items:end;
-    gap: var(--space-5);
-    padding-inline: var(--space-1);
-  }
-
-  .hero-avatar {
-    position: relative;
-    flex-shrink: 0;
-    width: var(--hero-avatar-size-sm);
-    height: var(--hero-avatar-size-sm);
-    border-radius: var(--radius-pill);
-    border: var(--hero-avatar-ring) solid var(--color-burgundy);
-    overflow: hidden;
-    background-color: var(--color-parchment);
-    margin-top: calc(-1 * var(--hero-avatar-overlap-sm));
-  }
-
-  .hero-avatar-image {
-    object-fit: cover;
-    object-position: 50% 20%;
-  }
-
-  .hero-name-block {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-    min-width: 0;
-  }
-
-  @media (min-width: 640px) {
-    .hero-identity {
-      gap: var(--space-6);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-link: var(--link);
+  --font-sans: var(--font-geist), sans-serif;
+  --font-serif: var(--font-lora), serif;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 0.25rem);
+  --radius-sm: calc(var(--radius) - 0.5rem);
+  --animate-accordion-down: accordion-down 200ms ease-out;
+  --animate-accordion-up: accordion-up 200ms ease-out;
+  @keyframes accordion-down {
+    from {
+      height: 0;
     }
-
-    .hero-avatar {
-      width: var(--hero-avatar-size);
-      height: var(--hero-avatar-size);
-      /* margin-top: calc(-1 * var(--hero-avatar-overlap)); */
+    to {
+      height: var(--radix-accordion-content-height);
     }
   }
-
-  .bio-block {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-6);
-    padding-block: var(--space-3);
-  }
-
-    .section-divider {
-      height: 2px;
-      /* The thickness of your divider line */
-      margin-block: var(--section-divider-space);
-  
-      /* 1. Remove the old border */
-      border: none;
-  
-      /* 2. Set the color using your variable */
-      background-image: linear-gradient(to right, var(--color-hairline) 70%, rgba(255, 255, 255, 0) 0%);
-  
-      /* 3. Position the line */
-      background-position: bottom;
-  
-      /* 4. Set your custom dash sizes (Width, Height) */
-      /* Change '24px' to make dashes longer or shorter */
-      background-size: 24px 2px;
-  
-      /* 5. Repeat the pattern across the page */
-      background-repeat: repeat-x;
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
     }
-
-  .primary-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-burgundy);
-    color: var(--color-white) !important;
-    font-family: var(--font-ui);
-    font-size: var(--text-ui-label-size);
-    font-weight: var(--text-ui-label-weight);
-    line-height: var(--text-ui-label-leading);
-    padding: var(--space-4) var(--space-7);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-inset-button);
-    transition: background-color 150ms ease, transform 150ms ease;
-    cursor: pointer;
-  }
-
-  .primary-cta:hover {
-    background-color: color-mix(in srgb, var(--color-burgundy) 85%, black);
-  }
-
-  .tech-pill {
-    display: inline-flex;
-    align-items: center;
-    background-color: var(--color-linen);
-    color: var(--color-ink);
-    font-family: var(--font-ui);
-    font-size: var(--text-caption-tag-size);
-    font-weight: var(--text-caption-tag-weight);
-    line-height: var(--text-caption-tag-leading);
-    padding: var(--space-1) var(--space-4);
-    border-radius: var(--radius-pill);
-    white-space: nowrap;
-  }
-
-  .project-card {
-    background-color: var(--color-white);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-subtle);
-    padding: var(--space-5);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    cursor: pointer;
-    transition: transform 150ms ease, box-shadow 150ms ease;
-  }
-
-  .project-card:hover {
-    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
-    transform: translateY(-2px);
-  }
-
-  .project-description-truncated {
-    font-family: var(--font-serif);
-    font-size: 15px;
-    line-height: 24px;
-    color: var(--foreground);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .projects-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
-  }
-
-  @media (min-width: 640px) {
-    .projects-list {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-6);
+    to {
+      height: 0;
     }
-  }
-
-  .section-title-container {
-    border-left: 1px solid var(--color-burgundy);
-    padding-left: var(--space-4);
-    margin-bottom: var(--section-heading-space);
-  }
-
-  .footer-link {
-    color: var(--color-ink) !important;
-    text-decoration: none;
-    transition: color 150ms ease;
-  }
-
-  .footer-link:hover {
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-decoration-color: var(--color-burgundy);
-    text-underline-offset: 4px;
   }
 }
-
-/* =============================================
-   BASE STYLES
-   ============================================= */
 @layer base {
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
+  * {
+    @apply border-border;
   }
-
   html {
     scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
+    scrollbar-color: var(--border) var(--background);
   }
-
   body {
-    background-color: var(--background);
-    color: var(--foreground);
-    font-family: var(--font-serif);
-    font-size: var(--text-article-body-size);
-    font-weight: var(--text-article-body-weight);
-    line-height: var(--text-article-body-leading);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
+    @apply bg-background font-sans text-foreground antialiased;
   }
-
+  ::selection {
+    background: var(--foreground);
+    color: var(--background);
+  }
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  a {
+    text-underline-offset: 4px;
+  }
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 4px;
+  }
   h1,
   h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--font-serif);
-    color: var(--foreground-heading);
-    letter-spacing: normal;
-  }
-
-  a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: var(--accent);
-  }
-
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: var(--border-strong);
-    border-radius: var(--radius-pill);
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--foreground-secondary);
-  }
-
-  ::selection {
-    background: var(--selection-bg);
-    color: var(--foreground-heading);
-  }
-
-  :focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 3px;
-    border-radius: var(--radius-sm);
+  h3 {
+    text-wrap: balance;
   }
 }
-
-/* =============================================
-   REDUCED MOTION
-   ============================================= */
+/* The incoming theme is revealed from the theme control. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
+}
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
-  }
-
-  html {
-    scroll-behavior: auto;
+    animation-iteration-count: 1 !important;
   }
 }
