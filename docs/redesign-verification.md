@@ -16,3 +16,7 @@ The browser runtime returned `No browser is available`; its supported discovery 
 ## Deliberate choices
 
 The banner remains in the asset directory but is omitted from the page. Original project descriptions and work history remain available. No activity heatmap or blog is added without meaningful data. Rare UI's scroll tracking is adapted into a quiet progress line, sharing the installed Motion runtime; source attribution is in THIRD_PARTY_NOTICES.md. The footer quote is verified against Emerson's *Circles* and links to the original text.
+
+## Existing dependency advisories
+
+`npm audit` on 2026-09-06 reports three high-severity affected packages in the existing Next.js 16.2.1 dependency tree: Next.js itself, its nested PostCSS, and Sharp. The audit recommends Next.js 16.3.4. This redesign retains the existing framework version; an upgrade and corresponding regression review remain outstanding. No force/legacy-peer-deps audit fixes were applied. Representative advisories: [Next.js](https://github.com/advisories/GHSA-m99w-x7hq-7vfj), [PostCSS](https://github.com/advisories/GHSA-r28c-9q8g-f849), [Sharp](https://github.com/advisories/GHSA-f88m-g3jw-g9cj).
