@@ -1,33 +1,28 @@
-import { STACK_GROUPS } from "@/lib/data";
+﻿import { STACK_GROUPS } from "@/lib/data";
+import Section from "@/components/layout/Section";
 
 export default function Stack() {
   return (
-    <section
+    <Section
       id="stack"
-      className="flex flex-col w-full bg-background relative scroll-mt-[calc(var(--nav-height)+var(--space-5))]"
+      title="Tools I work with"
+      description="The stack changes. The curiosity stays."
     >
-      <div className="section-title-container">
-        <h2 className="type-section-heading">Tech Stack</h2>
-      </div>
-      <div className="flex flex-col gap-5 sm:gap-6">
-        {STACK_GROUPS.map((group, idx) => (
+      <dl className="divide-y divide-border">
+        {STACK_GROUPS.map((group) => (
           <div
-            key={idx}
-            className="flex flex-col md:flex-row md:items-baseline gap-2.5 md:gap-6"
+            key={group.label}
+            className="grid gap-3 py-4 first:pt-0 last:pb-0 sm:grid-cols-4"
           >
-            <span className="type-meta-byline text-foreground-secondary min-w-[120px] shrink-0 font-medium">
-              {group.label}
-            </span>
-            <div className="flex flex-wrap gap-2">
-              {group.items.map((item, itemIdx) => (
-                <span key={itemIdx} className="tech-pill">
-                  {item}
-                </span>
+            <dt className="text-sm font-medium">{group.label}</dt>
+            <dd className="flex flex-wrap gap-x-4 gap-y-2 text-sm leading-6 text-muted-foreground sm:col-span-3">
+              {group.items.map((item) => (
+                <span key={item}>{item}</span>
               ))}
-            </div>
+            </dd>
           </div>
         ))}
-      </div>
-    </section>
+      </dl>
+    </Section>
   );
 }

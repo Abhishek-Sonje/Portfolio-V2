@@ -16,7 +16,42 @@ export const HERO = {
   bannerSrc: "/banner1.webp",
 };
 
-export const RESUME_URL = "https://drive.google.com/file/d/1givCRD9PDB1sjnno85lKSPRYDkx2lCk3/view?usp=drive_link";
+export const RESUME_URL =
+  "https://drive.google.com/file/d/1givCRD9PDB1sjnno85lKSPRYDkx2lCk3/view?usp=drive_link";
+
+export const PROFILE = {
+  email: "work.abhishek036@gmail.com",
+  github: "https://github.com/Abhishek-Sonje",
+  source: "https://github.com/Abhishek-Sonje/Portfolio-V2",
+  introduction:
+    "I build web products, developer tools, and the systems behind them.",
+  contactHeading: "Have something in mind?",
+  contactDescription:
+    "For a role, a collaboration, or a conversation about something you're building — my inbox is open.",
+};
+
+export const SOCIAL_LINKS = [
+  { label: "GitHub", href: PROFILE.github, icon: "github" },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/abhishek-sonje-83a333209",
+    icon: "linkedin",
+  },
+  { label: "X", href: "https://x.com/Abhi_SDev", icon: "x" },
+] as const;
+
+export const NAVIGATION = [
+  { id: "projects", label: "Projects" },
+  { id: "experience", label: "Experience" },
+  { id: "contact", label: "Contact" },
+] as const;
+
+export const FOOTER_QUOTE = {
+  text: "Nothing great was ever achieved without enthusiasm.",
+  author: "Ralph Waldo Emerson",
+  work: "Circles",
+  source: "https://www.gutenberg.org/files/16643/16643-h/16643-h.htm",
+};
 
 export const EXPERIENCE: ExperienceItem[] = [
   {
@@ -33,7 +68,14 @@ export const EXPERIENCE: ExperienceItem[] = [
       "Built auth flows with role-based protected routing",
       "Handled Sanity CMS schema changes",
     ],
-    stack: ["Next.js", "React", "Sanity CMS", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    stack: [
+      "Next.js",
+      "React",
+      "Sanity CMS",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+    ],
     active: false,
     logo: "/logos/DodoxLogo.webp",
   },
@@ -70,7 +112,14 @@ export const PROJECTS: Project[] = [
     subtitle: "Backend Observability Platform",
     description:
       "Self-hosted observability for backend services. Built on Fastify, with ClickHouse handling the event pipeline, Redis for the hot path, and Postgres (via Drizzle) for everything else. Runs in Docker Compose.",
-    stack: ["Fastify", "ClickHouse", "Redis", "PostgreSQL", "Drizzle ORM", "Docker"],
+    stack: [
+      "Fastify",
+      "ClickHouse",
+      "Redis",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "Docker",
+    ],
     github: "https://github.com/Abhishek-Sonje/observe-kit",
     highlight: "Full observability stack, self-hosted",
     live: null,
@@ -215,7 +264,14 @@ export const STACK_GROUPS: StackGroup[] = [
   },
   {
     label: "Databases & CMS",
-    items: ["PostgreSQL", "Drizzle ORM", "ClickHouse", "Redis", "MongoDB", "Sanity CMS"],
+    items: [
+      "PostgreSQL",
+      "Drizzle ORM",
+      "ClickHouse",
+      "Redis",
+      "MongoDB",
+      "Sanity CMS",
+    ],
   },
   {
     label: "AI & Cloud",
@@ -242,7 +298,8 @@ export const OPEN_SOURCE: OpenSourceContribution[] = [
     role: "Open Source Contributor",
     author: "Abhishek-Sonje",
     mergedPRs: "5 Merged PRs",
-    prUrl: "https://github.com/sugarlabs/musicblocks/pulls?q=is%3Apr+author%3AAbhishek-Sonje+is%3Amerged",
+    prUrl:
+      "https://github.com/sugarlabs/musicblocks/pulls?q=is%3Apr+author%3AAbhishek-Sonje+is%3Amerged",
     stack: ["JavaScript", "HTML5 Canvas", "Web Audio API"],
     logo: "/logos/sugarLabs.svg",
   },

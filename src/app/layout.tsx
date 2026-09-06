@@ -3,8 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
-import PageLoader from "@/components/layout/PageLoader";
-import { Lora, Caveat } from "next/font/google";
+import { Lora, Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 
 const lora = Lora({
@@ -14,10 +13,9 @@ const lora = Lora({
   display: "swap",
 });
 
-const caveat = Caveat({
+const geist = Geist({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-caveat",
+  variable: "--font-geist",
   display: "swap",
 });
 
@@ -70,7 +68,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/logo.svg", type: "image/svg+xml" }, 
+      { url: "/logo.svg", type: "image/svg+xml" },
       { url: "/logo.png" }, // fallback for older browsers
     ],
     shortcut: "/logo.png",
@@ -84,13 +82,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${lora.variable} ${caveat.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${lora.variable} ${geist.variable}`}
+    >
       <body className="min-h-screen flex flex-col antialiased">
         <ThemeProvider>
-          <PageLoader />
-          <Analytics/>
+          <a
+            href="#main-content"
+            className="fixed left-4 top-4 z-50 -translate-y-24 rounded-lg bg-primary px-4 py-3 text-primary-foreground focus:translate-y-0"
+          >
+            Skip to content
+          </a>
+          <Analytics />
           <Navbar />
-          <main className="flex-grow flex flex-col pt-[var(--nav-height)]">
+          <main
+            id="main-content"
+            tabIndex={-1}
+            className="flex-grow outline-none"
+          >
             {children}
           </main>
           <Footer />

@@ -1,9 +1,17 @@
 "use client";
 
-/**
- * Single-theme wrapper. The Warm Serif design uses one parchment palette —
- * no dark/light switching. Kept as a client boundary for future use.
- */
+import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { TooltipProvider } from "@/components/ui/tooltip";
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <NextThemesProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <TooltipProvider delayDuration={250}>{children}</TooltipProvider>
+    </NextThemesProvider>
+  );
 }

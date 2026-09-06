@@ -63,4 +63,3 @@ export type OpenSourceContribution = {
   logo?: string;
   active?: boolean;
 };
-
