@@ -1,55 +1,63 @@
-﻿import { ArrowUp } from "lucide-react";
-import { FOOTER_QUOTE, HERO, PROFILE } from "@/lib/data";
-import { SoundToggle } from "@/components/ui/sound-toggle";
+"use client";
+
+import { RESUME_URL } from "@/lib/data";
+import ScrollReveal from "@/components/layout/ScrollReveal";
 
 export default function Footer() {
   return (
-    <footer className="mx-auto w-full max-w-3xl px-5 pb-8 sm:px-8">
-      <figure className="-mx-5 border-y px-5 py-10 text-center sm:-mx-8 sm:px-8 sm:py-12">
-        <blockquote
-          cite={FOOTER_QUOTE.source}
-          className="mx-auto max-w-lg font-serif text-xl leading-9 tracking-tight sm:text-2xl sm:leading-10"
-        >
-          “{FOOTER_QUOTE.text}”
-        </blockquote>
-        <figcaption className="mt-5 text-xs text-muted-foreground">
-          <a
-            href={FOOTER_QUOTE.source}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition-colors hover:text-foreground"
-          >
-            {FOOTER_QUOTE.author}
-            <span className="mx-2" aria-hidden="true">
-              ·
-            </span>
-            <cite>{FOOTER_QUOTE.work}</cite>
-          </a>
-        </figcaption>
-      </figure>
-      <div className="flex flex-wrap items-center justify-between gap-4 pt-6 text-xs text-muted-foreground">
-        <p>
-          © {new Date().getFullYear()} {HERO.name}
-        </p>
-        <div className="flex flex-wrap items-center gap-3">
-          <SoundToggle />
-          <a
-            href={PROFILE.source}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="py-2 hover:text-foreground"
-          >
-            View source
-          </a>
-          <a
-            href="#intro"
-            className="inline-flex items-center gap-1.5 py-2 hover:text-foreground"
-          >
-            Back to top
-            <ArrowUp className="size-3.5" />
-          </a>
+    <ScrollReveal>
+      <footer className="w-full max-w-[var(--content-max-width)] mx-auto px-[var(--content-gutter)] pt-4 pb-16 sm:pb-20 flex flex-col items-center justify-center text-center">
+        {/* Signature */}
+        <span className="font-cursive text-[#363737] text-[48px] md:text-[56px] select-none leading-none">
+          Abhishek
+        </span>
+
+        {/* Details */}
+        <div className="flex flex-col gap-[var(--space-3)] mt-[var(--space-3)]">
+          <p className="type-meta-byline text-[#81807d]">
+            Built by yours truly. Check out the{" "}
+            <a
+              href="https://github.com/Abhishek-Sonje/Portfolio-V2"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link inline"
+            >
+              code
+            </a>{" "}
+            and see how it came together.
+          </p>
+          <p className="type-meta-byline text-[#81807d]">
+            Find me on{" "}
+            <a
+              href="https://github.com/Abhishek-Sonje"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link inline"
+            >
+              GitHub
+            </a>
+            ,{" "}
+            <a
+              href="https://www.linkedin.com/in/abhishek-sonje-83a333209"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link inline"
+            >
+              LinkedIn
+            </a>
+            , and{" "}
+            <a
+              href="https://x.com/Abhi_SDev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link inline"
+            >
+              X
+            </a>
+            .
+          </p>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </ScrollReveal>
   );
 }

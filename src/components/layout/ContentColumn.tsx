@@ -1,20 +1,22 @@
-﻿import { type ReactNode } from "react";
-import { cn } from "@/lib/utils";
+import { ReactNode } from "react";
 
-export default function ContentColumn({
-  children,
-  className,
-  as: Component = "div",
-}: {
+type ContentColumnProps = {
   children: ReactNode;
   className?: string;
-  as?: "div" | "article";
-}) {
+  as?: "div" | "main" | "section" | "article";
+};
+
+/**
+ * Centered editorial column — max-width from --content-max-width.
+ */
+export default function ContentColumn({
+  children,
+  className = "",
+  as: Tag = "div",
+}: ContentColumnProps) {
   return (
-    <Component
-      className={cn("mx-auto w-full max-w-3xl px-5 sm:px-8", className)}
-    >
+    <Tag className={`content-column w-full ${className}`.trim()}>
       {children}
-    </Component>
+    </Tag>
   );
 }
