@@ -1,39 +1,25 @@
-"use client";
+﻿"use client";
 
-import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
+import { useState } from "react";
 import { SOCIAL_LINKS } from "@/lib/data";
-import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-
-const icons = { github: FaGithub, linkedin: FaLinkedinIn, x: FaXTwitter };
+import { SocialProfilePreview } from "@/components/hero/social-profile-preview";
 
 export function SocialLinks() {
+  const [openProfile, setOpenProfile] = useState<string | null>(null);
   return (
     <div className="flex items-center gap-0.5">
-      {SOCIAL_LINKS.map((social) => {
-        const Icon = icons[social.icon];
-        return (
-          <Tooltip key={social.label}>
-            <TooltipTrigger asChild>
-              <Button asChild variant="ghost" size="icon">
-                <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                >
-                  <Icon />
-                </a>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent>{social.label}</TooltipContent>
-          </Tooltip>
-        );
-      })}
+      {SOCIAL_LINKS.map((social) => (
+        <SocialProfilePreview
+          key={social.icon}
+          social={social}
+          open={openProfile === social.icon}
+          onOpenChange={(open) =>
+            setOpenProfile((current) =>
+              open ? social.icon : current === social.icon ? null : current,
+            )
+          }
+        />
+      ))}
     </div>
   );
 }

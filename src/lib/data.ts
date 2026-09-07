@@ -31,13 +31,29 @@ export const PROFILE = {
 };
 
 export const SOCIAL_LINKS = [
-  { label: "GitHub", href: PROFILE.github, icon: "github" },
+  {
+    label: "GitHub",
+    href: PROFILE.github,
+    icon: "github",
+    handle: "Abhishek-Sonje",
+    description:
+      "Developer tools, backend systems, and open-source contributions.",
+  },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/abhishek-sonje-83a333209",
     icon: "linkedin",
+    handle: HERO.tagline,
+    description:
+      "Full-stack experience across client products, interfaces, and backend systems.",
   },
-  { label: "X", href: "https://x.com/Abhi_SDev", icon: "x" },
+  {
+    label: "X",
+    href: "https://x.com/Abhi_SDev",
+    icon: "x",
+    handle: "@Abhi_SDev",
+    description: BIO,
+  },
 ] as const;
 
 export const NAVIGATION = [
