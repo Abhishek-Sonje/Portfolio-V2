@@ -44,15 +44,14 @@ export const SOCIAL_LINKS = [
     href: "https://www.linkedin.com/in/abhishek-sonje-83a333209",
     icon: "linkedin",
     handle: HERO.tagline,
-    description:
-      "Full-stack experience across client products, interfaces, and backend systems.",
+    description: "Full-Stack Developer | DSA | Solving Problems",
   },
   {
     label: "X",
     href: "https://x.com/Abhi_SDev",
     icon: "x",
     handle: "@Abhi_SDev",
-    description: BIO,
+    description: "Teaching Claude how to code",
   },
 ] as const;
 
