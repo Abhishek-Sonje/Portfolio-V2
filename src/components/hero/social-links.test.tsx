@@ -4,54 +4,64 @@ import { describe, expect, it } from "vitest";
 import { SocialLinks } from "./social-links";
 
 describe("social profile previews", () => {
-  it("opens on hover, stays open over the card, and dismisses with Escape", async () => {
+  it("opens a read-only card on hover and dismisses it with Escape", async () => {
     const user = userEvent.setup();
     render(<SocialLinks />);
-    await user.hover(
-      screen.getByRole("button", { name: "GitHub profile preview" }),
-    );
+    await user.hover(screen.getByRole("link", { name: "Open GitHub profile" }));
     const card = await screen.findByRole("dialog");
     expect(card).toHaveAccessibleName("Abhishek Sonje on GitHub");
     await user.hover(card);
-    expect(
-      within(card).getByRole("link", { name: "View GitHub profile" }),
-    ).toHaveAttribute("href", "https://github.com/Abhishek-Sonje");
+    expect(within(card).queryByRole("link")).not.toBeInTheDocument();
+    expect(within(card).queryByRole("button")).not.toBeInTheDocument();
     await user.keyboard("{Escape}");
     await waitFor(() =>
       expect(screen.queryByRole("dialog")).not.toBeInTheDocument(),
     );
   });
 
-  it("supports click/tap and only shows one profile at a time", async () => {
+  it("makes every icon the direct outbound profile link", () => {
+    render(<SocialLinks />);
+    expect(
+      screen.getByRole("link", { name: "Open GitHub profile" }),
+    ).toHaveAttribute("href", "https://github.com/Abhishek-Sonje");
+    expect(
+      screen.getByRole("link", { name: "Open LinkedIn profile" }),
+    ).toHaveAttribute(
+      "href",
+      "https://www.linkedin.com/in/abhishek-sonje-83a333209",
+    );
+    expect(
+      screen.getByRole("link", { name: "Open X profile" }),
+    ).toHaveAttribute("href", "https://x.com/Abhi_SDev");
+  });
+
+  it("only shows one hover preview at a time", async () => {
     const user = userEvent.setup();
     render(<SocialLinks />);
-    await user.click(screen.getByRole("button", { name: "X profile preview" }));
-    expect(await screen.findByRole("dialog")).toHaveAccessibleName("Abhishek Sonje on X");
-    await user.click(
-      screen.getByRole("button", { name: "LinkedIn profile preview" }),
+    await user.hover(screen.getByRole("link", { name: "Open X profile" }));
+    expect(await screen.findByRole("dialog")).toHaveAccessibleName(
+      "Abhishek Sonje on X",
+    );
+    await user.hover(
+      screen.getByRole("link", { name: "Open LinkedIn profile" }),
     );
     const card = await screen.findByRole("dialog", {
       name: "Abhishek Sonje on LinkedIn",
     });
     expect(screen.getAllByRole("dialog")).toHaveLength(1);
-    expect(
-      within(card).getByRole("link", { name: "View profile" }),
-    ).toHaveAttribute(
-      "href",
-      "https://www.linkedin.com/in/abhishek-sonje-83a333209",
-    );
+    expect(within(card).queryByText(/view profile/i)).not.toBeInTheDocument();
   });
 
-  it("opens from the keyboard and restores trigger focus after Escape", async () => {
+  it("opens from keyboard focus while preserving link behavior", async () => {
     const user = userEvent.setup();
     render(<SocialLinks />);
     await user.tab();
-    const trigger = screen.getByRole("button", {
-      name: "GitHub profile preview",
+    const trigger = screen.getByRole("link", {
+      name: "Open GitHub profile",
     });
     expect(trigger).toHaveFocus();
-    await user.keyboard("{Enter}");
     expect(await screen.findByRole("dialog")).toBeInTheDocument();
+    expect(trigger).toHaveAttribute("target", "_blank");
     await user.keyboard("{Escape}");
     await waitFor(() => expect(trigger).toHaveFocus());
   });

@@ -30,6 +30,20 @@ export const PROFILE = {
     "For a role, a collaboration, or a conversation about something you're building — my inbox is open.",
 };
 
+type SocialLink = {
+  label: string;
+  href: string;
+  icon: "github" | "linkedin" | "x";
+  handle: string;
+  description: string;
+  preview: {
+    avatarSrc: string;
+    bannerSrc: string | null;
+    bannerAlt: string;
+    bannerPosition: string;
+  };
+};
+
 export const SOCIAL_LINKS = [
   {
     label: "GitHub",
@@ -38,6 +52,12 @@ export const SOCIAL_LINKS = [
     handle: "Abhishek-Sonje",
     description:
       "Developer tools, backend systems, and open-source contributions.",
+    preview: {
+      avatarSrc: HERO.avatarSrc,
+      bannerSrc: HERO.bannerSrc,
+      bannerAlt: "",
+      bannerPosition: "center",
+    },
   },
   {
     label: "LinkedIn",
@@ -45,6 +65,12 @@ export const SOCIAL_LINKS = [
     icon: "linkedin",
     handle: HERO.tagline,
     description: "Full-Stack Developer | DSA | Solving Problems",
+    preview: {
+      avatarSrc: HERO.avatarSrc,
+      bannerSrc: HERO.bannerSrc,
+      bannerAlt: "",
+      bannerPosition: "center",
+    },
   },
   {
     label: "X",
@@ -52,8 +78,14 @@ export const SOCIAL_LINKS = [
     icon: "x",
     handle: "@Abhi_SDev",
     description: "Teaching Claude how to code",
+    preview: {
+      avatarSrc: HERO.avatarSrc,
+      bannerSrc: HERO.bannerSrc,
+      bannerAlt: "",
+      bannerPosition: "center",
+    },
   },
-] as const;
+] as const satisfies readonly SocialLink[];
 
 export const NAVIGATION = [
   { id: "experience", label: "Work" },

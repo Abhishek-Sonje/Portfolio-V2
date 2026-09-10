@@ -2,14 +2,13 @@
 
 import Image from "next/image";
 import { useEffect, useId, useRef } from "react";
-import { ArrowUpRight, BookMarked } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
-import { HERO, PROJECTS, SOCIAL_LINKS } from "@/lib/data";
-import { Button } from "@/components/ui/button";
+import { HERO, SOCIAL_LINKS } from "@/lib/data";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Popover,
+  PopoverAnchor,
   PopoverContent,
-  PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 
@@ -31,31 +30,27 @@ export function SocialProfilePreview({
   const titleId = useId();
   const contentRef = useRef<HTMLDivElement>(null);
   const timer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
-  const interaction = useRef<"hover" | "press">("hover");
   const isLinkedIn = social.icon === "linkedin";
-  const isGithub = social.icon === "github";
 
   function cancelTimer() {
     clearTimeout(timer.current);
   }
+
   useEffect(() => () => clearTimeout(timer.current), []);
 
   function openOnHover(pointerType: string) {
     if (pointerType !== "mouse") return;
     cancelTimer();
     if (open) return;
-    timer.current = setTimeout(() => {
-      interaction.current = "hover";
-      onOpenChange(true);
-    }, HOVER_OPEN_DELAY);
+    timer.current = setTimeout(() => onOpenChange(true), HOVER_OPEN_DELAY);
   }
 
   function closeOnLeave() {
     cancelTimer();
-    if (interaction.current === "press") return;
     timer.current = setTimeout(() => {
-      if (!contentRef.current?.contains(document.activeElement))
+      if (!contentRef.current?.contains(document.activeElement)) {
         onOpenChange(false);
+      }
     }, HOVER_CLOSE_DELAY);
   }
 
@@ -67,101 +62,74 @@ export function SocialProfilePreview({
         onOpenChange(next);
       }}
     >
-      <PopoverTrigger asChild>
-        <Button
-          variant="ghost"
-          size="icon"
-          aria-label={`${social.label} profile preview`}
+      <PopoverAnchor asChild>
+        <a
+          href={social.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${social.label} profile`}
+          className={buttonVariants({ variant: "ghost", size: "icon" })}
           onPointerEnter={(event) => openOnHover(event.pointerType)}
           onPointerLeave={closeOnLeave}
-          onPointerDown={() => {
+          onFocus={() => {
             cancelTimer();
-            interaction.current = "press";
+            onOpenChange(true);
           }}
-          onKeyDown={(event) => {
-            if (event.key === "Enter" || event.key === " ") {
-              cancelTimer();
-              interaction.current = "press";
+          onBlur={(event) => {
+            if (!contentRef.current?.contains(event.relatedTarget as Node)) {
+              onOpenChange(false);
             }
           }}
         >
           <Icon />
-        </Button>
-      </PopoverTrigger>
+        </a>
+      </PopoverAnchor>
       <PopoverContent
         ref={contentRef}
         aria-labelledby={titleId}
         side="top"
         onPointerEnter={cancelTimer}
         onPointerLeave={closeOnLeave}
-        onPointerDown={() => {
-          interaction.current = "press";
-        }}
-        onOpenAutoFocus={(event) => {
-          if (interaction.current === "hover") event.preventDefault();
-        }}
-        onCloseAutoFocus={(event) => {
-          if (interaction.current === "hover") event.preventDefault();
-        }}
+        onOpenAutoFocus={(event) => event.preventDefault()}
+        onCloseAutoFocus={(event) => event.preventDefault()}
       >
-        {isGithub ? (
-          <div className="flex items-center gap-2 border-b bg-muted/60 px-4 py-3 text-xs font-medium">
-            <Icon className="size-4" />
-            GitHub
-          </div>
-        ) : (
-          <div
-            className={cn(
-              "flex h-20 items-start justify-end p-4",
-              isLinkedIn
-                ? "bg-social-linkedin-cover text-social-on-brand"
-                : "bg-foreground text-background",
-            )}
-          >
-            <Icon className="size-5" />
-          </div>
-        )}
-        <div className="p-4">
-          <div
-            className={cn(
-              "flex items-start justify-between gap-4",
-              !isGithub && "-mt-11",
-            )}
-          >
+        <div
+          className={cn(
+            "relative flex h-24 items-start justify-end overflow-hidden p-4",
+            isLinkedIn
+              ? "bg-social-linkedin-cover text-social-on-brand"
+              : "bg-foreground text-background",
+          )}
+        >
+          {social.preview.bannerSrc && (
             <Image
-              src={HERO.avatarSrc}
+              src={social.preview.bannerSrc}
+              alt={social.preview.bannerAlt}
+              fill
+              sizes="320px"
+              className="object-cover"
+              style={{ objectPosition: social.preview.bannerPosition }}
+            />
+          )}
+          <span className="relative rounded-md bg-background/80 p-1.5 text-foreground shadow-sm backdrop-blur-sm">
+            <Icon className="size-4" />
+          </span>
+        </div>
+        <div className="p-4">
+          <div className="-mt-11 flex items-start">
+            <Image
+              src={social.preview.avatarSrc}
               alt=""
               width={64}
               height={64}
-              className={cn(
-                "size-16 rounded-full bg-card object-cover",
-                !isGithub && "relative border-4 border-card",
-              )}
+              className="relative size-16 rounded-full border-4 border-card bg-card object-cover"
             />
-            {!isGithub && (
-              <Button
-                asChild
-                size="sm"
-                variant="outline"
-                className={cn(
-                  "mt-9 rounded-full",
-                  isLinkedIn &&
-                    "border-social-linkedin text-social-linkedin hover:bg-social-linkedin-soft hover:text-social-linkedin",
-                )}
-              >
-                <a href={social.href} target="_blank" rel="noopener noreferrer">
-                  View profile
-                  <ArrowUpRight />
-                </a>
-              </Button>
-            )}
           </div>
           <h3
             id={titleId}
             className="mt-3 text-base font-semibold tracking-tight"
           >
-            {HERO.name}{" "}
-            <span className="sr-only">on {social.label}</span>
+            {HERO.name} <span className="sr-only">on {social.label}</span>
           </h3>
           <p
             className={cn(
@@ -174,36 +142,6 @@ export function SocialProfilePreview({
           <p className="mt-3 text-sm leading-6 text-muted-foreground">
             {social.description}
           </p>
-          {isGithub && (
-            <>
-              <div className="mt-4 space-y-2 border-t pt-3">
-                {PROJECTS.slice(0, 2).map((project) => (
-                  <a
-                    key={project.github}
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 rounded-sm text-xs text-link hover:underline"
-                  >
-                    <BookMarked className="size-3.5" />
-                    {project.title}
-                    <ArrowUpRight className="ml-auto size-3" />
-                  </a>
-                ))}
-              </div>
-              <Button
-                asChild
-                variant="outline"
-                size="sm"
-                className="mt-4 w-full"
-              >
-                <a href={social.href} target="_blank" rel="noopener noreferrer">
-                  View GitHub profile
-                  <ArrowUpRight />
-                </a>
-              </Button>
-            </>
-          )}
         </div>
       </PopoverContent>
     </Popover>
