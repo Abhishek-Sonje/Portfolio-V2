@@ -25,8 +25,11 @@ export type ExperienceItem = {
   logo?: string;
 };
 
+export type ProjectVideo = string;
+
 export type Project = {
   title: string;
+  summary: string;
   subtitle: string;
   description: string;
   stack: string[];
@@ -34,6 +37,7 @@ export type Project = {
   live: string | null;
   highlight: string;
   image: string;
+  video?: ProjectVideo;
   category?: string;
   logo?: string;
 };
@@ -63,4 +67,3 @@ export type OpenSourceContribution = {
   logo?: string;
   active?: boolean;
 };
-

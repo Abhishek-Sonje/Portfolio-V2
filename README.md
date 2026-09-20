@@ -1,99 +1,47 @@
-# Abhishek Sonje — Portfolio V2
+﻿# Abhishek Sonje — Portfolio
 
-A personal portfolio crafted with a **Warm Serif / Editorial Minimalist** design aesthetic. Built using Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4, and Framer Motion.
+A centered engineering portfolio built with Next.js 16, React 19, TypeScript, Tailwind CSS 4, owned shadcn/Radix primitives, next-themes, and Motion. Reference analysis and design decisions are in [docs/redesign-research.md](docs/redesign-research.md) and [DESIGN.md](DESIGN.md).
 
----
+## Development
 
-## ✨ Features
+Use Node.js 22.22.2+ or 24.15+ and Bun 1.3+ (or npm with the supplied lockfile).
 
-- **Warm Serif Aesthetic**: Editorial coffee-warm palette (`#f1ede6` parchment, `#5d0e0f` burgundy accent, `#e3dfd8` linen) powered by Lora serif typography.
-- **Dynamic Open Source Section**: Real-time GitHub API integration that queries and displays live merged pull requests (e.g. contributions to **Sugar Labs — Music Blocks**).
-- **Featured Projects & Modals**: Interactive modal dialogs with project previews, tech stack badges, GitHub source, and live site links.
-- **Work Experience**: Expandable experience timeline with smooth fade overlays.
-- **Categorized Tech Stack**: Clean grouped layout covering Frontend, Backend, Databases, AI/Cloud, and Tools.
-- **Responsive & Accessible**: Optimized for mobile, tablet, and desktop viewports with fluid animations and keyboard navigation.
-
----
-
-## 🛠️ Tech Stack
-
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
-- **Library**: [React 19](https://react.dev/)
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [React Icons](https://react-icons.github.io/react-icons/) & [Lucide React](https://lucide.dev/)
-- **Analytics**: [@vercel/analytics](https://vercel.com/analytics)
-
----
-
-## 📁 Project Structure
-
-```text
-src/
-├── app/
-│   ├── globals.css          # Design tokens, typography utilities & variables
-│   ├── layout.tsx           # Root layout with fonts & metadata
-│   └── page.tsx             # Main single-page portfolio layout
-├── components/
-│   ├── experience/          # Work experience cards
-│   ├── hero/                # Twitter-style banner, avatar & bio
-│   ├── layout/              # ContentColumn, Section & ScrollReveal wrappers
-│   ├── navbar/              # Fixed glassmorphic navigation bar
-│   ├── opensource/          # Open Source contribution showcase & live PR counter
-│   ├── projects/            # Project cards & detail dialogs
-│   └── stack/               # Categorized skill tags
-├── lib/
-│   └── data.ts              # Portfolio content, projects, OSS & work history
-└── types/
-    └── index.ts             # TypeScript interfaces & types
+```sh
+bun install --frozen-lockfile
+bun run dev
 ```
 
----
+```sh
+npm run lint
+npm run test
+npm run build
+npm run format:check
+```
 
-## 🚀 Getting Started
+After `npm run build`, start the production server with `npm run start -- --port 3100`, then run `node scripts/smoke.mjs`. Pass a different base URL as the script's first argument if needed.
 
-### Prerequisites
+## Content and components
 
-- [Node.js](https://nodejs.org/) (v18+ recommended)
-- `npm`, `pnpm`, `yarn`, or `bun`
+- `src/lib/data.ts`: identity, contact destinations, resume link, navigation, projects, internships, contribution records, technology groups, and footer quote.
+- `src/app/globals.css`: semantic light/dark color tokens, shared typography, reduced motion, and theme-transition layers.
+- `src/components/ui`: reusable button, tooltip, accordion, theme toggle, and Rare UI-derived reading progress.
+- `src/components/layout`: shared content width, gutters, and section rhythm.
+- `src/components/hero`, `projects`, `experience`, `opensource`, `stack`, `footer`: page sections, mostly rendered on the server.
 
-### Installation
+The theme follows the system initially and persists explicit changes through next-themes. Supported browsers reveal the next theme from the toggle; reduced-motion users and older browsers get an immediate change. Experience details are keyboard accessible. Clipboard failure exposes the actual email address. GitHub contribution counts fall back to the supplied record if the public API fails.
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Abhishek-Sonje/portfolio_v2.git
-   cd portfolio_v2
-   ```
+The original banner asset remains in `public`, but the new introduction does not render it. Replace the quote and its attribution together in `FOOTER_QUOTE`. No invented articles, testimonials, or extra metrics are added.
 
-2. **Install dependencies**:
-   ```bash
-   npm install
-   # or
-   bun install
-   ```
+Work experience precedes the compact project cards. Full descriptions remain inside each card's Details disclosure. Technology icons are centralized in `src/lib/technologies.ts`; see [the logo inventory](docs/technology-logos.md) for three optional local assets. Continuous page borders define the centered column on desktop.
 
-3. **Start the development server**:
-   ```bash
-   npm run dev
-   ```
+The theme switch plays a quiet synthesized droplet through Web Audio after a click. The footer sound control persists mute preference. No audio plays on initial load and no sound file needs downloading. Sound parameters live in `src/lib/theme-sound.ts`.
 
-4. **Open in browser**:
-   Navigate to [http://localhost:3000](http://localhost:3000).
+## Verification scope
 
----
+Vitest covers theme direction, unavailable/rejected View Transitions, reduced motion, overlapping clicks, keyboard accordion operation, and clipboard success/failure. Production build checks server rendering and TypeScript. A real-browser visual review at desktop/mobile widths in both themes is still required when a browser connection is available; DOM tests do not establish pixel accuracy.
 
-## 📜 Scripts
+The existing `/api/github` calendar endpoint requires a server-side `GITHUB_TOKEN` if used by a future calendar section. The visible merged-PR count uses the public search API and does not require that token. Never expose tokens in client configuration.
 
-| Command | Description |
-| :--- | :--- |
-| `npm run dev` | Runs the local development server |
-| `npm run build` | Builds the production bundle |
-| `npm run start` | Starts the production server |
-| `npm run lint` | Runs ESLint for code analysis |
+## Credits
 
----
-
-## 📄 License
-
-This project is open-source under the [MIT License](LICENSE).
+See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for shadcn/ui and Rare UI licensing. The footer quote is from Ralph Waldo Emerson's *Circles*, linked to its source in the page.
