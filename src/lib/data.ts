@@ -153,7 +153,7 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/Abhishek-Sonje/archie",
     live: "https://archie.abhishekdev.tech",
     highlight: "250+ npm downloads · Flagship project",
-    image: "/projects/archie.webp",
+    image: "/projects/archieImg.webp",
     category: "Developer Tool",
   },
   {
@@ -174,7 +174,7 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/Abhishek-Sonje/observe-kit",
     highlight: "Full observability stack, self-hosted",
     live: null,
-    image: "/projects/observeKit.webp",
+    image: "/projects/observeKitImg.webp",
     category: "Infrastructure",
   },
   {
@@ -188,7 +188,7 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/Abhishek-Sonje/octo",
     live: null,
     highlight: "Built from scratch in WSL2",
-    image: "/projects/octoImg.webp",
+    image: "/projects/octo.webp",
     category: "CLI Tool",
   },
   {
@@ -200,11 +200,10 @@ export const PROJECTS: Project[] = [
       "An interactive whiteboard where Gemini 2.5 Flash looks at what you draw and responds in real time.",
     stack: ["Next.js", "TypeScript", "Google Gemini AI", "tldraw"],
     github: "https://github.com/Abhishek-Sonje/ChalkAI",
-    live: null,
+    live: "https://chalk-ai.abhishekdev.tech",
     highlight: "Gemini 2.5 Flash · Real-time AI",
-    image: "/projects/ChalkAi.webp",
+    image: "/projects/chalkAi.webp",
     category: "AI-powered EdTech Tool",
-    logo: "/projects/ChalkAiLogo.webp",
   },
 ];
 
