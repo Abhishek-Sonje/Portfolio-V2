@@ -204,6 +204,7 @@ export const PROJECTS: Project[] = [
     highlight: "Gemini 2.5 Flash · Real-time AI",
     image: "/projects/chalkAi.webp",
     category: "AI-powered EdTech Tool",
+    video: "https://youtu.be/Fqv5-POVw6s",
   },
 ];
 
@@ -240,6 +241,11 @@ export const STACK_ITEMS: StackItem[] = [
   },
   {
     name: "Bun",
+    icon: "https://skillicons.dev/icons?i=bun",
+    url: "https://bun.sh/",
+  },
+  {
+    name: "WebSocket",
     icon: "https://skillicons.dev/icons?i=bun",
     url: "https://bun.sh/",
   },

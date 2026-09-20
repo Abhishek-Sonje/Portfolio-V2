@@ -85,17 +85,8 @@ function Artwork({
 }) {
   return (
     <>
-      <Image
-        src={project.image}
-        alt=""
-        fill
-        sizes={imageSizes}
-        aria-hidden="true"
-        className="scale-105 object-cover opacity-0 contrast-125 grayscale-[30%] transition-[opacity,transform] duration-500 ease-out motion-reduce:transition-none group-hover/media:scale-100 group-hover/media:opacity-55 group-focus-visible/media:scale-100 group-focus-visible/media:opacity-55 group-hover/card:scale-100 group-hover/card:opacity-55 group-focus-within/card:scale-100 group-focus-within/card:opacity-55"
-      />
-      <span className="absolute inset-0 bg-black/80 transition-colors duration-500 ease-out motion-reduce:transition-none group-hover/media:bg-black/45 group-focus-visible/media:bg-black/45 group-hover/card:bg-black/45 group-focus-within/card:bg-black/45" />
-      <span className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.28)_0.6px,transparent_0.8px)] bg-[length:5px_5px] opacity-0 mix-blend-soft-light transition-opacity duration-500 motion-reduce:transition-none group-hover/media:opacity-50 group-focus-visible/media:opacity-50 group-hover/card:opacity-50 group-focus-within/card:opacity-50" />
-      <span className="absolute bottom-[-1px] left-1/2 h-[84%] w-[88%] origin-bottom -translate-x-1/2 translate-y-1 scale-[0.86] overflow-hidden rounded-t-lg border-x border-t border-white/15 bg-black shadow-2xl transition-transform duration-500 ease-out motion-reduce:transition-none group-hover/media:translate-y-0 group-hover/media:scale-100 group-focus-visible/media:translate-y-0 group-focus-visible/media:scale-100 group-hover/card:translate-y-0 group-hover/card:scale-100 group-focus-within/card:translate-y-0 group-focus-within/card:scale-100">
+      <span className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.34)_0.7px,transparent_0.9px)] bg-[length:4px_4px] opacity-0 transition-opacity duration-500 motion-reduce:transition-none group-hover/media:opacity-60 group-focus-visible/media:opacity-60 group-hover/card:opacity-60" />
+      <span className="absolute bottom-[-1px] left-1/2 h-[84%] w-[88%] origin-bottom -translate-x-1/2 translate-y-1 scale-[0.86] overflow-hidden rounded-t-lg border-x border-t border-white/15 bg-black shadow-2xl transition-transform duration-500 ease-out motion-reduce:transition-none group-hover/media:translate-y-0 group-hover/media:scale-100 group-focus-visible/media:translate-y-0 group-focus-visible/media:scale-100 group-hover/card:translate-y-0 group-hover/card:scale-100">
         <Image
           src={project.image}
           alt={`${project.title} preview`}
@@ -106,7 +97,7 @@ function Artwork({
       </span>
       {hasVideo && (
         <span className="absolute inset-0 flex items-center justify-center">
-          <span className="flex size-11 translate-y-2 scale-90 items-center justify-center rounded-full border border-white/30 bg-white/90 text-black opacity-0 shadow-lg transition-[opacity,transform] duration-300 motion-reduce:transition-none group-hover/media:translate-y-0 group-hover/media:scale-100 group-hover/media:opacity-100 group-focus-visible/media:translate-y-0 group-focus-visible/media:scale-100 group-focus-visible/media:opacity-100 group-hover/card:translate-y-0 group-hover/card:scale-100 group-hover/card:opacity-100 group-focus-within/card:translate-y-0 group-focus-within/card:scale-100 group-focus-within/card:opacity-100">
+          <span className="flex size-11 translate-y-2 scale-90 items-center justify-center rounded-full border border-white/30 bg-white/90 text-black opacity-0 shadow-lg transition-[opacity,transform] duration-300 motion-reduce:transition-none group-hover/media:translate-y-0 group-hover/media:scale-100 group-hover/media:opacity-100 group-focus-visible/media:translate-y-0 group-focus-visible/media:scale-100 group-focus-visible/media:opacity-100 group-hover/card:translate-y-0 group-hover/card:scale-100 group-hover/card:opacity-100">
             <Play className="ml-0.5 size-4 fill-current" />
           </span>
         </span>
@@ -131,6 +122,7 @@ export function ProjectMedia({ project }: { project: ProjectMediaData }) {
         rel="noopener noreferrer"
         aria-label={`Explore ${project.title}`}
         className={mediaClassName}
+        onPointerUp={(event) => event.currentTarget.blur()}
       >
         <Artwork project={project} hasVideo={false} />
       </a>

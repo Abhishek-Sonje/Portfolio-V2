@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { describe, expect, it } from "vitest";
 import { getYouTubeEmbedUrl, ProjectMedia } from "./project-media";
@@ -22,6 +22,16 @@ describe("project media", () => {
     ).not.toBeInTheDocument();
   });
 
+  it("clears pointer focus before opening an outbound project", () => {
+    render(<ProjectMedia project={project} />);
+    const link = screen.getByRole("link", { name: "Explore Archie CLI" });
+
+    link.focus();
+    expect(link).toHaveFocus();
+    fireEvent.pointerUp(link, { pointerType: "mouse" });
+
+    expect(link).not.toHaveFocus();
+  });
   it("opens a compact player from a regular YouTube link", async () => {
     const user = userEvent.setup();
     render(
