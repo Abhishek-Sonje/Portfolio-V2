@@ -201,7 +201,7 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/Abhishek-Sonje/ChalkAI",
     live: "https://chalk-ai.abhishekdev.tech",
     highlight: "Gemini 2.5 Flash · Real-time AI",
-    image: "/projects/chalkAi.webp",
+    image: "/projects/ChalkAi.webp",
     category: "AI-powered EdTech Tool",
     video: "https://youtu.be/Fqv5-POVw6s",
   },
