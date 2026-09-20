@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import Navbar from "@/components/navbar/Navbar";
@@ -6,6 +6,8 @@ import Footer from "@/components/footer/Footer";
 import { Lora, Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { InteractionSounds } from "@/components/providers/interaction-sounds";
+import { SOCIAL_LINKS, STACK_ITEMS } from "@/lib/data";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/seo";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -21,40 +23,54 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://abhishekdev.tech"),
+  metadataBase: new URL(SITE_URL),
+  applicationName: `${SITE_NAME} Portfolio`,
   title: {
-    default: "Abhishek Sonje | Full-Stack Developer",
-    template: "%s | Abhishek Sonje",
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    "Portfolio of Abhishek Sonje, a Full-Stack Developer specializing in Next.js, React, TypeScript, and Node.js. Building scalable, production-ready web applications.",
+  description: SITE_DESCRIPTION,
   keywords: [
-    "Abhishek Sonje",
+    SITE_NAME,
     "Full-Stack Developer",
-    "Next.js",
-    "React",
-    "TypeScript",
-    "Node.js",
-    "Web Development",
     "Software Engineer",
-    "India",
+    "Web Developer",
+    "Developer Tools",
+    "Backend Systems",
+    ...STACK_ITEMS.map((item) => item.name),
   ],
-  authors: [{ name: "Abhishek Sonje", url: "https://abhishekdev.tech" }],
-  creator: "Abhishek Sonje",
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "technology",
+  classification: "Personal portfolio",
+  referrer: "origin-when-cross-origin",
+  alternates: {
+    canonical: "/",
+    types: {
+      "text/markdown": [
+        { url: "/llms.txt", title: `${SITE_NAME} AI content index` },
+        { url: "/portfolio.md", title: `${SITE_NAME} portfolio in Markdown` },
+      ],
+    },
+  },
   openGraph: {
-    type: "website",
+    type: "profile",
     locale: "en_US",
-    url: "https://abhishekdev.tech",
-    title: "Abhishek Sonje | Full-Stack Developer",
-    description:
-      "Portfolio of Abhishek Sonje, a Full-Stack Developer specializing in Next.js, React, TypeScript, and Node.js.",
-    siteName: "Abhishek Sonje Portfolio",
+    url: "/",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    siteName: `${SITE_NAME} Portfolio`,
+    firstName: "Abhishek",
+    lastName: "Sonje",
+    username: "Abhishek-Sonje",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Abhishek Sonje | Full-Stack Developer",
+        type: "image/png",
+        alt: `${SITE_NAME}, Full-Stack Developer`,
       },
     ],
   },
@@ -62,19 +78,44 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@Abhi_SDev",
     creator: "@Abhi_SDev",
-    title: "Abhishek Sonje | Full-Stack Developer",
-    description:
-      "Portfolio of Abhishek Sonje, a Full-Stack Developer specializing in Next.js, React, TypeScript, and Node.js.",
-    images: ["/og-image.png"],
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    images: [{ url: "/og-image.png", alt: SITE_TITLE }],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
   icons: {
     icon: [
       { url: "/logo.svg", type: "image/svg+xml" },
-      { url: "/logo.png" }, // fallback for older browsers
+      { url: "/logo.png", type: "image/png" },
     ],
     shortcut: "/logo.png",
-    apple: "/logo.png", // iOS doesn't support SVG
+    apple: "/logo.png",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  colorScheme: "light dark",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+    { media: "(prefers-color-scheme: dark)", color: "#171717" },
+  ],
 };
 
 export default function RootLayout({
@@ -88,7 +129,12 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${lora.variable} ${geist.variable}`}
     >
-      <body className="min-h-screen flex flex-col antialiased">
+      <head>
+        {SOCIAL_LINKS.map((social) => (
+          <link key={social.href} rel="me" href={social.href} />
+        ))}
+      </head>
+      <body className="flex min-h-screen flex-col antialiased">
         <ThemeProvider>
           <InteractionSounds />
           <a
