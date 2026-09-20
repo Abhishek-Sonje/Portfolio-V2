@@ -4,10 +4,14 @@ import { ThemeToggle } from "./theme-toggle";
 import { TooltipProvider } from "./tooltip";
 import { SoundToggle } from "./sound-toggle";
 import { playThemeDrop } from "@/lib/theme-sound";
+import { playInteractionClick } from "@/lib/interaction-sound";
 
 const theme = vi.hoisted(() => ({ resolvedTheme: "light", setTheme: vi.fn() }));
 vi.mock("next-themes", () => ({ useTheme: () => theme }));
 vi.mock("@/lib/theme-sound", () => ({ playThemeDrop: vi.fn() }));
+vi.mock("@/lib/interaction-sound", () => ({
+  playInteractionClick: vi.fn(),
+}));
 
 function renderToggle() {
   render(
@@ -22,6 +26,7 @@ describe("theme switching", () => {
   beforeEach(() => {
     localStorage.clear();
     vi.mocked(playThemeDrop).mockClear();
+    vi.mocked(playInteractionClick).mockClear();
     theme.resolvedTheme = "light";
     theme.setTheme.mockReset();
     Object.defineProperty(document, "startViewTransition", {
@@ -44,11 +49,12 @@ describe("theme switching", () => {
     const toggle = screen.getByRole("button", {
       name: "Toggle light and dark theme",
     });
-    const sound = screen.getByRole("button", { name: "Theme sounds" });
+    const sound = screen.getByRole("button", { name: "Interface sounds" });
     expect(playThemeDrop).not.toHaveBeenCalled();
     fireEvent.click(toggle);
     expect(playThemeDrop).toHaveBeenCalledTimes(1);
     fireEvent.click(sound);
+    expect(playInteractionClick).toHaveBeenCalledTimes(1);
     expect(sound).toHaveAttribute("aria-pressed", "false");
     expect(localStorage.getItem("portfolio-theme-sound")).toBe("off");
     fireEvent.click(toggle);

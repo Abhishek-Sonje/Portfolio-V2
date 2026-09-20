@@ -69,6 +69,7 @@ export function ThemeToggle() {
         <Button
           variant="ghost"
           size="icon"
+          data-sound="off"
           onClick={toggleTheme}
           aria-label="Toggle light and dark theme"
           className="relative"

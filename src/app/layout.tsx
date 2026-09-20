@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { Lora, Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { InteractionSounds } from "@/components/providers/interaction-sounds";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -89,6 +90,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen flex flex-col antialiased">
         <ThemeProvider>
+          <InteractionSounds />
           <a
             href="#main-content"
             className="fixed left-4 top-4 z-50 -translate-y-24 rounded-lg bg-primary px-4 py-3 text-primary-foreground focus:translate-y-0"

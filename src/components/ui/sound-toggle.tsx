@@ -3,6 +3,7 @@
 import { Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useSoundPreference } from "@/hooks/use-sound-preference";
+import { playInteractionClick } from "@/lib/interaction-sound";
 
 export function SoundToggle() {
   const { enabled, setEnabled } = useSoundPreference();
@@ -11,9 +12,13 @@ export function SoundToggle() {
     <Button
       variant="ghost"
       size="sm"
-      aria-label="Theme sounds"
+      data-sound="off"
+      aria-label="Interface sounds"
       aria-pressed={enabled}
-      onClick={() => setEnabled(!enabled)}
+      onClick={() => {
+        void playInteractionClick();
+        setEnabled(!enabled);
+      }}
       className="gap-1.5 px-2 text-xs"
     >
       <Icon />

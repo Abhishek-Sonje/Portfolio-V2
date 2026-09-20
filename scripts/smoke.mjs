@@ -15,7 +15,7 @@ assert.equal(document.querySelectorAll("#projects article").length, 4);
 assert.ok(document.getElementById("experience").compareDocumentPosition(document.getElementById("projects")) & 4, "Work must appear before projects");
 assert.equal(document.querySelectorAll("#projects details:not([open])").length, 4);
 assert.ok(document.querySelectorAll('#stack [role="img"][aria-label]').length > 20);
-assert.ok(document.querySelector('button[aria-label="Theme sounds"]'));
+assert.ok(document.querySelector('button[aria-label="Interface sounds"]'));
 assert.ok(document.querySelector('button[aria-label="Toggle light and dark theme"]'));
 assert.ok(document.querySelector("blockquote[cite]")?.textContent.includes("enthusiasm"));
 assert.ok(document.querySelector('meta[property="og:image"]'));

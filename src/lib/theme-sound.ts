@@ -1,3 +1,5 @@
+import { getAudioContext } from "@/lib/audio-context";
+
 /** A quiet synthesized droplet; no audio download or autoplay on page load. */
 const DROP = {
   startFrequency: 850,
@@ -10,13 +12,10 @@ const DROP = {
   silence: 0.0001,
 } as const;
 
-let context: AudioContext | undefined;
-
 export async function playThemeDrop() {
-  if (typeof window === "undefined" || !window.AudioContext) return;
   try {
-    context ??= new window.AudioContext();
-    if (context.state === "suspended") await context.resume();
+    const context = await getAudioContext();
+    if (!context) return;
     const now = context.currentTime;
     const oscillator = context.createOscillator();
     const envelope = context.createGain();
