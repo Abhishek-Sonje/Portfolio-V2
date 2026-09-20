@@ -25,16 +25,7 @@ export type ExperienceItem = {
   logo?: string;
 };
 
-export type ProjectVideo =
-  | {
-      kind: "file";
-      src: string;
-      poster?: string;
-    }
-  | {
-      kind: "embed";
-      src: string;
-    };
+export type ProjectVideo = string;
 
 export type Project = {
   title: string;

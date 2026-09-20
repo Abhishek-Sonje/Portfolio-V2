@@ -1,20 +1,16 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
-import { ProjectMedia } from "./project-media";
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { describe, expect, it } from "vitest";
+import { getYouTubeEmbedUrl, ProjectMedia } from "./project-media";
 
 const project = {
   title: "Archie CLI",
-  image: "/projects/archie.webp",
+  image: "/projects/archieImg.webp",
   live: "https://archie.abhishekdev.tech",
   github: "https://github.com/Abhishek-Sonje/archie",
 };
 
 describe("project media", () => {
-  beforeEach(() => {
-    HTMLDialogElement.prototype.showModal = vi.fn();
-    HTMLDialogElement.prototype.close = vi.fn();
-  });
-
   it("keeps projects without video as normal outbound previews", () => {
     render(<ProjectMedia project={project} />);
 
@@ -26,49 +22,50 @@ describe("project media", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("opens a native video player when local video data is present", () => {
+  it("opens a compact player from a regular YouTube link", async () => {
+    const user = userEvent.setup();
     render(
       <ProjectMedia
         project={{
           ...project,
-          video: {
-            kind: "file",
-            src: "/projects/archie-demo.mp4",
-          },
+          video: "https://www.youtube.com/watch?v=M7lc1UVf-VE",
         }}
       />,
     );
 
-    fireEvent.click(
+    await user.click(
       screen.getByRole("button", { name: "Play Archie CLI demo" }),
     );
 
-    expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalledTimes(1);
-    expect(
-      screen.getByLabelText("Archie CLI demo", { selector: "video" }),
-    ).toHaveAttribute("src", "/projects/archie-demo.mp4");
+    expect(await screen.findByTitle("Archie CLI demo")).toHaveAttribute(
+      "src",
+      "https://www.youtube-nocookie.com/embed/M7lc1UVf-VE?autoplay=1&playsinline=1&rel=0",
+    );
+    expect(screen.getByRole("button", { name: "Close video" })).toBeVisible();
   });
 
-  it("renders an embed player for hosted video data", () => {
+  it("supports short, Shorts, and timestamped YouTube links", () => {
+    expect(
+      getYouTubeEmbedUrl("https://youtu.be/M7lc1UVf-VE?t=1m30s"),
+    ).toContain("/embed/M7lc1UVf-VE?");
+    expect(
+      getYouTubeEmbedUrl("https://youtu.be/M7lc1UVf-VE?t=1m30s"),
+    ).toContain("start=90");
+    expect(
+      getYouTubeEmbedUrl("https://youtube.com/shorts/M7lc1UVf-VE"),
+    ).toContain("/embed/M7lc1UVf-VE?");
+  });
+
+  it("does not show a play option for an invalid video URL", () => {
     render(
-      <ProjectMedia
-        project={{
-          ...project,
-          video: {
-            kind: "embed",
-            src: "https://www.youtube.com/embed/example",
-          },
-        }}
-      />,
+      <ProjectMedia project={{ ...project, video: "https://example.com" }} />,
     );
 
-    fireEvent.click(
-      screen.getByRole("button", { name: "Play Archie CLI demo" }),
-    );
-
-    expect(screen.getByTitle("Archie CLI demo")).toHaveAttribute(
-      "src",
-      "https://www.youtube.com/embed/example",
-    );
+    expect(
+      screen.queryByRole("button", { name: "Play Archie CLI demo" }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("link", { name: "Explore Archie CLI" }),
+    ).toBeVisible();
   });
 });
