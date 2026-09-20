@@ -54,7 +54,7 @@ export const SOCIAL_LINKS = [
       "Developer tools, backend systems, and open-source contributions.",
     preview: {
       avatarSrc: HERO.avatarSrc,
-      bannerSrc: HERO.bannerSrc,
+      bannerSrc: null,
       bannerAlt: "",
       bannerPosition: "center",
     },

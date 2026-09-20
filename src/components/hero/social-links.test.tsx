@@ -1,15 +1,43 @@
 import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 import { SocialLinks } from "./social-links";
 
 describe("social profile previews", () => {
-  it("opens a read-only card on hover and dismisses it with Escape", async () => {
+  beforeEach(() => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue({
+        ok: true,
+        json: async () => ({
+          name: "Abhishek Sonje",
+          login: "Abhishek-Sonje",
+          publicRepos: 35,
+          followers: 6,
+          following: 12,
+        }),
+      }),
+    );
+  });
+
+  it("opens a GitHub-style banner-free card on hover", async () => {
     const user = userEvent.setup();
     render(<SocialLinks />);
     await user.hover(screen.getByRole("link", { name: "Open GitHub profile" }));
     const card = await screen.findByRole("dialog");
     expect(card).toHaveAccessibleName("Abhishek Sonje on GitHub");
+    expect(
+      document.querySelector('img[src*="banner1"]'),
+    ).not.toBeInTheDocument();
+    expect(await within(card).findByText("public repositories")).toBeVisible();
+    expect(within(card).getByText(/followers ·/)).toBeVisible();
+  });
+
+  it("keeps the popup read-only and dismisses it with Escape", async () => {
+    const user = userEvent.setup();
+    render(<SocialLinks />);
+    await user.hover(screen.getByRole("link", { name: "Open GitHub profile" }));
+    const card = await screen.findByRole("dialog");
     await user.hover(card);
     expect(within(card).queryByRole("link")).not.toBeInTheDocument();
     expect(within(card).queryByRole("button")).not.toBeInTheDocument();
