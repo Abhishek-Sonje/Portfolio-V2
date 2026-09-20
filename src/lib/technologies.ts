@@ -27,8 +27,17 @@ import {
   SiTypescript,
   SiVercel,
 } from "react-icons/si";
+import { STACK_ITEMS } from "@/lib/data";
 
-type Technology = { icon?: IconType; logoSrc?: string };
+type Technology = {
+  icon?: IconType;
+  logoSrc?: string;
+  invertOnDark?: boolean;
+};
+
+function stackLogo(name: string) {
+  return STACK_ITEMS.find((item) => item.name === name)?.icon;
+}
 
 /** Local logoSrc overrides the bundled icon. Paths are relative to public/. */
 export const TECHNOLOGIES: Record<string, Technology> = {
@@ -62,12 +71,20 @@ export const TECHNOLOGIES: Record<string, Technology> = {
   C: { icon: SiC },
   npm: { icon: SiNpm },
   tldraw: { icon: SiTldraw },
-  // No matching marks in the installed icon set. Add a local SVG here later.
-  "Framer Motion": {},
-  Zustand: {},
+  Zustand: { logoSrc: stackLogo("Zustand") },
+  "Framer Motion": {
+    logoSrc: "/technologies/framer.svg",
+    invertOnDark: true,
+  },
+  WebSocket: {
+    logoSrc: "/technologies/websocket.svg",
+    invertOnDark: true,
+  },
+  PTY: {
+    logoSrc: "/technologies/terminal.svg",
+    invertOnDark: true,
+  },
+  // Concepts without a distinct product mark retain an accessible text label.
   "Vercel AI SDK": {},
-  // Protocols and concepts have no single brand logo; keep their text labels.
   "RESTful APIs": {},
-  WebSocket: {},
-  PTY: {},
 };

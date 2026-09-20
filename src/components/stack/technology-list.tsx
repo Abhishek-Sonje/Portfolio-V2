@@ -46,7 +46,10 @@ export function TechnologyList({
                       alt=""
                       width={20}
                       height={20}
-                      className="size-5 object-contain"
+                      className={cn(
+                        "size-5 object-contain",
+                        technology.invertOnDark && "dark:invert",
+                      )}
                     />
                   ) : Icon ? (
                     <Icon

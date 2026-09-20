@@ -13,7 +13,6 @@ export const HERO = {
   name: "Abhishek Sonje",
   tagline: "Full-Stack Developer & Builder",
   avatarSrc: "/avatar1.png",
-  bannerSrc: "/banner1.webp",
 };
 
 export const RESUME_URL =
@@ -53,7 +52,7 @@ export const SOCIAL_LINKS = [
     description:
       "Developer tools, backend systems, and open-source contributions.",
     preview: {
-      avatarSrc: HERO.avatarSrc,
+      avatarSrc: "/gitProfile.webp",
       bannerSrc: null,
       bannerAlt: "",
       bannerPosition: "center",
@@ -67,7 +66,7 @@ export const SOCIAL_LINKS = [
     description: "Full-Stack Developer | DSA | Solving Problems",
     preview: {
       avatarSrc: HERO.avatarSrc,
-      bannerSrc: HERO.bannerSrc,
+      bannerSrc: "/linkedInBanner.webp",
       bannerAlt: "",
       bannerPosition: "center",
     },
@@ -79,8 +78,8 @@ export const SOCIAL_LINKS = [
     handle: "@Abhi_SDev",
     description: "Teaching Claude how to code",
     preview: {
-      avatarSrc: HERO.avatarSrc,
-      bannerSrc: HERO.bannerSrc,
+      avatarSrc: "/xProfile.webp",
+      bannerSrc: "/xBanner.webp",
       bannerAlt: "",
       bannerPosition: "center",
     },
@@ -202,7 +201,7 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/Abhishek-Sonje/ChalkAI",
     live: "https://chalk-ai.abhishekdev.tech",
     highlight: "Gemini 2.5 Flash · Real-time AI",
-    image: "/projects/chalkAi.webp",
+    image: "/projects/chalkAI.webp",
     category: "AI-powered EdTech Tool",
     video: "https://youtu.be/Fqv5-POVw6s",
   },
@@ -245,9 +244,9 @@ export const STACK_ITEMS: StackItem[] = [
     url: "https://bun.sh/",
   },
   {
-    name: "WebSocket",
-    icon: "https://skillicons.dev/icons?i=bun",
-    url: "https://bun.sh/",
+    name: "Zustand",
+    icon: "https://user-images.githubusercontent.com/958486/218346783-72be5ae3-b953-4dd7-b239-788a882fdad6.svg",
+    url: "https://github.com/pmndrs/zustand",
   },
   {
     name: "React.js",
@@ -320,7 +319,7 @@ export const STACK_GROUPS: StackGroup[] = [
   },
   {
     label: "Backend",
-    items: ["Node.js", "Bun", "Express.js", "Fastify", "RESTful APIs"],
+    items: ["Node.js", "Bun", "Express.js", "Fastify"],
   },
   {
     label: "Databases & CMS",
@@ -335,13 +334,7 @@ export const STACK_GROUPS: StackGroup[] = [
   },
   {
     label: "AI & Cloud",
-    items: [
-      "Google Gemini API",
-      "Anthropic Claude API",
-      "Vercel AI SDK",
-      "Vercel",
-      "Docker",
-    ],
+    items: ["Google Gemini API", "Anthropic Claude API", "Vercel", "Docker"],
   },
   {
     label: "Tools",

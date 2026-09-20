@@ -67,9 +67,11 @@ describe("social profile previews", () => {
     const user = userEvent.setup();
     render(<SocialLinks />);
     await user.hover(screen.getByRole("link", { name: "Open X profile" }));
-    expect(await screen.findByRole("dialog")).toHaveAccessibleName(
-      "Abhishek Sonje on X",
-    );
+    const xCard = await screen.findByRole("dialog", {
+      name: "Abhishek Sonje on X",
+    });
+    expect(xCard.querySelector('img[src*="xProfile"]')).toBeTruthy();
+    expect(xCard.querySelector('img[src*="xBanner"]')).toBeTruthy();
     await user.hover(
       screen.getByRole("link", { name: "Open LinkedIn profile" }),
     );
