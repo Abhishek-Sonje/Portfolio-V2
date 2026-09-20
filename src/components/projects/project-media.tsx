@@ -85,8 +85,8 @@ function Artwork({
 }) {
   return (
     <>
-      <span className="absolute inset-0 bg-[radial-gradient(circle,rgba(255,255,255,0.34)_0.7px,transparent_0.9px)] bg-[length:4px_4px] opacity-0 transition-opacity duration-500 motion-reduce:transition-none group-hover/media:opacity-60 group-focus-visible/media:opacity-60 group-hover/card:opacity-60" />
-      <span className="absolute bottom-[-1px] left-1/2 h-[84%] w-[88%] origin-bottom -translate-x-1/2 translate-y-1 scale-[0.86] overflow-hidden rounded-t-lg border-x border-t border-white/15 bg-black shadow-2xl transition-transform duration-500 ease-out motion-reduce:transition-none group-hover/media:translate-y-0 group-hover/media:scale-100 group-focus-visible/media:translate-y-0 group-focus-visible/media:scale-100 group-hover/card:translate-y-0 group-hover/card:scale-100">
+      <span className="absolute inset-0 [--project-dot:rgba(0,0,0,0.28)] bg-[radial-gradient(circle,var(--project-dot)_0.7px,transparent_0.9px)] bg-[length:4px_4px] dark:[--project-dot:rgba(255,255,255,0.34)] opacity-0 transition-opacity duration-500 motion-reduce:transition-none group-hover/media:opacity-60 group-focus-visible/media:opacity-60 group-hover/card:opacity-60" />
+      <span className="absolute bottom-[-1px] left-1/2 h-[84%] w-[88%] origin-bottom -translate-x-1/2 translate-y-1 scale-[0.86] overflow-hidden rounded-t-lg border-x border-t border-black/15 bg-black shadow-xl dark:border-white/15 dark:shadow-2xl transition-transform duration-500 ease-out motion-reduce:transition-none group-hover/media:translate-y-0 group-hover/media:scale-100 group-focus-visible/media:translate-y-0 group-focus-visible/media:scale-100 group-hover/card:translate-y-0 group-hover/card:scale-100">
         <Image
           src={project.image}
           alt={`${project.title} preview`}
@@ -107,7 +107,7 @@ function Artwork({
 }
 
 const mediaClassName =
-  "group/media relative block aspect-video w-full cursor-pointer overflow-hidden border-b bg-neutral-950 text-left outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring";
+  "group/media relative block aspect-video w-full cursor-pointer overflow-hidden border-b bg-neutral-100 text-left dark:bg-neutral-950 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring";
 
 export function ProjectMedia({ project }: { project: ProjectMediaData }) {
   const videoTitleId = useId();
