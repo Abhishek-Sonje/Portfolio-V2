@@ -1,4 +1,5 @@
 import {
+  Article,
   ExperienceItem,
   OpenSourceContribution,
   Project,
@@ -89,6 +90,7 @@ export const SOCIAL_LINKS = [
 export const NAVIGATION = [
   { id: "experience", label: "Work" },
   { id: "projects", label: "Projects" },
+  { id: "articles", label: "Articles" },
   { id: "contact", label: "Contact" },
 ] as const;
 
@@ -98,6 +100,17 @@ export const FOOTER_QUOTE = {
   work: "Circles",
   source: "https://www.gutenberg.org/files/16643/16643-h/16643-h.htm",
 };
+
+export const ARTICLES: Article[] = [
+  {
+    title: "How Benchmarking Works",
+    summary: "How AI agent benchmarks are built and graded.",
+    href: "https://medium.com/@code.abhishek03/how-benchmarking-works-47a39c9d325e",
+    image: "/blog/BenchmarkingBannar.webp",
+    imageAlt: "Benchmarking banner with a carved stone backdrop",
+    publication: "Medium",
+  },
+];
 
 export const EXPERIENCE: ExperienceItem[] = [
   {

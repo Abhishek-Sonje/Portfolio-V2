@@ -18,4 +18,4 @@ Buttons move one pixel on press, focus rings remain visible, and link arrows tra
 
 ## Content
 
-Identity and contact, work experience, selected projects, open source, grouped stack, contact invitation, then an attributed quote. Content and destinations belong to src/lib/data.ts; the technology logo registry lives in src/lib/technologies.ts. Keep factual details and project screenshots; remove banner from presentation only.
+Identity and contact, work experience, selected projects, articles, open source, grouped stack, contact invitation, then an attributed quote. Content and destinations belong to src/lib/data.ts; the technology logo registry lives in src/lib/technologies.ts. Keep factual details and project screenshots; remove the original hero banner from presentation only. Article cards use local banners at their full aspect ratio and match a single project column on desktop, expanding to the available width on mobile.

@@ -27,6 +27,15 @@ export type ExperienceItem = {
 
 export type ProjectVideo = string;
 
+export type Article = {
+  title: string;
+  summary: string;
+  href: string;
+  image: string;
+  imageAlt: string;
+  publication: string;
+};
+
 export type Project = {
   title: string;
   summary: string;

@@ -1,6 +1,7 @@
 import Hero from "@/components/hero/Hero";
 import Stack from "@/components/stack/Stack";
 import Projects from "@/components/projects/Projects";
+import Articles from "@/components/articles/Articles";
 import Experience from "@/components/experience/Experience";
 import OpenSource from "@/components/opensource/OpenSource";
 import ContentColumn from "@/components/layout/ContentColumn";
@@ -16,6 +17,7 @@ export default function Home() {
         <Hero />
         <Experience />
         <Projects />
+        <Articles />
         <OpenSource />
         <Stack />
         <Contact />

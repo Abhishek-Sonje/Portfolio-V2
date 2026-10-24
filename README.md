@@ -22,15 +22,15 @@ After `npm run build`, start the production server with `npm run start -- --port
 
 ## Content and components
 
-- `src/lib/data.ts`: identity, contact destinations, resume link, navigation, projects, internships, contribution records, technology groups, and footer quote.
+- `src/lib/data.ts`: identity, contact destinations, resume link, navigation, projects, articles, internships, contribution records, technology groups, and footer quote.
 - `src/app/globals.css`: semantic light/dark color tokens, shared typography, reduced motion, and theme-transition layers.
 - `src/components/ui`: reusable button, tooltip, accordion, theme toggle, and Rare UI-derived reading progress.
 - `src/components/layout`: shared content width, gutters, and section rhythm.
-- `src/components/hero`, `projects`, `experience`, `opensource`, `stack`, `footer`: page sections, mostly rendered on the server.
+- `src/components/hero`, `projects`, `articles`, `experience`, `opensource`, `stack`, `footer`: page sections, mostly rendered on the server.
 
 The theme follows the system initially and persists explicit changes through next-themes. Supported browsers reveal the next theme from the toggle; reduced-motion users and older browsers get an immediate change. Experience details are keyboard accessible. Clipboard failure exposes the actual email address. GitHub contribution counts fall back to the supplied record if the public API fails.
 
-The original banner asset remains in `public`, but the new introduction does not render it. Replace the quote and its attribution together in `FOOTER_QUOTE`. No invented articles, testimonials, or extra metrics are added.
+The original hero banner asset remains in `public`, but the introduction does not render it. Articles use their own local banners and link to the published originals. Add entries to `ARTICLES` in `src/lib/data.ts` to extend the section. Replace the quote and its attribution together in `FOOTER_QUOTE`. No invented articles, testimonials, or extra metrics are added.
 
 Work experience precedes the compact project cards. Full descriptions remain inside each card's Details disclosure. Technology icons are centralized in `src/lib/technologies.ts`; see [the logo inventory](docs/technology-logos.md) for three optional local assets. Continuous page borders define the centered column on desktop.
 
