@@ -163,7 +163,7 @@ export const PROJECTS: Project[] = [
       "A CLI that keeps a codebase's ARCHITECTURE.md up to date on its own. Uses a two-prompt Gemini 1.5 Pro setup along with a static import dependency graph, so it only touches what actually changed. Published to npm, past 250 downloads.",
     stack: ["TypeScript", "Node.js", "Gemini 1.5 Pro", "npm"],
     github: "https://github.com/Abhishek-Sonje/archie",
-    live: "https://archie-web-nu.vercel.app",
+    live: "https://archie.abhisheksonje.online",
     highlight: "250+ npm downloads · Flagship project",
     image: "/projects/archieImg.webp",
     category: "Developer Tool",

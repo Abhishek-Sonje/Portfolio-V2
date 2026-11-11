@@ -6,7 +6,7 @@ import { getYouTubeEmbedUrl, ProjectMedia } from "./project-media";
 const project = {
   title: "Archie CLI",
   image: "/projects/archieImg.webp",
-  live: "https://archie-web-nu.vercel.app",
+  live: "https://archie.abhisheksonje.online",
   github: "https://github.com/Abhishek-Sonje/archie",
 };
 
@@ -16,7 +16,7 @@ describe("project media", () => {
 
     expect(
       screen.getByRole("link", { name: "Explore Archie CLI" }),
-    ).toHaveAttribute("href", "https://archie-web-nu.vercel.app");
+    ).toHaveAttribute("href", "https://archie.abhisheksonje.online");
     expect(
       screen.queryByRole("button", { name: "Play Archie CLI demo" }),
     ).not.toBeInTheDocument();
