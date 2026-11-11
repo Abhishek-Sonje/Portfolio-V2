@@ -9,7 +9,7 @@ import {
   STACK_ITEMS,
 } from "@/lib/data";
 
-export const SITE_URL = "https://abhishekdev.tech";
+export const SITE_URL = "https://www.abhisheksonje.online";
 export const SITE_NAME = "Abhishek Sonje";
 export const SITE_TITLE = "Abhishek Sonje — Full-Stack Developer";
 export const SITE_DESCRIPTION =

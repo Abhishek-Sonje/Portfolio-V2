@@ -50,16 +50,16 @@ assert.ok(
 
 assert.equal(
   document.querySelector('link[rel="canonical"]')?.getAttribute("href"),
-  "https://abhishekdev.tech",
+  "https://www.abhisheksonje.online",
 );
 assert.ok(
   document.querySelector(
-    'link[rel="alternate"][href="https://abhishekdev.tech/llms.txt"]',
+    'link[rel="alternate"][href="https://www.abhisheksonje.online/llms.txt"]',
   ),
 );
 assert.ok(
   document.querySelector(
-    'link[rel="alternate"][href="https://abhishekdev.tech/portfolio.md"]',
+    'link[rel="alternate"][href="https://www.abhisheksonje.online/portfolio.md"]',
   ),
 );
 assert.equal(document.querySelectorAll('link[rel="me"]').length, 3);
@@ -100,8 +100,8 @@ await Promise.all(
 );
 
 const discoveryRoutes = [
-  ["/robots.txt", "Sitemap: https://abhishekdev.tech/sitemap.xml"],
-  ["/sitemap.xml", "https://abhishekdev.tech/portfolio.md"],
+  ["/robots.txt", "Sitemap: https://www.abhisheksonje.online/sitemap.xml"],
+  ["/sitemap.xml", "https://www.abhisheksonje.online/portfolio.md"],
   ["/llms.txt", "Complete portfolio profile"],
   ["/portfolio.md", "## Work experience"],
 ];
